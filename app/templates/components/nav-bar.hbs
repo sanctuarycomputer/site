@@ -1,0 +1,11 @@
+<div class='GLOBAL--nav-bar--stripe {{styles.stripe}}'></div>
+
+<div class={{styles.inner}}>
+  {{#link-to 'feed' class=styles.link}}Feed{{/link-to}}
+  {{#link-to 'work' class=styles.link}}Work{{/link-to}}
+  {{#link-to 'shop' class=styles.link}}Shop{{/link-to}}
+  <img class={{styles.logo}} src='images/logo.svg' />
+  <a class={{styles.link}} {{action 'clickedIndexSubsection' null}}>Info</a>
+  <a class={{styles.link}} {{action 'clickedIndexSubsection' 'jobs'}}>Jobs</a>
+  <a class={{styles.link}} {{action 'clickedIndexSubsection' 'contact'}}>Contact</a>
+</div>
