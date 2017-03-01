@@ -15,13 +15,17 @@ export const breakpoints = {
 
 const colors = {
   white: '#ffffff',
-  black: '#000000',
+  black: '#000000'
 };
 
 const c = v.config({ colors });
 
 c.fullHeight = {
   height: '100%'
+};
+
+c.fullWidth = {
+  width: '100%'
 };
 
 c.smHide = {
@@ -49,5 +53,6 @@ c.liquidInner = {
   overflow: 'scroll',
   '-webkit-overflow-scrolling': 'touch'
 };
+
 
 export default c;

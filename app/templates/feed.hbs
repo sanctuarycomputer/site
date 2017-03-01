@@ -1,3 +1,14 @@
 <div class={{styles.feedRoute}}>
-  <p>Feed</p>
+  <img class='{{v.mirror}} {{v.fullWidth}}' src='images/stroke.svg'>
+
+  <div class={{styles.feedWrapper}}>
+  {{#each model as |post|}}
+    {{#link-to 'feed.show' post.id}}
+      <div class={{styles.feedItem}}>
+        <h1>{{post.title}}</h1>
+        <h1>{{post.date}}</h1>
+      </div>
+    {{/link-to}}
+  {{/each}}
+  </div>
 </div>

@@ -16,9 +16,11 @@ const styles = v({
     height: `calc(100% - ${vars.navBarHeight}px)`,
     width: '100%',
     zIndex: 1,
-    opacity: 0
+    opacity: 0,
+    pointerEvents: 'none'
   },
   active: {
+    pointerEvents: 'auto',
     opacity: 1,
     zIndex: 3
   }
