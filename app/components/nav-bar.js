@@ -66,7 +66,7 @@ export default Component.extend({
     });
   },
 
-  didInsertElement() {
+  setupDOM() {
     if (window.location.pathname !== "/") {
       let viewHeight = Ember.$(window).height() - this.$().height();
       this.$().css({
@@ -78,6 +78,11 @@ export default Component.extend({
         'border-bottom-color': `${c.black.color}`
       });
     }
+  },
+
+  didInsertElement() {
+    this.setupDOM()
+    Ember.$(window).on('resize', () => this.setupDOM());
 
     let logoLoader = new Image();
     logoLoader.onload = () => this.positionStripe();

@@ -27,6 +27,18 @@ export default function bottomToTop(opts={}) {
     'border-bottom-color': `transparent`
   });
 
+  let routeWrapper = $(this.newElement.children()[0]);
+  let routeWrapperChildrenHeight = 0;
+  routeWrapper.children().each(function(){
+    routeWrapperChildrenHeight = routeWrapperChildrenHeight + $(this).outerHeight();
+  });
+  let scrollTop = routeWrapperChildrenHeight - routeWrapper.height();
+  routeWrapper.stop().animate(
+    { scrollTop },
+    vars.pageTransitionDuration,
+    'swing'
+  );
+
   return Promise.all([
     animate(navBar, { translateY: [distance, 0] }, opts),
     animate(mobileNavBar, { translateY: [distance, 0] }, opts),

@@ -21,6 +21,7 @@ const styles = v({
   },
   workItem: {
     '@composes': [c.mb6],
+    ':last-child': { marginBottom: 0 },
     width: '100%',
     position: 'relative',
     ':before': {
