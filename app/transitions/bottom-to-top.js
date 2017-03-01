@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { animate, Promise } from "liquid-fire";
-import { vars } from 'site/lib/vudu';
+import c, { vars } from 'site/lib/vudu';
 
 export default function bottomToTop(opts={}) {
   if (!this.newElement) {
@@ -16,6 +16,16 @@ export default function bottomToTop(opts={}) {
 
   let viewHeight = Ember.$(window).height();
   let distance = (viewHeight - navBar.height());
+
+  navBar.css({
+    'border-top-color': `${c.black.color}`,
+    'border-bottom-color': `transparent`
+  });
+
+  mobileNavBar.css({
+    'border-top-color': `${c.black.color}`,
+    'border-bottom-color': `transparent`
+  });
 
   return Promise.all([
     animate(navBar, { translateY: [distance, 0] }, opts),

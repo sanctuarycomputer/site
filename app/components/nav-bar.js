@@ -15,7 +15,14 @@ const styles = v({
     position: 'fixed',
     zIndex: 1,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: 'transparent',
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: 'transparent',
+    transition: `border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`
   },
   inner: {
     display: 'flex',
@@ -62,7 +69,14 @@ export default Component.extend({
   didInsertElement() {
     if (window.location.pathname !== "/") {
       let viewHeight = Ember.$(window).height() - this.$().height();
-      this.$().css({ 'transform': `translateY(${viewHeight}px)` });
+      this.$().css({
+        'transform': `translateY(${viewHeight}px)`,
+        'border-top-color': `${c.black.color}`
+      });
+    } else {
+      this.$().css({
+        'border-bottom-color': `${c.black.color}`
+      });
     }
 
     let logoLoader = new Image();
