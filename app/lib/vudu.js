@@ -15,7 +15,8 @@ export const breakpoints = {
 
 const colors = {
   white: '#ffffff',
-  black: '#000000'
+  black: '#000000',
+  lightGray: '#FAFAFA',
 };
 
 const c = v.config({ colors });
@@ -47,6 +48,7 @@ c.mirror = {
 
 c.liquidInner = {
   position: 'absolute',
+  backgroundColor: colors.lightGray,
   bottom: 0,
   width: '100%',
   height: `calc(100% - ${vars.navBarHeight}px)`,

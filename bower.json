@@ -1,6 +1,6 @@
 {
   "name": "site",
   "dependencies": {
-    "jquery-waypoints": "~4.0.1"
+    "jquery-waypoints": "~2.0.5"
   }
 }
