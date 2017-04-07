@@ -13,10 +13,10 @@ const styles = v({
     '@composes': [c.liquidInner, c.bgLightGray],
     bottom: 0,
     '.section': {
-      marginBottom: '8rem',
+      '@composes': [c.mb6],
     },
     '.sub-section': {
-      marginBottom: '4rem',
+      '@composes': [c.mb5],
     },
     '.block': {
       display: 'block',

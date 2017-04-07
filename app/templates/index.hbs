@@ -2,7 +2,6 @@
   {{#index-scroll-container indexSubSection=s}}
     {{#each model as |section|}}
       {{#way-point
-        offset="200"
         action=(action "didHitWaypoint" section.waypoint null)
         contextElementId="index-route-scroll-context"
         class=section.className }}
