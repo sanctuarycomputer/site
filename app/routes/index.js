@@ -13,7 +13,7 @@ const styles = v({
     '@composes': [c.liquidInner, c.bgLightGray],
     bottom: 0,
     '.section': {
-      '@composes': [c.mb6],
+      '@composes': [c.py4, c.mb6],
     },
     '.sub-section': {
       '@composes': [c.mb5],
