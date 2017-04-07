@@ -1,32 +1,15 @@
 <div class={{styles.indexRoute}} id="index-route-scroll-context">
   {{#index-scroll-container indexSubSection=s}}
-    {{#way-point
-      action=(action "didHitWaypoint" null null)
-      contextElementId="index-route-scroll-context"
-      class="index--info"}}
-    <p>
-      We are currently looking for work in the Virtual Reality, Food Technology & Affordable Housing Industries—get in touch!
-    </p>
-    {{/way-point}}
-
-    {{#way-point
-      action=(action "didHitWaypoint" "jobs" null)
-      contextElementId="index-route-scroll-context"
-      class="index--jobs"}}
-    <p>
-    We are also taking applications for our spring summer intership program and still have desks available in the studio.
-    </p>
-    {{/way-point}}
-
-    {{#way-point
-      action=(action "didHitWaypoint" "contact" "jobs")
-      contextElementId="index-route-scroll-context"
-      class="index--contact"}}
-    <p>
-    Sanctuary Computer is an artful user interface studio, based on the Bowery in NYC.  We work with established companies, city entities and startups to build compelling and empathetic digital products in the art, music & social infrastructure spaces.
-    </p>
-    {{/way-point}}
+    {{#each model as |section|}}
+      {{#way-point
+        action=(action "didHitWaypoint" section.waypoint null)
+        contextElementId="index-route-scroll-context"
+        class=section.className}}
+        <p class={{v.my6}}>{{section.copy}}</p>
+      {{/way-point}}
+    {{/each}}
   {{/index-scroll-container}}
-
-  <img src='images/stroke.svg'>
+  <div class={{styles.triangleContainer}}>
+    <img src='images/triangle-south.svg'>
+  </div>
 </div>

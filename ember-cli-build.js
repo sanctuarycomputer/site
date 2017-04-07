@@ -14,7 +14,7 @@ module.exports = function(defaults) {
   var origin;
   switch (env) {
     case 'development':
-      origin = `http://hhff.local:4200/`;
+      origin = `http://localhost:4200/`;
       fingerprintOptions.prepend = origin;
     break;
     case 'staging':

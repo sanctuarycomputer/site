@@ -31,11 +31,11 @@ p {
 	font-family: 'Austin News Deck';
 	src: url('AustinNewsDeck-Light-Web.eot');
 	src: local('Austin News Deck'), local('Austin News Deck Light'),
-		url('AustinNewsDeck-Light-Web.eot?#iefix') format('embedded-opentype'),
-		url('AustinNewsDeck-Light-Web.woff2') format('woff2'),
-		url('AustinNewsDeck-Light-Web.woff') format('woff'),
-		url('AustinNewsDeck-Light-Web.ttf') format('truetype'),
-		url('AustinNewsDeck-Light-Web.svg#Calibre-Black') format('svg');
+		url('/fonts/AustinNewsDeck-Light-Web.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/AustinNewsDeck-Light-Web.woff2') format('woff2'),
+		url('/fonts/AustinNewsDeck-Light-Web.woff') format('woff'),
+		url('/fonts/AustinNewsDeck-Light-Web.ttf') format('truetype'),
+		url('/fonts/AustinNewsDeck-Light-Web.svg#Calibre-Black') format('svg');
 	font-weight: 300;
 	font-style: normal;
 }
@@ -44,11 +44,11 @@ p {
 	font-family: 'Austin News Deck';
 	src: url('AustinNewsDeck-Roman-Web.eot');
 	src: local('Austin News Deck'), local('Austin News Deck Roman'),
-		url('AustinNewsDeck-Roman-Web.eot?#iefix') format('embedded-opentype'),
-		url('AustinNewsDeck-Roman-Web.woff2') format('woff2'),
-		url('AustinNewsDeck-Roman-Web.woff') format('woff'),
-		url('AustinNewsDeck-Roman-Web.ttf') format('truetype'),
-		url('AustinNewsDeck-Roman-Web.svg#Calibre-Black') format('svg');
+		url('/fonts/AustinNewsDeck-Roman-Web.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/AustinNewsDeck-Roman-Web.woff2') format('woff2'),
+		url('/fonts/AustinNewsDeck-Roman-Web.woff') format('woff'),
+		url('/fonts/AustinNewsDeck-Roman-Web.ttf') format('truetype'),
+		url('/fonts/AustinNewsDeck-Roman-Web.svg#Calibre-Black') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import { vars } from 'site/lib/vudu';
+import v from 'npm:vudu';
+import c, { vars } from 'site/lib/vudu';
 
 const {
   get,
@@ -7,9 +8,17 @@ const {
   inject: { service },
 } = Ember;
 
+const styles = v({
+  indexScrollContainerComponent: {
+    '@composes': [c.col11, c.mxAuto, c.bgLightGray],
+  }
+});
+
 const INDEX_PAGE_ID = '#index-route-scroll-context';
 
 export default Component.extend({
+  classNames: [styles.indexScrollContainerComponent],
+  styles,
   sanctu: service(),
   router: service('-routing'),
 
