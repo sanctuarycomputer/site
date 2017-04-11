@@ -4,12 +4,14 @@ import c, { vars } from 'site/lib/vudu';
 
 const {
   get,
+  computed: { alias },
   inject: { service },
   Component
 } = Ember;
 
 const styles = v({
   mobileNavBarComponent: {
+    '@composes': [c.px2],
     height: `${vars.navBarHeight}px`,
     width: '100%',
     position: 'fixed',
@@ -25,16 +27,28 @@ const styles = v({
     transition: `border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`
   },
   navLabel: {
+    position: 'relative',
     fontSize: '48px',
     lineHeight: '66px',
     textAlign: 'center',
+    width: '80%',
     '.liquid-outlet': {
       display: 'inline-block',
       verticalAlign: 'top'
     },
     '.liquid-child': {
-      width: '5em'
+      width: '100%',
+      margin: '0 auto'
     }
+  },
+  strikeThrough: {
+    '@composes': [c.bgBlack],
+    position: 'absolute',
+    height: '1px',
+    width: '80%',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%)',
   }
 });
 
@@ -42,6 +56,7 @@ export default Component.extend({
   classNames: ['GLOBAL--mobile-nav-bar', styles.mobileNavBarComponent],
   styles,
   sanctu: service(),
+  active: alias('sanctu.mobileNavShowing'),
 
   setupDOM() {
     if (window.location.pathname !== "/") {

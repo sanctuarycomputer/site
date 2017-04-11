@@ -8,7 +8,7 @@ const {
 } = Ember;
 
 const styles = v({
-  feedRoute: {
+  shopRoute: {
     '@composes': [c.liquidInner],
     top: 0
   }
