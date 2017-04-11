@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="39" height="41" viewBox="0 0 39 41">
+  <g fill="none">
+    <g stroke="#000">
+      <g transform="translate(-31 -29)translate(31 30)">
+        <polyline points="0.2 0.2 19.5 19.4 0.2 38.6 0.2 38.6"/>
+        <polyline points="38.7 38.6 19.5 19.4 38.7 0.2"/>
+      </g>
+    </g>
+  </g>
+</svg>

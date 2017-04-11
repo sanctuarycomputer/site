@@ -31,6 +31,7 @@ const styles = v({
     margin: 'auto'
   },
   link: {
+    '@composes': [c.black],
     flexGrow: 1,
     flexBasis: 0,
     textAlign: 'center',

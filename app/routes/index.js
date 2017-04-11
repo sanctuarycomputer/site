@@ -1,3 +1,5 @@
+/*jshint multistr: true */
+
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
@@ -39,7 +41,7 @@ export default Route.extend({
       {
         waypoint: 'info',
         className: 'index--info',
-        copy: "<div class='section'>\
+        copy: "<div class='section'> \
                 <p class='sub-section'>\
                   We are currently looking for work in the Virtual Reality, Food Technology & Affordable Housing Industries—get in touch!\
                 </p>\

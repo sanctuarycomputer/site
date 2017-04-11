@@ -17,17 +17,28 @@ const styles = v({
     width: '100%',
     zIndex: 1,
     opacity: 0,
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
   },
   active: {
     pointerEvents: 'auto',
     opacity: 1,
     zIndex: 3
+  },
+  link: {
+    '@composes': [c.black],
+    fontSize: '3rem',
+    textDecoration: 'none',
   }
 });
 
 export default Component.extend({
   classNames: [styles.mobileNavContentComponent, 'GLOBAL--mobile-nav-content'],
+  styles,
   classNameBindings: [`active:${styles.active}`],
   sanctu: service(),
   active: alias('sanctu.mobileNavShowing'),
