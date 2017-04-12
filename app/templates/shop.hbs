@@ -1,3 +1,13 @@
 <div class={{styles.shopRoute}}>
-  <p>Shop</p>
+  <img class='{{v.mirror}} {{v.fullWidth}}' src='images/stroke.svg'>
+  <div>
+    {{#each model as |item|}}
+      {{#link-to 'shop.show' item.title}}
+        <div>
+          <h1>{{item.title}}</h1>
+          <h1>${{item.price}}</h1>
+        </div>
+      {{/link-to}}
+    {{/each}}
+  </div>
 </div>

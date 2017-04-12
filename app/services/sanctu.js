@@ -19,6 +19,7 @@ export default Service.extend({
   },
 
   computeNavLabel() {
+    console.log(get(this, 'router.currentRouteName'))
     set(this, 'mobileNavShowing', false);
     let navLabel;
     switch (get(this, 'router.currentRouteName')) {
@@ -36,12 +37,14 @@ export default Service.extend({
         }
         break;
       case "feed.index":
+      case "feed.show":
         navLabel = "Feed";
         break;
       case "work.index":
         navLabel = "Work";
         break;
-      case "shop":
+      case "shop.index":
+      case "shop.show":
         navLabel = "Shop";
         break;
     }

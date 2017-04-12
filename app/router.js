@@ -13,7 +13,9 @@ Router.map(function() {
   this.route('feed', function() {
     this.route('show', { path: ':id' });
   });
-  this.route('shop');
+  this.route('shop', function() {
+    this.route('show', { path: ':title' });
+  });
 });
 
 export default Router;
