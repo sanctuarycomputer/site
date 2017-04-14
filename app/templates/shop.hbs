@@ -1,13 +1,13 @@
 <div class={{styles.shopRoute}}>
   <img class='{{v.mirror}} {{v.fullWidth}}' src='images/stroke.svg'>
-  <div>
-    {{#each model as |item|}}
-      {{#link-to 'shop.show' item.title}}
-        <div>
-          <h1>{{item.title}}</h1>
-          <h1>${{item.price}}</h1>
-        </div>
-      {{/link-to}}
+  <div class='{{v.mt5}} {{v.flex}} {{v.wrap}}'>
+    {{#each model as |product|}}
+      <div style="background-image:url('{{product.featuredImage.file.url}}')" class='{{styles.itemContainer}} {{v.col12}} {{v.mdCol4}}'>
+        {{#link-to 'shop.show' product.slug class=styles.linkWrapper}}
+          <h3>{{product.title}}</h3>
+          <h3>${{product.price}}</h3>
+        {{/link-to}}
+      </div>
     {{/each}}
   </div>
 </div>

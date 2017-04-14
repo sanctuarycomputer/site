@@ -36,6 +36,13 @@ export default function(){
   );
 
   this.transition(
+    this.fromRoute('shop.index'),
+    this.toRoute('shop.show'),
+    this.use('toLeft', { duration }),
+    this.reverse('toRight', { duration })
+  );
+
+  this.transition(
     this.fromRoute('work'),
     this.toRoute('feed'),
     this.use('toRight', { duration }),
