@@ -19,7 +19,6 @@ export default Service.extend({
   },
 
   computeNavLabel() {
-    console.log(get(this, 'router.currentRouteName'))
     set(this, 'mobileNavShowing', false);
     let navLabel;
     switch (get(this, 'router.currentRouteName')) {

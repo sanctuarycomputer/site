@@ -14,7 +14,7 @@ Router.map(function() {
     this.route('show', { path: ':id' });
   });
   this.route('shop', function() {
-    this.route('show', { path: ':title' });
+    this.route('show', { path: ':slug' });
   });
 });
 

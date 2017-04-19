@@ -36,7 +36,7 @@ export default function(){
   );
 
   this.transition(
-    this.fromRoute('shop.index'),
+    this.fromRoute('shop'),
     this.toRoute('shop.show'),
     this.use('toLeft', { duration }),
     this.reverse('toRight', { duration })
