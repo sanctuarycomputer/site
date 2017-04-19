@@ -26,6 +26,10 @@ p {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 @font-face {
 	font-family: 'Austin News Deck';

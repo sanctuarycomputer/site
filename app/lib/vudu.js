@@ -21,6 +21,30 @@ const colors = {
 
 const c = v.config({ colors });
 
+c.flex = {
+  display: 'flex'
+};
+
+c.flexOne = {
+  flex: '1'
+};
+
+c.flexHalf = {
+  flex: 0.5
+};
+
+c.spaceBetween = {
+  justifyContent: 'space-between'
+};
+
+c.spaceAround = {
+  justifyContent: 'space-around'
+};
+
+c.wrap = {
+  flexWrap: 'wrap'
+};
+
 c.fullHeight = {
   height: '100%'
 };

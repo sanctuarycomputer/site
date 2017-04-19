@@ -36,12 +36,14 @@ export default Service.extend({
         }
         break;
       case "feed.index":
+      case "feed.show":
         navLabel = "Feed";
         break;
       case "work.index":
         navLabel = "Work";
         break;
-      case "shop":
+      case "shop.index":
+      case "shop.show":
         navLabel = "Shop";
         break;
     }
