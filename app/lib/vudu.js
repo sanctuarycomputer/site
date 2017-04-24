@@ -20,6 +20,14 @@ const colors = {
 };
 
 const c = v.config({ colors });
+//LAYOUT
+c.mdFlex = {
+  display: 'initial'
+}
+
+c.mdFlex[breakpoints.md] = {
+  display: 'flex'
+}
 
 c.flex = {
   display: 'flex'
@@ -41,6 +49,10 @@ c.spaceAround = {
   justifyContent: 'space-around'
 };
 
+c.justifyEnd = {
+  justifyContent: 'flex-end'
+}
+
 c.wrap = {
   flexWrap: 'wrap'
 };
@@ -53,6 +65,7 @@ c.fullWidth = {
   width: '100%'
 };
 
+//RESPONSIVE
 c.smHide = {
   display: 'none',
 };
@@ -70,6 +83,26 @@ c.mirror = {
   transform: 'rotate(180deg)'
 };
 
+c.smFullWidth = {
+  width: '100%'
+}
+
+c.smFullWidth[breakpoints.sm] = {
+  width: 'auto'
+}
+
+//TYPE
+c.sansRegular = {
+  fontFamily: 'AtlasGroteskLight',
+  fontWeight: 300,
+}
+
+c.sansLight = {
+  fontFamily: 'AtlasGroteskLight',
+  fontWeight: 300,
+}
+
+//GLOBAL
 c.liquidInner = {
   position: 'absolute',
   backgroundColor: colors.lightGray,
