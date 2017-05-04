@@ -41,6 +41,14 @@ c.flexHalf = {
   flex: 0.5
 };
 
+c.flexColumn = {
+  flexDirection: 'column'
+}
+
+c.flexRow = {
+  flexDirection: 'row'
+}
+
 c.spaceBetween = {
   justifyContent: 'space-between'
 };
@@ -51,6 +59,10 @@ c.spaceAround = {
 
 c.justifyEnd = {
   justifyContent: 'flex-end'
+}
+
+c.alignEnd = {
+  alignItems: 'flex-end'
 }
 
 c.wrap = {
@@ -99,6 +111,16 @@ c.sansRegular = {
 
 c.sansLight = {
   fontFamily: 'AtlasGroteskLight',
+  fontWeight: 300,
+}
+
+c.serifRegular = {
+  fontFamily: 'Austin News Deck',
+  fontWeight: 'normal',
+}
+
+c.serifLight = {
+  fontFamily: 'Austin News Deck',
   fontWeight: 300,
 }
 

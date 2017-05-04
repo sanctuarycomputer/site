@@ -3,7 +3,8 @@ import Contentful from 'ember-data-contentful/models/contentful';
 
 const {
   attr,
-  belongsTo
+  belongsTo,
+  hasMany,
 } = DS;
 
 export default Contentful.extend({
