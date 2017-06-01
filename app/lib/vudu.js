@@ -34,7 +34,7 @@ c.flex = {
 };
 
 c.flexOne = {
-  flex: '1'
+  flex: 1
 };
 
 c.flexHalf = {
@@ -65,6 +65,22 @@ c.alignEnd = {
   alignItems: 'flex-end'
 }
 
+c.selfStart = {
+  alignSelf: 'flex-start'
+};
+
+c.selfCenter = {
+  alignSelf: 'center'
+};
+
+c.selfEnd = {
+  alignSelf: 'flex-end'
+};
+
+c.selfBaseline = {
+  alignSelf: 'baseline'
+};
+
 c.wrap = {
   flexWrap: 'wrap'
 };
@@ -75,6 +91,10 @@ c.fullHeight = {
 
 c.fullWidth = {
   width: '100%'
+};
+
+c.listNone = {
+  listStyle: 'none'
 };
 
 //RESPONSIVE

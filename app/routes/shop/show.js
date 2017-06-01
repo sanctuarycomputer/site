@@ -7,10 +7,13 @@ const {
   set,
 } = Ember;
 
+const MINUS_HEIGHT = '450px';
+
 const styles = v({
-  productContainer:{
-    display: 'block',
-  }
+  productContainerHeight: {
+    maxHeight: `calc(100vh - ${MINUS_HEIGHT})`,
+  },
+
 });
 
 export default Route.extend({
