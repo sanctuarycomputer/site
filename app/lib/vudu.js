@@ -21,6 +21,10 @@ const colors = {
 
 const c = v.config({ colors });
 
+c.pre = {
+  whiteSpace: 'pre'
+};
+
 c.flex = {
   display: 'flex'
 };
