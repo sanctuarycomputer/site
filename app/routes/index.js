@@ -37,7 +37,13 @@ export default Route.extend({
   sanctu: service(),
 
   model() {
-    return this.store.findAll('Copy')
+    return this.store.findAll('Copy').then(copies => {
+      return [
+        copies.findBy('title', 'info'),
+        copies.findBy('title', 'jobs'),
+        copies.findBy('title', 'contact'),
+      ]
+    });
   },
 
   // model() {
