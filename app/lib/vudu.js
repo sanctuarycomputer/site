@@ -144,6 +144,10 @@ c.serifLight = {
   fontWeight: 300,
 }
 
+c.decorationNone = {
+  textDecoration: 'none'
+}
+
 //GLOBAL
 c.liquidInner = {
   position: 'absolute',

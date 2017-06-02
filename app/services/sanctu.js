@@ -40,6 +40,7 @@ export default Service.extend({
         navLabel = "Feed";
         break;
       case "work.index":
+      case "work.show":
         navLabel = "Work";
         break;
       case "shop.index":
