@@ -1,19 +1,55 @@
 <div class={{styles.indexRoute}} id="index-route-scroll-context">
   {{#index-scroll-container indexSubSection=s}}
     {{#each model as |group|}}
-      {{#way-point
-        action=(action "didHitWaypoint" group.title null)
-        contextElementId="index-route-scroll-context"
-        class=(concat 'index--' group.title) }}
-        <div style="white-space: pre; display: flex; flex-direction: row; flex-wrap: wrap">
-          {{#each group.combined as |c|}}
-              <p>{{c.text}}</p>
-              {{#if c.url}}
-                <img style="max-height: 100px; max-width: 100px;" src="{{c.url}}" />
-              {{/if}}
-          {{/each}}
-        </div>
-      {{/way-point}}
+      {{#if (eq group.title "info")}}
+        {{#way-point
+          action=(action "didHitWaypoint" group.title null)
+          contextElementId="index-route-scroll-context"
+          class=(concat 'index--' group.title) }}
+          <div style="white-space: pre; display: flex; flex-direction: row; flex-wrap: wrap">
+            {{#each group.combined as |c|}}
+                <p>{{c.text}}</p>
+                {{#if c.url}}
+                  <img style="max-height: 100px; max-width: 100px;" src="{{c.url}}" />
+                {{/if}}
+            {{/each}}
+          </div>
+        {{/way-point}}
+      {{/if}}
+    {{/each}}
+    {{#each model as |group|}}
+      {{#if (eq group.title "jobs")}}
+        {{#way-point
+          action=(action "didHitWaypoint" group.title null)
+          contextElementId="index-route-scroll-context"
+          class=(concat 'index--' group.title) }}
+          <div style="white-space: pre; display: flex; flex-direction: row; flex-wrap: wrap">
+            {{#each group.combined as |c|}}
+                <p>{{c.text}}</p>
+                {{#if c.url}}
+                  <img style="max-height: 100px; max-width: 100px;" src="{{c.url}}" />
+                {{/if}}
+            {{/each}}
+          </div>
+        {{/way-point}}
+      {{/if}}
+    {{/each}}
+    {{#each model as |group|}}
+      {{#if (eq group.title "contact")}}
+        {{#way-point
+          action=(action "didHitWaypoint" group.title null)
+          contextElementId="index-route-scroll-context"
+          class=(concat 'index--' group.title) }}
+          <div style="white-space: pre; display: flex; flex-direction: row; flex-wrap: wrap">
+            {{#each group.combined as |c|}}
+                <p>{{c.text}}</p>
+                {{#if c.url}}
+                  <img style="max-height: 100px; max-width: 100px;" src="{{c.url}}" />
+                {{/if}}
+            {{/each}}
+          </div>
+        {{/way-point}}
+      {{/if}}
     {{/each}}
   {{/index-scroll-container}}
   <div class={{styles.triangleContainer}}>
