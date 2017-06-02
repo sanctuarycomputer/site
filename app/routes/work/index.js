@@ -12,10 +12,6 @@ const HEIGHT = 12;
 const WIDTH = 18;
 
 const styles = v({
-  workRoute: {
-    '@composes': [c.liquidInner],
-    top: 0
-  },
   workWrapper: {
     '@composes': [c.px6]
   },
