@@ -57,12 +57,20 @@ c.spaceAround = {
   justifyContent: 'space-around'
 };
 
+c.justifyCenter = {
+  justifyContent: 'center'
+}
+
 c.justifyEnd = {
   justifyContent: 'flex-end'
 }
 
 c.alignEnd = {
   alignItems: 'flex-end'
+}
+
+c.alignCenter = {
+  alignItems: 'flex-center'
 }
 
 c.selfStart = {
