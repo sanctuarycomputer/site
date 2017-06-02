@@ -4,7 +4,7 @@
       {{#way-point
         action=(action "didHitWaypoint" group.title null)
         contextElementId="index-route-scroll-context"
-        class=section.className }}
+        class=(concat 'index--' group.title) }}
         <div style="white-space: pre; display: flex; flex-direction: row; flex-wrap: wrap">
           {{#each group.combined as |c|}}
               <p>{{c.text}}</p>
