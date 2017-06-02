@@ -1,0 +1,16 @@
+<div class={{styles.workWrapper}}>
+  {{#each model as |work|}}
+    <div class='{{styles.workItem}}'>
+      <div class='content'>
+        <div class='work work-{{work.variant}}'>
+          <img src="work/dame-products/Dame_INVERTED.jpg">
+          <video src="work/dame-products/Dame.mp4" poster="work/dame-products/Dame.jpg" autoplay loop />
+          <h1 class='work-title'>{{work.title}}</h1>
+        </div>
+        <div class='play play-{{work.variant}}' style="background-color: {{work.secondaryColor}}">
+          <div class='play-secondary'></div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
