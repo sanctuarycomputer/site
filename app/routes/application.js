@@ -27,6 +27,7 @@ export default Route.extend({
     set(controller, 'sanctu', get(this, 'sanctu'));
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
+    console.log(v(c));
   },
 
   actions: {

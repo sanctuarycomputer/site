@@ -3,15 +3,18 @@ import Contentful from 'ember-data-contentful/models/contentful';
 
 const {
   attr,
-  belongsTo
+  belongsTo,
+  hasMany,
 } = DS;
 
 export default Contentful.extend({
   slug: attr('string'),
   featuredImage: belongsTo('contentful-asset'),
+  gallery: hasMany('contentful-asset'),
   title: attr('string'),
   description: attr('string'),
   instructions: attr('string'),
   price: attr('number'),
-  options: attr('string'),
+  options: attr('array'),
+  instructionList: attr('array'),
 });
