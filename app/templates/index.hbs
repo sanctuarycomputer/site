@@ -5,7 +5,7 @@
         action=(action "didHitWaypoint" group.title null)
         contextElementId="index-route-scroll-context"
         class=(concat 'index--' group.title) }}
-        <div style="white-space: pre; display: flex; flex-direction: row; flex-wrap: wrap">
+        <div>
           {{#each group.combined as |c|}}
             <p>{{c.text}}</p>
             {{#if c.url}}

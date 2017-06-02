@@ -23,11 +23,11 @@ export default Contentful.extend({
     const iX = i.map(u => {
       return {text: u.get('title'), url: u.get('file.url')};
     });
-    const bX = b.replace(/\n/g, ' ').split(' ');
-    const m = bX.map(w => {
-      let foundUrl = iX.find(y => y.text === w);
+    const lines = b.split(/\n/g);
+    const m = lines.map(w => {
+      let foundUrl = iX.find(y => w.includes(y.text));
       return {
-        text: w + ' ',
+        text: w,
         url: foundUrl ? foundUrl.url : null,
       };
     });
