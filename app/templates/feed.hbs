@@ -1,5 +1,8 @@
-<div class={{styles.feedRoute}}>
-  <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
+<div class="{{styles.feedRoute}} {{vudu 'liquidInner'}}">
+  <div class={{vudu 'relative'}}>
+    {{scroll-to-arrow down="true"}}
+    <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
+  </div>
 
   <div class={{styles.feedWrapper}}>
   {{#each model as |post|}}

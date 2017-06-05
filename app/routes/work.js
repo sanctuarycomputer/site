@@ -10,7 +10,6 @@ const {
 
 const styles = v({
   workRoute: {
-    '@composes': [c.liquidInner],
     top: 0
   },
 });

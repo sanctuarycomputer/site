@@ -1,4 +1,7 @@
-<div class={{styles.shopRoute}}>
-  <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
+<div class="{{styles.shopRoute}} {{vudu 'liquidInner'}}">
+  <div class={{vudu 'relative'}}>
+    <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
+    {{scroll-to-arrow down="true"}}
+  </div>
   {{outlet}}
 </div>

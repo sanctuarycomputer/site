@@ -155,5 +155,9 @@ c.liquidInner = {
   '-webkit-overflow-scrolling': 'touch'
 };
 
+c.footerHeight = {
+  height: '250px'
+};
+
 
 export default c;
