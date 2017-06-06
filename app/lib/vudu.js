@@ -57,12 +57,20 @@ c.spaceAround = {
   justifyContent: 'space-around'
 };
 
+c.justifyCenter = {
+  justifyContent: 'center'
+}
+
 c.justifyEnd = {
   justifyContent: 'flex-end'
 }
 
 c.alignEnd = {
   alignItems: 'flex-end'
+}
+
+c.alignCenter = {
+  alignItems: 'flex-center'
 }
 
 c.selfStart = {
@@ -142,6 +150,10 @@ c.serifRegular = {
 c.serifLight = {
   fontFamily: 'Austin News Deck',
   fontWeight: 300,
+}
+
+c.decorationNone = {
+  textDecoration: 'none'
 }
 
 //GLOBAL

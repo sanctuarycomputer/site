@@ -16,6 +16,10 @@ const styles = v({
 
 export default Route.extend({
 
+  model() {
+    return this.store.findAll('project')
+  },
+
   setupController(controller) {
     this._super(...arguments);
     set(controller, 'styles', styles);
