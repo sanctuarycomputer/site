@@ -9,7 +9,6 @@ const {
 
 const styles = v({
   feedRoute: {
-    '@composes': [c.liquidInner],
     top: 0
   },
   feedWrapper: {

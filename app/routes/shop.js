@@ -9,7 +9,6 @@ const {
 
 const styles = v({
   shopRoute: {
-    '@composes': [c.liquidInner],
     top: 0
   },
   itemContainer: {

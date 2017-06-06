@@ -1,4 +1,4 @@
-<div class={{styles.indexRoute}} id="index-route-scroll-context">
+<div class="{{styles.indexRoute}} {{vudu 'liquidInner'}}" id="index-route-scroll-context">
   {{#index-scroll-container indexSubSection=s}}
     {{#each model as |group|}}
       {{#scroll-section
@@ -18,7 +18,8 @@
       {{/scroll-section}}
     {{/each}}
   {{/index-scroll-container}}
-  <div class={{styles.triangleContainer}}>
+  <div class="{{styles.triangleContainer}} {{vudu 'footerHeight relative'}}">
+    {{scroll-to-arrow direction="up" }}
     <img src='images/triangle-south.svg'>
   </div>
 </div>
