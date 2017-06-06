@@ -51,14 +51,6 @@ c.mdFlex[breakpoints.md] = {
   display: 'flex',
 };
 
-c.relative = {
-  position: 'relative',
-};
-
-c.absolute = {
-  position: 'absolute',
-};
-
 c.pre = {
   whiteSpace: 'pre',
 };
