@@ -12,7 +12,7 @@ const {
 
 const styles = v({
   indexRoute: {
-    '@composes': [c.liquidInner, c.bgLightGray],
+    '@composes': [c.bgLightGray],
     bottom: 0,
     '.section': {
       '@composes': [c.py4, c.mb6],
