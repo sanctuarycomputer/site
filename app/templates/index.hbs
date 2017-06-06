@@ -3,6 +3,7 @@
     {{#each model as |group|}}
       {{#scroll-section
         class=(concat 'index--' group.title)
+        action=(action "didHitWaypoint" group.title null)
       }}
         <div>
           {{#each group.combined as |c|}}
