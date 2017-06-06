@@ -7,10 +7,12 @@
         class=(concat 'index--' group.title) }}
         <div>
           {{#each group.combined as |c|}}
-            <p>{{c.text}}</p>
-            {{#if c.url}}
-              <img style="max-height: 100px; max-width: 100px;" src="{{c.url}}" />
-            {{/if}}
+            <div class={{vudu 'relative'}}>
+              <p>{{c.text}}</p>
+              {{#if c.url}}
+                <img class={{vudu 'absolute maxHeight100 maxWidth100 t0'}} src="{{c.url}}" />
+              {{/if}}
+            </div>
           {{/each}}
         </div>
       {{/way-point}}
