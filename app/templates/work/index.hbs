@@ -1,0 +1,7 @@
+<div class={{styles.workWrapper}}>
+  {{#each model as |project|}}
+    {{#link-to 'work.show' project.slug}}
+      {{project-block project=project}}
+    {{/link-to}}
+  {{/each}}
+</div>

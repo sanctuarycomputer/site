@@ -20,6 +20,14 @@ const colors = {
 };
 
 const c = v.config({ colors });
+//LAYOUT
+c.mdFlex = {
+  display: 'initial'
+}
+
+c.mdFlex[breakpoints.md] = {
+  display: 'flex'
+}
 
 c.pre = {
   whiteSpace: 'pre'
@@ -30,12 +38,20 @@ c.flex = {
 };
 
 c.flexOne = {
-  flex: '1'
+  flex: 1
 };
 
 c.flexHalf = {
   flex: 0.5
 };
+
+c.flexColumn = {
+  flexDirection: 'column'
+}
+
+c.flexRow = {
+  flexDirection: 'row'
+}
 
 c.spaceBetween = {
   justifyContent: 'space-between'
@@ -43,6 +59,38 @@ c.spaceBetween = {
 
 c.spaceAround = {
   justifyContent: 'space-around'
+};
+
+c.justifyCenter = {
+  justifyContent: 'center'
+}
+
+c.justifyEnd = {
+  justifyContent: 'flex-end'
+}
+
+c.alignEnd = {
+  alignItems: 'flex-end'
+}
+
+c.alignCenter = {
+  alignItems: 'flex-center'
+}
+
+c.selfStart = {
+  alignSelf: 'flex-start'
+};
+
+c.selfCenter = {
+  alignSelf: 'center'
+};
+
+c.selfEnd = {
+  alignSelf: 'flex-end'
+};
+
+c.selfBaseline = {
+  alignSelf: 'baseline'
 };
 
 c.wrap = {
@@ -57,6 +105,11 @@ c.fullWidth = {
   width: '100%'
 };
 
+c.listNone = {
+  listStyle: 'none'
+};
+
+//RESPONSIVE
 c.smHide = {
   display: 'none',
 };
@@ -74,6 +127,40 @@ c.mirror = {
   transform: 'rotate(180deg)'
 };
 
+c.smFullWidth = {
+  width: '100%'
+}
+
+c.smFullWidth[breakpoints.sm] = {
+  width: 'auto'
+}
+
+//TYPE
+c.sansRegular = {
+  fontFamily: 'AtlasGroteskLight',
+  fontWeight: 300,
+}
+
+c.sansLight = {
+  fontFamily: 'AtlasGroteskLight',
+  fontWeight: 300,
+}
+
+c.serifRegular = {
+  fontFamily: 'Austin News Deck',
+  fontWeight: 'normal',
+}
+
+c.serifLight = {
+  fontFamily: 'Austin News Deck',
+  fontWeight: 300,
+}
+
+c.decorationNone = {
+  textDecoration: 'none'
+}
+
+//GLOBAL
 c.liquidInner = {
   position: 'absolute',
   backgroundColor: colors.lightGray,

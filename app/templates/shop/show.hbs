@@ -1,3 +1,36 @@
-<h1>{{model.title}}</h1>
-<h1>{{model.price}}</h1>
-<h1>{{model.description}}</h1>
+<div class={{vudu 'mdFlex'}}>
+  <div class={{vudu 'col12 mdCol6 mdFlex flexColumn alignEnd'}}>
+    <div>
+      <div>
+        <img class={{vudu 'smFullWidth'}} src={{model.gallery.firstObject.file.url}}/>
+      </div>
+      <div class={{vudu 'flex spaceBetween py2'}}>
+        <img src='images/icon-arrow_head.svg' />
+        <img src='images/icon-plus.svg' />
+      </div>
+    </div>
+  </div>
+  <div class={{vudu 'col12 mdCol6 pr6 ml4 flex flexColumn'}}>
+    <div class={{vudu 'col12 lgCol8 flexHalf'}}>
+      <h1 class={{vudu 'serifLight'}}>{{model.title}}</h1>
+      <h1 class={{vudu 'serifLight'}}>${{model.price}}</h1>
+      <h1 class={{vudu 'serifLight'}}>Select a size:</h1>
+      <ul class={{vudu 'flex listNone p0 spaceBetween'}}>
+        {{#each model.options as |option|}}
+          <li>
+            <h1 class={{vudu 'serifLight caps'}}>{{option}}</h1>
+          </li>
+        {{/each}}
+      </ul>
+      <h4 class={{vudu 'sansRegular'}}>{{model.description}}</h4>
+      <ul class={{vudu 'listNone p0 sansRegular'}}>
+        {{#each model.instructionList as |instruction|}}
+          <li>{{instruction}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class={{vudu 'flex flexHalf flexColumn justifyEnd'}}>
+      <h1 class={{vudu 'serifLight'}}>Add to Bag</h1>
+    </div>
+  </div>
+</div>
