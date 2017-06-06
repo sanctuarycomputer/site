@@ -17,6 +17,22 @@ body > .ember-view {
   height: 100%;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.t0 {
+  top: 0px;
+}
+
+.opac1 {
+  opacity: 1;
+}
+
+.opac0 {
+  opacity: 0;
+}
+
 p {
   font-size: 5rem;
   margin: 0;

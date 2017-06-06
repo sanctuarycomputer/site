@@ -11,7 +11,7 @@ const {
 const styles = v({
   indexScrollContainerComponent: {
     '@composes': [c.col11, c.mxAuto, c.bgLightGray],
-  }
+  },
 });
 
 const INDEX_PAGE_ID = '#index-route-scroll-context';
@@ -27,20 +27,22 @@ export default Component.extend({
   },
 
   didReceiveAttrs() {
-    if (get(this, 'sanctu.duringWaypointHit')) { return; }
+    if (get(this, 'sanctu.duringWaypointHit')) {
+      return;
+    }
     this.scrollToIndexSubsection(get(this, 'indexSubSection'));
   },
 
   scrollToIndexSubsection(section) {
-    let $indexPage = Ember.$(INDEX_PAGE_ID);
-    let $indexPageSubsection = Ember.$(INDEX_PAGE_ID + ' .index--' + (section || 'info'));
-    if (($indexPage.length === 0) || ($indexPageSubsection.length === 0)) { return; }
+    const $indexPage = Ember.$(INDEX_PAGE_ID);
+    const $indexPageSubsection = Ember.$(`${INDEX_PAGE_ID} .index--${section || 'info'}`);
+    if ($indexPage.length === 0 || $indexPageSubsection.length === 0) {
+      return;
+    }
 
-    let scrollTop = $indexPage.scrollTop() + $indexPageSubsection.offset().top - vars.navBarHeight;
-    $indexPage.stop().animate(
-      { scrollTop },
-      vars.pageTransitionDuration,
-      'swing'
-    );
-  }
+    const scrollTop = $indexPage.scrollTop() +
+      $indexPageSubsection.offset().top -
+      vars.navBarHeight;
+    $indexPage.stop().animate({ scrollTop }, vars.pageTransitionDuration, 'swing');
+  },
 });

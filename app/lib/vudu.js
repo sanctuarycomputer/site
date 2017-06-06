@@ -35,6 +35,14 @@ numbers.forEach((n) => {
   c[`l${n}`] = { left: `${n}px` };
 });
 
+c.opac1 = {
+  opacity: 1,
+}
+
+c.opac0 = {
+  opacity: 0,
+}
+
 c.mdFlex = {
   display: 'initial',
 };

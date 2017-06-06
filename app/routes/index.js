@@ -1,4 +1,4 @@
-/*jshint multistr: true */
+/* jshint multistr: true */
 
 import Ember from 'ember';
 import v from 'npm:vudu';
@@ -7,7 +7,7 @@ import c from 'site/lib/vudu';
 const {
   set,
   inject: { service },
-  Route
+  Route,
 } = Ember;
 
 const styles = v({
@@ -26,29 +26,28 @@ const styles = v({
   },
   triangleContainer: {
     width: '100%',
-    'img': {
+    img: {
       width: '100%',
-    }
+    },
   },
-
 });
 
 export default Route.extend({
   sanctu: service(),
 
   model() {
-    return this.store.findAll('Copy').then(copies => {
-      return [
+    return this.store
+      .findAll('copy')
+      .then(copies => [
         copies.findBy('title', 'info'),
         copies.findBy('title', 'jobs'),
         copies.findBy('title', 'contact'),
-      ]
-    });
+      ]);
   },
 
   setupController(controller) {
     this._super(...arguments);
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
-  }
+  },
 });
