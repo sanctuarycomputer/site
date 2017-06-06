@@ -6,6 +6,7 @@ import c from 'site/lib/vudu';
 const {
   Component,
   inject: { service },
+  $,
 } = Ember;
 
 export default Component.extend(InViewportMixin, {
@@ -14,8 +15,8 @@ export default Component.extend(InViewportMixin, {
   sanctu: service(),
   active: false,
   random: null,
-  max: Ember.$(window).width() - 200,
-  tolerance: Ember.$(window).height() * -0.25,
+  max: $(window).width() - 200,
+  tolerance: $(window).height() * -0.25,
 
   viewportOptionsOverride: Ember.on('didInsertElement', function () {
     Ember.setProperties(this, {
