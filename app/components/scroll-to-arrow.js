@@ -56,8 +56,14 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    this.checkScrollHeight();
-    this.$(window).resize(() => this.checkScrollHeight());
+    const resizeListener = () => this.checkScrollHeight();
+    set(this, 'resizeListener', resizeListener);
+    resizeListener();
+    this.$(window).on('resize', resizeListener);
+  },
+
+  willDestroyElement() {
+    this.$(window).off('resize', get(this, 'resizeListener'));
   },
 
   shouldShow: false,
