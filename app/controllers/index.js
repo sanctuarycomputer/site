@@ -17,12 +17,7 @@ export default Controller.extend({
     didHitWaypoint(section) {
       if (get(this, 'sanctu.duringAutoScroll')) { return; }
       set(this, 'sanctu.duringWaypointHit', true);
-      // if (direction === "down") {
-      console.log(section, 'section')
       set(this, 'sanctu.indexSubSection', section);
-      // } else {
-      //   set(this, 'sanctu.indexSubSection', prevSection);
-      // }
       get(this, 'sanctu').computeNavLabel();
       setTimeout(() => set(this, 'sanctu.duringWaypointHit', false), 1);
     }
