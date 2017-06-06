@@ -1,11 +1,20 @@
 <div class={{styles.indexRoute}} id="index-route-scroll-context">
   {{#index-scroll-container indexSubSection=s}}
-    {{#each model as |section|}}
+    {{#each model as |group|}}
       {{#way-point
-        action=(action "didHitWaypoint" section.waypoint null)
+        action=(action "didHitWaypoint" group.title null)
         contextElementId="index-route-scroll-context"
-        class=section.className }}
-        {{{section.copy}}}
+        class=(concat 'index--' group.title) }}
+        <div>
+          {{#each group.combined as |c|}}
+            <div class={{vudu 'relative'}}>
+              <p>{{c.text}}</p>
+              {{#if c.url}}
+                <img class={{vudu 'absolute maxHeight100 maxWidth100 t0'}} src="{{c.url}}" />
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
       {{/way-point}}
     {{/each}}
   {{/index-scroll-container}}
