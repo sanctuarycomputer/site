@@ -9,7 +9,6 @@ const {
 
 const {
   attr,
-  belongsTo,
   hasMany,
 } = DS;
 
@@ -17,20 +16,18 @@ export default Contentful.extend({
   title: attr('string'),
   body: attr('string'),
   images: hasMany('contentful-asset'),
-  combined: computed('images.length', function() {
-    const i = get(this, 'images');
-    const b = get(this, 'body');
-    const iX = i.map(u => {
-      return {text: u.get('title'), url: u.get('file.url')};
-    });
-    const lines = b.split(/\n/g);
-    const m = lines.map(w => {
-      let foundUrl = iX.find(y => w.includes(y.text));
+  combined: computed('images.length', function () {
+    const images = get(this, 'images');
+    const body = get(this, 'body');
+    const imageArr = images.map(i => ({ text: i.get('title'), url: i.get('file.url') }));
+    const textArr = body.split(/\n/g);
+    const data = textArr.map((t) => {
+      const fImage = imageArr.find(i => t.includes(i.text));
       return {
-        text: w,
-        url: foundUrl ? foundUrl.url : null,
+        text: t,
+        url: fImage ? fImage.url : null,
       };
     });
-    return m;
+    return data;
   }),
 });
