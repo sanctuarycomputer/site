@@ -28,6 +28,9 @@ module.exports = function(defaults) {
   }
 
   var app = new EmberApp(defaults, {
+    dotEnv: {
+      clientAllowedKeys: ['SANCTUARY_SPACE_ID', 'SANCTUARY_API_KEY', 'SANCTUARY_PREVIEW_API_KEY']
+    },
     origin: origin,
     SRI: {
       crossorigin: 'use-credentials',

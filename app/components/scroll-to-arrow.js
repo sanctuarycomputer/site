@@ -49,7 +49,7 @@ const styles = v({
   }
 });
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNameBindings: [`shouldShow:${styles.show}:${styles.hide}`],
   styles,
   sanctu: service(),
@@ -79,8 +79,7 @@ export default Ember.Component.extend({
     }
   },
 
-  click(e) {
-    let shouldShow = get(this, 'shouldShow');
+  click(/*e*/) {
     let direction = get(this, 'direction');
     let innerScrollingContainerClass = v(c).liquidInner;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);

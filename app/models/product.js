@@ -16,5 +16,5 @@ export default Contentful.extend({
   instructions: attr('string'),
   price: attr('number'),
   options: attr('array'),
-  instructionList: attr('array'),
+  instructionList: attr('array')
 });

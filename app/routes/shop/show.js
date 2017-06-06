@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 const {
   Route,
-  set,
+  get
 } = Ember;
 
 

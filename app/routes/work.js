@@ -4,7 +4,6 @@ import c from 'site/lib/vudu';
 
 const {
   set,
-  inject: { service },
   Route
 } = Ember;
 
@@ -15,7 +14,6 @@ const styles = v({
 });
 
 export default Route.extend({
-
   model() {
     return this.store.findAll('project')
   },

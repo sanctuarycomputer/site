@@ -3,7 +3,6 @@ import v from 'npm:vudu';
 import c from 'site/lib/vudu';
 
 const {
-  set,
   inject: { service },
 } = Ember;
 

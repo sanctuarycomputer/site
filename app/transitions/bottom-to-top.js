@@ -27,10 +27,10 @@ export default function bottomToTop(opts={}) {
     'border-bottom-color': `transparent`
   });
 
-  let routeWrapper = $(this.newElement.children()[0]);
+  let routeWrapper = Ember.$(this.newElement.children()[0]);
   let routeWrapperChildrenHeight = 0;
   routeWrapper.children().each(function(){
-    routeWrapperChildrenHeight = routeWrapperChildrenHeight + $(this).outerHeight();
+    routeWrapperChildrenHeight = routeWrapperChildrenHeight + Ember.$(this).outerHeight();
   });
   let scrollTop = routeWrapperChildrenHeight - routeWrapper.height();
   routeWrapper.stop().animate(
