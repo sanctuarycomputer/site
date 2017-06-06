@@ -11,6 +11,12 @@ export default Component.extend(InViewportMixin, {
   viewportOptionsOverride: Ember.on('didInsertElement', function () {
     Ember.setProperties(this, {
       viewportSpy: true,
+      viewportTolerance: {
+        top: 200,
+        bottom: 0,
+        left: 0,
+        right: 0,
+      },
     });
   }),
 
