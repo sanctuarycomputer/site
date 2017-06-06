@@ -25,7 +25,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.contentful =  {
-      space: process.env.SPACE_ID,
+      space: process.env.SANCTUARY_SPACE_ID,
       accessToken: process.env.SANCTUARY_API_KEY,
       previewAccessToken: process.env.SANCTUARY_PREVIEW_API_KEY,
       usePreviewApi: false,

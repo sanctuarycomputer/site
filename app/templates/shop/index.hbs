@@ -1,6 +1,6 @@
 <div class='{{v.mt5}} {{v.flex}} {{v.wrap}}'>
   {{#each model as |product|}}
-    <div style="background-image:url('{{product.featuredImage.file.url}}')" class='{{styles.itemContainer}} {{v.col12}} {{v.mdCol4}}'>
+    <div style="{{background-image product.featuredImage.file.url}}" class='{{styles.itemContainer}} {{v.col12}} {{v.mdCol4}}'>
       {{#link-to 'shop.show' product.slug class=styles.linkWrapper}}
         <h3>{{product.title}}</h3>
         <h3>${{product.price}}</h3>
