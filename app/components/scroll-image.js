@@ -1,10 +1,9 @@
 import InViewportMixin from 'ember-in-viewport';
 import Ember from 'ember';
 import v from 'npm:vudu';
-import c, { vars } from 'site/lib/vudu';
+import c from 'site/lib/vudu';
 
 const {
-  get,
   Component,
   inject: { service },
 } = Ember;
@@ -15,8 +14,8 @@ export default Component.extend(InViewportMixin, {
   sanctu: service(),
   active: false,
   random: null,
-  max: $(window).width() - 200,
-  tolerance: $(window).height() * -0.25,
+  max: Ember.$(window).width() - 200,
+  tolerance: Ember.$(window).height() * -0.25,
 
   viewportOptionsOverride: Ember.on('didInsertElement', function () {
     Ember.setProperties(this, {
