@@ -1,1 +1,3 @@
-{{outlet}}
+{{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
+  {{{article.content:encoded}}}
+{{/with}}
