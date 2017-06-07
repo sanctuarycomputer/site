@@ -7,33 +7,88 @@ const {
   Route
 } = Ember;
 
+const WIDTH = 14;
+const HEIGHT = 18;
+
 const styles = v({
-  shopRoute: {
-    '@composes': [c.liquidInner],
-    top: 0
-  },
-  itemContainer: {
-    '@composes': [c.white],
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top center',
-    minHeight: '400px',
-    'h3': {
-      '@composes': [c.white],
-      fontWeight: 300,
-      textAlign: 'center',
-      fontSize: '2rem',
-      textDecoration: 'none',
-      ':first-of-type': {
-        marginTop: '20%',
+  shopBlock: {
+    '@composes': [
+      c.col12,
+      c.mdCol4,
+      c.relative
+    ],
+    ':before': {
+      display: 'block',
+      content: `""`,
+      width: '100%',
+      paddingTop: `${(HEIGHT / WIDTH) * 100}%`,
+    },
+    '> .content': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      cursor: 'pointer',
+      ':hover': {
+        '.shop .overlay': {
+          opacity: 0,
+        },
+        '.shop .image': {
+          opacity: 1,
+        },
+        '.shop .link-wrapper': {
+          color: c.black.color,
+        },
+      },
+    },
+    '.shop': {
+      position: 'absolute',
+      backgroundColor: c.black.color,
+      zIndex: 2,
+      overflow: 'hidden',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      width: '100%',
+      '.overlay': {
+        transition: 'opacity 350ms ease-in-out',
+        position: 'absolute',
+        left: '50%',
+        top: '0%',
+        width: '100%',
+        transform: 'translateX(-50%)',
+        zIndex: 3,
+        opacity: 1,
+      },
+      '.image': {
+        transition: 'opacity 350ms ease-in-out',
+        position: 'absolute',
+        opacity: 0,
+        left: '50%',
+        top: '0%',
+        width: '100%',
+        transform: 'translateX(-50%)',
+        zIndex: 2,
+      },
+      '.link-wrapper': {
+        color: c.white.color,
+        transition: '350ms ease-in-out',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 3,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }
-    }
-  },
-  linkWrapper: {
-    width: '100%',
-    height: '100%',
-    display: 'inline-block',
-  },
+    },
+
+
+  }
 });
 
 export default Route.extend({
