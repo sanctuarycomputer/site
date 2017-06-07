@@ -34,13 +34,11 @@ export default Contentful.extend({
         .replace(pattern2, x => `***${x}***`)
         .split('***');
     }
-    const data = textArr.filter(t => {
-      return t.length > 1 || t.length === 1 && !t.includes(' ');
-    }).map((t) => {
+    const data = textArr.map((t) => {
       const fImage = imageArr.find(i => t.includes(i.text));
       return {
         text: t,
-        break: !fImage && t.includes('\n'),
+        break: t.includes('\n'),
         url: fImage ? fImage.url : null,
       };
     });
