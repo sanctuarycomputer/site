@@ -34,6 +34,7 @@ const styles = v({
 
 export default Route.extend({
   sanctu: service(),
+  v: v(c),
 
   model() {
     return this.store

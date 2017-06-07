@@ -5,16 +5,16 @@
         class=(concat 'index--' group.title)
         action=(action "didHitWaypoint" group.title null)
       }}
-        <div>
+        <p class={{vudu 'pb5'}}>
           {{#each group.combined as |c|}}
-            <div class={{vudu 'relative'}}>
-              <p>{{c.text}}</p>
+            <span class={{if c.break "relative flex" "relative"}}>
+              {{c.text}}
               {{#if c.url}}
                 {{scroll-image url=c.url}}
               {{/if}}
-            </div>
+            </span>
           {{/each}}
-        </div>
+        </p>
       {{/scroll-section}}
     {{/each}}
   {{/index-scroll-container}}

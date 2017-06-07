@@ -13,8 +13,20 @@ body > .ember-view {
   height: 100%;
 }
 
+.flex {
+  display: flex;
+}
+
+.preLine {
+ white-space: pre-line;
+}
+
 .liquid-container.ember-view {
   height: 100%;
+}
+
+.relative {
+  position: relative;
 }
 
 .absolute {
