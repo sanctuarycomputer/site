@@ -13,6 +13,8 @@ export default Service.extend({
 
   router: service('-routing'),
 
+  feedData: null,
+
   init() {
     this.computeNavLabel();
     get(this, 'router').addObserver('currentRouteName', this, 'computeNavLabel');
