@@ -30,7 +30,6 @@ export default Route.extend({
     if (!get(this, 'sanctu.feedData')) {
       get(this, 'ajax').request('https://sanctucompu-medium.herokuapp.com/').then(data => {
         set(this, 'sanctu.feedData', data.rss.channel.item);
-        console.log(data)
       });
     }
 
