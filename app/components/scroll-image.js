@@ -13,10 +13,25 @@ export default Component.extend(InViewportMixin, {
   v: v(c),
   classNames: ['absolute', 't0'],
   sanctu: service(),
-  active: false,
-  random: null,
-  max: $(window).width() - 200,
-  tolerance: $(window).height() * -0.25,
+  init() {
+   this._super(...arguments);
+   this.active = false,
+   this.iW = $(window).width(),
+   this.iH = $(window).height(),
+   this.max = this.iW - 200,
+   this.tolerance = this.iH * -0.25,
+   this.randomN = Math.floor(Math.random() * this.max),
+   this.random = `${this.randomN}px`,
+   this.handleResize = () => {
+     let nW = $(window).width();
+     let nH = $(window).height();
+     let wDif = nW - this.iW;
+     this.set('random', `${this.randomN + wDif}px`);
+     this.set('tolerance', nH * -0.25);
+    };
+    Ember.run.next(this, this.handleResize);
+    $(window).on('resize', Ember.run.bind(this, this.handleResize));
+  },
 
   viewportOptionsOverride: Ember.on('didInsertElement', function () {
     Ember.setProperties(this, {
@@ -31,7 +46,6 @@ export default Component.extend(InViewportMixin, {
   }),
 
   didEnterViewport() {
-    if (!this.random) this.set('random', `${Math.floor(Math.random() * this.max)}px`);
     this.set('active', true);
   },
 
