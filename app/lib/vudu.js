@@ -160,10 +160,6 @@ c.decorationNone = {
   textDecoration: 'none'
 }
 
-c.textEllipsis = {
-  textOverflow: 'ellipsis'
-};
-
 //GLOBAL
 c.liquidInner = {
   position: 'absolute',
@@ -179,13 +175,12 @@ c.footerHeight = {
   height: '250px'
 };
 
-c.neg90 = {
-  transform: 'rotate(-90deg)',
-};
-
 c.borderTopThin = {
   borderTop: `solid 1px ${colors.black}`,
 };
 
+c.borderBottomThin = {
+  borderBottom: `solid 1px ${colors.black}`,
+};
 
 export default c;

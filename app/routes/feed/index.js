@@ -11,7 +11,7 @@ const {
 
 const styles = v({
   feedItem: {
-    borderBottom: `1px solid ${c.black.color}`,
+    '@composes': [c.borderBottomThin],
     display: 'flex'
   }
 });
