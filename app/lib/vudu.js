@@ -61,6 +61,10 @@ c.justifyCenter = {
   justifyContent: 'center'
 }
 
+c.justifyStart = {
+  justifyContent: 'flex-start'
+}
+
 c.justifyEnd = {
   justifyContent: 'flex-end'
 }
@@ -70,7 +74,7 @@ c.alignEnd = {
 }
 
 c.alignCenter = {
-  alignItems: 'flex-center'
+  alignItems: 'center'
 }
 
 c.selfStart = {
@@ -156,6 +160,10 @@ c.decorationNone = {
   textDecoration: 'none'
 }
 
+c.textEllipsis = {
+  textOverflow: 'ellipsis'
+};
+
 //GLOBAL
 c.liquidInner = {
   position: 'absolute',
@@ -169,6 +177,14 @@ c.liquidInner = {
 
 c.footerHeight = {
   height: '250px'
+};
+
+c.neg90 = {
+  transform: 'rotate(-90deg)',
+};
+
+c.borderTopThin = {
+  borderTop: `solid 1px ${colors.black}`,
 };
 
 
