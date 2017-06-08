@@ -27,7 +27,7 @@ export default Component.extend(InViewportMixin, {
      let nH = $(window).height();
      let wDif = nW - this.iW;
      this.set('random', `${this.randomN + wDif}px`);
-     this.set('tolerance', nH * -0.25);
+     if (this.iH !== nH) this.set('tolerance', nH * -0.25);
     };
     Ember.run.next(this, this.handleResize);
     $(window).on('resize', Ember.run.bind(this, this.handleResize));
