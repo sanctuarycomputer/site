@@ -1,3 +1,15 @@
 {{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
   {{{article.content:encoded}}}
 {{/with}}
+
+
+{{#with (filtered-feed-data sanctu.feedData slug) as |filteredFeedData|}}
+  {{#each filteredFeedData as |post|}}
+    {{#link-to 'feed.show' (medium-slug post.link)}}
+      <div class={{styles.feedItem}}>
+        <h1>{{post.title}}</h1>
+        <h1>{{post.pubDate}}</h1>
+      </div>
+    {{/link-to}}
+  {{/each}}
+{{/with}}
