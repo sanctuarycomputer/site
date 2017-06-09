@@ -1,6 +1,6 @@
 import InViewportMixin from 'ember-in-viewport';
 import Ember from 'ember';
-import v from 'npm:vudu';
+import vudu from 'npm:vudu';
 import c from 'site/lib/vudu';
 
 const {
@@ -9,9 +9,10 @@ const {
   $,
 } = Ember;
 
+const v = vudu(c);
 export default Component.extend(InViewportMixin, {
-  v: v(c),
-  classNames: ['absolute', 't0'],
+  v: v,
+  classNames: [v.absolute, v.t0],
   sanctu: service(),
   init() {
    this._super(...arguments);
@@ -22,15 +23,19 @@ export default Component.extend(InViewportMixin, {
    this.tolerance = this.iH * -0.25,
    this.randomN = Math.floor(Math.random() * this.max),
    this.random = `${this.randomN}px`,
-   this.handleResize = () => {
+   this.handleResize = Ember.run.bind(this, () => {
      let nW = $(window).width();
      let nH = $(window).height();
      let wDif = nW - this.iW;
      if (this.iW !== nW) this.set('random', `${this.randomN + wDif}px`);
      if (this.iH !== nH) this.set('tolerance', nH * -0.25);
-    };
-    Ember.run.next(this, this.handleResize);
-    $(window).on('resize', Ember.run.bind(this, this.handleResize));
+   });
+   Ember.run.next(this, this.handleResize);
+   $(window).on('resize', this.handleResize);
+  },
+
+  willDestroyElement() {
+    $(window).off('resize', this.handleResize);
   },
 
   viewportOptionsOverride: Ember.on('didInsertElement', function () {
