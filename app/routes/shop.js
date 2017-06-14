@@ -14,7 +14,6 @@ const styles = v({
 });
 
 export default Route.extend({
-
   model() {
     return this.store.findAll('product')
   },

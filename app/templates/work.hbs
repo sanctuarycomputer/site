@@ -1,7 +1,9 @@
-<div class="{{styles.workRoute}} {{vudu 'liquidInner'}}">
-  <div class={{vudu 'relative'}}>
-    <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
-    {{scroll-to-arrow direction="down"}}
+{{#scroll-route contentLoaded=true}}
+  <div class="{{styles.workRoute}} {{vudu 'liquidInner'}}">
+    <div class={{vudu 'relative'}}>
+      <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
+      {{scroll-to-arrow direction="down"}}
+    </div>
+    {{outlet}}
   </div>
-  {{outlet}}
-</div>
+{{/scroll-route}}
