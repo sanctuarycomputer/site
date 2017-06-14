@@ -1,0 +1,7 @@
+<div class={{vudu 'my5 borderTopThin'}}>
+  {{#each sanctu.feedData as |post|}}
+    {{#link-to 'feed.show' (medium-slug post.link)}}
+      {{feed-list-item post=post}}
+    {{/link-to}}
+  {{/each}}
+</div>

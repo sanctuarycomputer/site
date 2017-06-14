@@ -4,7 +4,7 @@ const {
   Route,
   get,
   set,
-  inject: { service }
+  inject: { service },
 } = Ember;
 
 export default Route.extend({
@@ -12,6 +12,7 @@ export default Route.extend({
   model(params) {
     return params.id;
   },
+
   setupController(controller, slug) {
     set(controller, 'slug', slug);
     set(controller, 'sanctu', get(this, 'sanctu'));

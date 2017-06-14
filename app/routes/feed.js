@@ -17,10 +17,6 @@ const styles = v({
   feedWrapper: {
     '@composes': [c.px5]
   },
-  feedItem: {
-    borderBottom: `1px solid ${c.black.color}`,
-    display: 'flex'
-  }
 });
 
 export default Route.extend(ScrollToBottomMixin, {

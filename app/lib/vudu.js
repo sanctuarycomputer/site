@@ -87,6 +87,10 @@ c.justifyCenter = {
   justifyContent: 'center',
 };
 
+c.justifyStart = {
+  justifyContent: 'flex-start'
+}
+
 c.justifyEnd = {
   justifyContent: 'flex-end',
 };
@@ -96,7 +100,7 @@ c.alignEnd = {
 };
 
 c.alignCenter = {
-  alignItems: 'flex-center',
+  alignItems: 'center'
 };
 
 c.selfStart = {
@@ -195,6 +199,14 @@ c.liquidInner = {
 
 c.footerHeight = {
   height: '250px'
+};
+
+c.borderTopThin = {
+  borderTop: `solid 1px ${colors.black}`,
+};
+
+c.borderBottomThin = {
+  borderBottom: `solid 1px ${colors.black}`,
 };
 
 export default c;
