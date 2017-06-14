@@ -3,21 +3,31 @@ import v from 'npm:vudu';
 import c from 'site/lib/vudu';
 
 const {
-  Mixin,
+  Component,
   $,
 } = Ember;
 
-export default Mixin.create({
+export default Component.extend({
+  contentLoaded: false,
 
-  activate() {
+  didInsertElement() {
     this._super(...arguments);
-    Ember.run.next(() => this.scrollToPosition())
+    if (this.get('contentLoaded')) {
+      Ember.run.next(() => this.scrollToBottom());
+    }
   },
 
-  scrollToPosition() {
+  didUpdateAttrs() {
+    this._super(...arguments);
+    if (this.get('contentLoaded')) {
+      Ember.run.next(() => this.scrollToBottom());
+    }
+  },
+
+  scrollToBottom() {
     let innerScrollingContainerClass = v(c).liquidInner;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     let bottom = $scrollContainer.prop('scrollHeight');
     return $scrollContainer.animate({ scrollTop: bottom }, 1000);
   },
- });
+});

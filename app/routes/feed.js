@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-import ScrollToBottomMixin from 'site/mixins/scroll-to-bottom';
 
 const {
   get,
@@ -19,7 +18,7 @@ const styles = v({
   },
 });
 
-export default Route.extend(ScrollToBottomMixin, {
+export default Route.extend({
   ajax: service(),
   sanctu: service(),
 
