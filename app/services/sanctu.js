@@ -4,7 +4,7 @@ const {
   get,
   set,
   Service,
-  inject: { service }
+  inject: { service },
 } = Ember;
 
 export default Service.extend({
@@ -24,32 +24,32 @@ export default Service.extend({
     set(this, 'mobileNavShowing', false);
     let navLabel;
     switch (get(this, 'router.currentRouteName')) {
-      case "index":
+      case 'index':
         switch (get(this, 'indexSubSection')) {
-          case "jobs":
-            navLabel = "Jobs";
+          case 'jobs':
+            navLabel = 'Jobs';
             break;
-          case "contact":
-            navLabel = "Contact";
+          case 'contact':
+            navLabel = 'Contact';
             break;
           default:
-            navLabel = "Info";
+            navLabel = 'Info';
             break;
         }
         break;
-      case "feed.index":
-      case "feed.show":
-        navLabel = "Feed";
+      case 'feed.index':
+      case 'feed.show':
+        navLabel = 'Feed';
         break;
-      case "work.index":
-      case "work.show":
-        navLabel = "Work";
+      case 'work.index':
+      case 'work.show':
+        navLabel = 'Work';
         break;
-      case "shop.index":
-      case "shop.show":
-        navLabel = "Shop";
+      case 'shop.index':
+      case 'shop.show':
+        navLabel = 'Shop';
         break;
     }
     set(this, 'navLabel', navLabel);
-  }
+  },
 });

@@ -14,15 +14,10 @@ export default Controller.extend({
   s: alias('sanctu.indexSubSection'),
 
   actions: {
-    didHitWaypoint(section, prevSection, direction) {
+    didHitWaypoint(section) {
       if (get(this, 'sanctu.duringAutoScroll')) { return; }
-
       set(this, 'sanctu.duringWaypointHit', true);
-      if (direction === "down") {
-        set(this, 'sanctu.indexSubSection', section);
-      } else {
-        set(this, 'sanctu.indexSubSection', prevSection);
-      }
+      set(this, 'sanctu.indexSubSection', section);
       get(this, 'sanctu').computeNavLabel();
       setTimeout(() => set(this, 'sanctu.duringWaypointHit', false), 1);
     }
