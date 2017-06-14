@@ -10,7 +10,7 @@ const {
 export default Mixin.create({
 
   activate() {
-  this._super(...arguments);
+    this._super(...arguments);
     Ember.run.next(() => this.scrollToPosition())
   },
 
