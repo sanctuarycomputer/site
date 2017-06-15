@@ -1,7 +1,10 @@
 {{#fade-in slug=slug}}
 
   {{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
+  <div class="{{vudu 'col12 mdCol10 mxAuto'}} {{styles.articleWrapper}}">
+    <p>{{article.title}}</p>
     {{{article.content:encoded}}}
+  </div>
   {{/with}}
 
   {{#with (filtered-feed-data sanctu.feedData slug) as |filteredFeedData|}}

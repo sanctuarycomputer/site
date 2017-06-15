@@ -30,8 +30,7 @@ const styles = v({
     zIndex: 3
   },
   link: {
-    '@composes': [c.black],
-    fontSize: '3rem',
+    '@composes': [c.black, c.navLink],
     textDecoration: 'none',
   }
 });

@@ -37,9 +37,49 @@ body > .ember-view {
   top: 0px;
 }
 
-p {
-  font-size: 5rem;
+/*
+This is mostly for styling
+markup coming from medium on
+the feed route
+*/
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Austin News Deck';
   margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Small Up */
+h1 { font-size: 3em; }
+h2 { font-size: 2.8em; }
+h3 { font-size: 2.25em; }
+h4 { font-size: 2em; }
+h5 { font-size: 1.25em; }
+h6 { font-size: 1em; }
+
+/* Medium Up */
+@media (min-width: 52em) {
+  h1 { font-size: 3.4em; }
+  h2 { font-size: 3em; }
+  h3 { font-size: 2.8em; }
+  h4 { font-size: 2.25em; }
+  h5 { font-size: 2em; }
+  h6 { font-size: 1.25em; }
+}
+
+/* Large Up */
+@media (min-width: 64em) {
+  h1 { font-size: 4em; }
+  h2 { font-size: 3.4em; }
+  h3 { font-size: 3em; }
+  h4 { font-size: 2.8em; }
+  h5 { font-size: 2.25em; }
+  h6 { font-size: 2em; }
 }
 
 * {

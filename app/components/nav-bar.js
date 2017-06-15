@@ -31,13 +31,12 @@ const styles = v({
     margin: 'auto'
   },
   link: {
-    '@composes': [c.black],
+    '@composes': [c.black, c.navLink],
     flexGrow: 1,
     flexBasis: 0,
     textAlign: 'center',
-    fontSize: '2.6rem',
     textDecoration: 'none',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   logo: {
     '@composes': [c.mx3]

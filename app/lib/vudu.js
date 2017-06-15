@@ -186,6 +186,96 @@ c.decorationNone = {
   textDecoration: 'none',
 };
 
+c.p = {
+  fontSize: '1.125em',
+  lineHeight: '1.222em',
+  fontFamily: 'Austin News Deck',
+  fontWeight: 300,
+}
+
+c.p[breakpoints.md] = {
+  fontSize: '2.125em',
+  lineHeight: '1.117em',
+};
+
+c.p[breakpoints.lg] = {
+  fontSize: '2.25em',
+  lineHeight: '1.111em',
+};
+
+c.p[breakpoints.xl] = {
+  fontSize: '3.45em',
+  lineHeight: '1.085em',
+};
+
+c.p[breakpoints.xx] = {
+  fontSize: '4.25em',
+  lineHeight: '1em',
+};
+
+c.pSmall = {
+  fontSize: '1em',
+  lineHeight: '1.25em',
+  fontFamily: 'AtlasGroteskLight',
+  fontWeight: 300,
+};
+
+c.navLink = {
+  fontSize: '3em',
+  lineHeight: '1em',
+  fontFamily: 'Austin News Deck',
+  fontWeight: 'normal',
+};
+
+c.navLink[breakpoints.sm] = {
+  fontSize: '2em',
+  lineHeight: '1em',
+};
+
+c.navLink[breakpoints.md] = {
+  fontSize: '2.25em',
+  lineHeight: '1em',
+};
+
+c.navLink[breakpoints.md] = {
+  fontSize: '3.125em',
+  lineHeight: '1em',
+};
+
+c.title = {
+  fontSize: '1.125em',
+  lineHeight: '1.222em',
+  fontFamily: 'Austin News Deck',
+  fontWeight: 'normal',
+};
+
+c.title[breakpoints.md] = {
+  fontSize: '2.125em',
+  lineHeight: '1em',
+};
+
+c.title[breakpoints.xl] = {
+  fontSize: '2.25em',
+  lineHeight: '1em',
+};
+
+// WHITESPACE
+c.spacer = {
+  paddingTop: '0.5rem',
+  marginBottom: '0.5rem',
+};
+
+c.spacer[breakpoints.md] = {
+  paddingTop: '0.75rem',
+  paddingBottom: '0.75rem',
+};
+
+c.spacer[breakpoints.lg] = {
+  paddingTop: '1rem',
+  paddingBottom: '1rem',
+};
+
+
 // GLOBAL
 c.liquidInner = {
   position: 'absolute',
