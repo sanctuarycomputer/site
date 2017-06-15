@@ -27,9 +27,8 @@ const styles = v({
     transition: `border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`
   },
   navLabel: {
+    '@composes': [c.navLink],
     position: 'relative',
-    fontSize: '48px',
-    lineHeight: '66px',
     textAlign: 'center',
     width: '80%',
     '.liquid-outlet': {

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
+import c from 'site/lib/vudu';
 
 const {
   Component,
@@ -26,8 +27,11 @@ export default Component.extend({
     });
   },
   didUpdateAttrs() {
+    let innerScrollingContainerClass = v(c).liquidInner;
+    let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     this.$().removeClass(styles.fadeIn);
     Ember.run.next(this, () => {
+      $scrollContainer.scrollTop(0,0)
       this.$().addClass(styles.fadeIn);
     });
   }

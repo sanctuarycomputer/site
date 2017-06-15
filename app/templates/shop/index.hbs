@@ -1,3 +1,4 @@
+{{#scroll-route contentLoaded=true}}
 <div class='{{v.mt5}} {{v.flex}} {{v.wrap}}'>
   {{#each model as |product|}}
     <div class={{styles.shopBlock}}>
@@ -7,8 +8,8 @@
           <img class="overlay" src={{product.featuredImageOverlay.file.url}} />
           {{#link-to 'shop.show' product.slug class="link-wrapper"}}
             <div>
-              <h1 class={{vudu 'serifLight'}}>{{product.title}}</h1>
-              <h1 class={{vudu 'serifLight'}}>${{product.price}}</h1>
+              <h1 class={{vudu 'title mb2'}}>{{product.title}}</h1>
+              <h1 class={{vudu 'title'}}>${{product.price}}</h1>
             </div>
           {{/link-to}}
         </div>
@@ -16,3 +17,4 @@
     </div>
   {{/each}}
 </div>
+{{/scroll-route}}
