@@ -4,7 +4,10 @@
     <video src={{project.featuredVideo.file.url}} poster={{project.featureImage.file.url}} autoplay loop />
     <h1 class='work-title'>{{project.title}}</h1>
   </div>
-  <div class='play play-{{project.variant}}'>
+  <div style='background-color: {{project.colorBlock}}' class='play play-{{project.variant}}'>
     <div class='play-secondary'></div>
   </div>
+</div>
+<div class='work-title-block'>
+  <h1>{{project.title}}</h1>
 </div>

@@ -10,7 +10,7 @@ const {
 
 const styles = v({
   workWrapper: {
-    '@composes': [c.px6]
+    '@composes': [c.mxAuto, c.col12, c.smCol11]
   },
 });
 

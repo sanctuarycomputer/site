@@ -13,6 +13,7 @@ export default Contentful.extend({
   featuredImage: belongsTo('contentful-asset'),
   featuredOverlay: belongsTo('contentful-asset'),
   featuredVideo: belongsTo('contentful-asset'),
+  colorBlock: attr('string'),
   assets: hasMany('contentful-asset'),
   variant: attr('number'),
   summary: attr('string'),
