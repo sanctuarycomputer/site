@@ -1,0 +1,63 @@
+import Ember from 'ember';
+import vudu from 'npm:vudu';
+import c from 'site/lib/vudu';
+
+const {
+  Component,
+  computed,
+} = Ember;
+
+const v = vudu(c);
+
+const styles = vudu({
+  workFilter: {
+    '@composes': [
+      c.flex,
+      c.col12,
+      c.borderTopThin,
+      c.py1,
+      c.sansLight,
+    ],
+  },
+  filterBlock: {
+    '@composes': [
+      c.flex,
+      c.alignCenter,
+      c.justifyCenter,
+      c.py1,
+    ],
+    flex: 1,
+    borderRight: `solid 1px ${c.black.color}`,
+  },
+  projectType: {
+    '@compose': [c.py1],
+    flex: 2,
+    borderRight: `solid 1px ${c.black.color}`,
+  },
+  techStack: {
+    '@compose': [c.py1],
+    flex: 4,
+  }
+});
+
+export default Component.extend({
+  classNames: [styles.workFilter],
+  v: v,
+  styles,
+  types: [
+    'Product',
+    'Open Source',
+    'Client',
+  ],
+  technologies: [
+    'Greensock',
+    'Phoenix',
+    'React',
+    'React Native',
+    'Rails',
+    'Ember',
+    'Shopify',
+    'ThreeJS',
+  ],
+  isFiltered: computed.bool('typeFilter', 'techFilters.length'),
+});

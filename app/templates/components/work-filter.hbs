@@ -1,0 +1,22 @@
+<div class="{{styles.filterBlock}}">
+  Filter{{#if isFiltered}}: Clear all{{/if}}
+</div>
+<div class="{{styles.projectType}}">
+  <ul class={{vudu 'flex spaceAround'}}>
+    {{#each types as |type|}}
+      {{filter-button
+          typeFilter=typeFilter
+          filter=type
+          filterAction=(route-action 'toggleTypeFilter' type)}}
+    {{/each}}
+  </ul>
+</div>
+<div class="{{styles.techStack}}">
+  <ul class={{vudu 'flex spaceAround'}}>
+    {{#each technologies as |tech|}}
+      {{filter-button
+          filter=tech
+          filterAction=(route-action 'toggleTechFilter' tech)}}
+    {{/each}}
+  </ul>
+</div>

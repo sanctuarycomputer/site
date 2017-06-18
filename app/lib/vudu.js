@@ -17,6 +17,7 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   lightGray: '#FAFAFA',
+  sanctuBlue: '#0000FF',
 };
 
 const c = v.config({ colors });
@@ -297,6 +298,10 @@ c.borderTopThin = {
 
 c.borderBottomThin = {
   borderBottom: `solid 1px ${colors.black}`,
+};
+
+c.pointer = {
+  cursor: 'pointer',
 };
 
 export default c;

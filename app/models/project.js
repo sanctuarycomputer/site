@@ -20,6 +20,6 @@ export default Contentful.extend({
   body: attr('string'),
   takeaway: attr('string'),
   url: attr('string'),
-  type: attr('array'),
+  projectType: attr('string'),
   technology: attr('array'),
 });
