@@ -279,12 +279,54 @@ c.spacer[breakpoints.lg] = {
 // GLOBAL
 c.liquidInner = {
   position: 'absolute',
-  backgroundColor: colors.lightGray,
+  backgroundColor: 'transparent',
   bottom: 0,
   width: '100%',
   height: `calc(100% - ${vars.navBarHeight}px)`,
   overflow: 'scroll',
   '-webkit-overflow-scrolling': 'touch',
+};
+
+c.topLevelContent = {
+  backgroundColor: colors.lightGray,
+  minHeight: '100%'
+};
+
+c.cloudWindow = {
+  height: `calc(100% - ${vars.navBarHeight/4}px)`,
+  position: 'relative'
+};
+
+c.cloudTriangleDown = {
+  borderTop: `20vw solid ${colors.lightGray}`,
+  borderLeft: '50vw solid transparent',
+  borderRight: '50vw solid transparent',
+  width: 0,
+  height: 0,
+  top: 0,
+  content: "",
+  display: 'block',
+  position: 'absolute',
+  overflow: 'hidden',
+  left: 0,
+  right: 0,
+  margin: 'auto'
+};
+
+c.cloudTriangleUp = {
+  borderBottom: `20vw solid ${colors.lightGray}`,
+  borderLeft: '50vw solid transparent',
+  borderRight: '50vw solid transparent',
+  width: 0,
+  height: 0,
+  bottom: 0,
+  content: "",
+  display: 'block',
+  position: 'absolute',
+  overflow: 'hidden',
+  left: 0,
+  right: 0,
+  margin: 'auto'
 };
 
 c.footerHeight = {

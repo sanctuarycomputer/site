@@ -11,7 +11,7 @@ const {
 
 const styles = v({
   mobileNavBarComponent: {
-    '@composes': [c.px2],
+    '@composes': [c.px2, c.bgLightGray],
     height: `${vars.navBarHeight}px`,
     width: '100%',
     position: 'fixed',
