@@ -26,7 +26,7 @@ export default Component.extend({
   }),
 
   click() {
-    this.attrs.filterAction();
+    return this.attrs.filterAction();
   },
 
 });

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import vudu from 'npm:vudu';
-import c, { breakpoints } from 'site/lib/vudu';
+import c, { breakpoints, vars, } from 'site/lib/vudu';
 import { types, technologies } from 'site/lib/constants';
 
 const {
@@ -21,6 +21,11 @@ const styles = vudu({
     display: 'none',
     [breakpoints.md]: {
       display: 'flex',
+      position: 'fixed',
+      left: 0,
+      right: 0,
+      backgroundColor: c.lightGray.color,
+      bottom: `${vars.navBarHeight}px`,
     }
   },
   filterBlock: {
