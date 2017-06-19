@@ -24,7 +24,6 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(...arguments);
     set(controller, 'allProjects', model);
-    set(controller, 'filteredProjects', []);
     set(controller, 'typeFilter', null);
     set(controller, 'techFilter', null);
     set(controller, 'styles', styles);
