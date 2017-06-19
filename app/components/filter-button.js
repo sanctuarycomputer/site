@@ -16,7 +16,6 @@ const styles = vudu({
   },
 });
 
-
 export default Component.extend({
   classNameBindings: [`isActive:${styles.active}`],
   classNames: [v.sansRegular, v.pointer],

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import vudu from 'npm:vudu';
-import c from 'site/lib/vudu';
+import c, { breakpoints } from 'site/lib/vudu';
+import { types, technologies } from 'site/lib/constants';
 
 const {
   Component,
@@ -12,12 +13,15 @@ const v = vudu(c);
 const styles = vudu({
   workFilter: {
     '@composes': [
-      c.flex,
       c.col12,
       c.borderTopThin,
       c.py1,
       c.sansLight,
     ],
+    display: 'none',
+    [breakpoints.md]: {
+      display: 'flex',
+    }
   },
   filterBlock: {
     '@composes': [
@@ -44,21 +48,8 @@ export default Component.extend({
   classNames: [styles.workFilter],
   v: v,
   styles,
-  types: [
-    'Client',
-    'Open Source',
-    'Product',
-  ],
-  technologies: [
-    'C++',
-    'Electron',
-    'Ember',
-    'Phoenix',
-    'Rails',
-    'React',
-    'React Native',
-    'Shopify',
-  ],
+  types,
+  technologies,
   isFiltered: computed.or('typeFilter', 'techFilter'),
 
   actions: {
