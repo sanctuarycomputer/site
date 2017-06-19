@@ -45,19 +45,25 @@ export default Component.extend({
   v: v,
   styles,
   types: [
-    'Product',
-    'Open Source',
     'Client',
+    'Open Source',
+    'Product',
   ],
   technologies: [
-    'Greensock',
+    'C++',
+    'Electron',
+    'Ember',
     'Phoenix',
+    'Rails',
     'React',
     'React Native',
-    'Rails',
-    'Ember',
     'Shopify',
-    'ThreeJS',
   ],
-  isFiltered: computed.bool('typeFilter', 'techFilters.length'),
+  isFiltered: computed.or('typeFilter', 'techFilter'),
+
+  actions: {
+    clearFilters() {
+      return this.attrs.clearFilters();
+    },
+  }
 });

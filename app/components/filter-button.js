@@ -12,18 +12,18 @@ const v = vudu(c);
 
 const styles = vudu({
   active: {
-    color: c.sanctuBlue.color,
+    color: c.electricBlue.color,
   },
 });
 
 
 export default Component.extend({
   classNameBindings: [`isActive:${styles.active}`],
-  classNames: [v.sansLight, v.pointer],
+  classNames: [v.sansRegular, v.pointer],
   tagName: 'li',
 
-  isActive: computed('typeFilter', 'filter', function() {
-    return get(this, 'filter') === get(this, 'typeFilter');
+  isActive: computed('typeFilter', 'filter', 'techFilter', function() {
+    return get(this, 'filter') === get(this, 'typeFilter') || get(this, 'filter') === get(this, 'techFilter');
   }),
 
   click() {

@@ -11,7 +11,7 @@
 </div>
 {{work-filter
     typeFilter=typeFilter
-    techFilter=techFilters
+    techFilter=techFilter
+    clearFilters=(route-action 'clearFilters')
     toggleTypeFilter=(route-action 'toggleTypeFilter')
-    toggleTechFilter=(route-action 'toggleTechFilter')
-    applyFilter=(route-action 'applyFilter')}}
+    toggleTechFilter=(route-action 'toggleTechFilter')}}
