@@ -3,8 +3,10 @@ import v from 'npm:vudu';
 import c from 'site/lib/vudu';
 
 const {
+  get,
   set,
-  Route
+  Route,
+  computed,
 } = Ember;
 
 const styles = v({
@@ -22,5 +24,5 @@ export default Route.extend({
     this._super(...arguments);
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
-  }
+  },
 });

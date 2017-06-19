@@ -1,0 +1,27 @@
+<div class="{{styles.filterBlock}} {{vudu 'sansRegular'}}">
+  Filter
+  {{#if isFiltered}}
+    <span>:</span>
+    <span class={{vudu 'pointer sansRegular ml1 underline'}} {{action 'clearFilters'}}>clear all</span>
+  {{/if}}
+</div>
+<div class="{{styles.projectType}}">
+  <ul class={{vudu 'flex spaceAround'}}>
+    {{#each types as |type|}}
+      {{filter-button
+          typeFilter=typeFilter
+          filter=type
+          filterAction=(route-action 'toggleFilter' type)}}
+    {{/each}}
+  </ul>
+</div>
+<div class="{{styles.techStack}}">
+  <ul class={{vudu 'flex spaceAround'}}>
+    {{#each technologies as |tech|}}
+      {{filter-button
+          techFilter=techFilter
+          filter=tech
+          filterAction=(route-action 'toggleFilter' tech)}}
+    {{/each}}
+  </ul>
+</div>

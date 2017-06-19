@@ -12,8 +12,6 @@ const WIDTH = 18;
 const styles = v({
   workItem: {
     '@composes': [c.my6],
-    ':last-child': { marginBottom: 0 },
-    width: '100%',
     position: 'relative',
     ':before': {
       display: 'block',
@@ -180,6 +178,5 @@ const styles = v({
 export default Ember.Component.extend({
   classNames: [styles.workItem],
   styles,
-
   sanctu: service(),
 });

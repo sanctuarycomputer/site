@@ -17,6 +17,8 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   lightGray: '#FAFAFA',
+  sanctuBlue: '#073763',
+  electricBlue: '#0000FF',
 };
 
 const c = v.config({ colors });
@@ -163,13 +165,13 @@ c.smFullWidth[breakpoints.sm] = {
 
 // TYPE
 c.sansRegular = {
-  fontFamily: 'AtlasGroteskLight',
-  fontWeight: 300,
+  fontFamily: 'AtlasGroteskRegular',
+  fontWeight: 'normal',
 };
 
 c.sansLight = {
   fontFamily: 'AtlasGroteskLight',
-  fontWeight: 300,
+  fontWeight: 100,
 };
 
 c.serifRegular = {
@@ -339,6 +341,10 @@ c.borderTopThin = {
 
 c.borderBottomThin = {
   borderBottom: `solid 1px ${colors.black}`,
+};
+
+c.pointer = {
+  cursor: 'pointer',
 };
 
 export default c;
