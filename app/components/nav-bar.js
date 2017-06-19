@@ -11,9 +11,10 @@ const {
 const styles = v({
   navBarComponent: {
     height: `${vars.navBarHeight}px`,
+    backgroundColor: `${c.white.color}`,
     width: '100%',
     position: 'fixed',
-    zIndex: 1,
+    zIndex: 2,
     display: 'flex',
     alignItems: 'center',
     borderTopWidth: '1px',

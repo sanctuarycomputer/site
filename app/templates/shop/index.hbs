@@ -1,20 +1,20 @@
 {{#scroll-route contentLoaded=true}}
-<div class='{{v.mt5}} {{v.flex}} {{v.wrap}}'>
-  {{#each model as |product|}}
-    <div class={{styles.shopBlock}}>
-      <div class='content'>
-        <div class='shop'>
-          <img class="image" src={{product.featuredImage.file.url}} />
-          <img class="overlay" src={{product.featuredImageOverlay.file.url}} />
-          {{#link-to 'shop.show' product.slug class="link-wrapper"}}
-            <div>
-              <h1 class={{vudu 'title mb2'}}>{{product.title}}</h1>
-              <h1 class={{vudu 'title'}}>${{product.price}}</h1>
-            </div>
-          {{/link-to}}
+  <div class='{{vudu "pt5 flex wrap"}}'>
+    {{#each model as |product|}}
+      <div class={{styles.shopBlock}}>
+        <div class='content'>
+          <div class='shop'>
+            <img class="image" src={{product.featuredImage.file.url}} />
+            <img class="overlay" src={{product.featuredImageOverlay.file.url}} />
+            {{#link-to 'shop.show' product.slug class="link-wrapper"}}
+              <div>
+                <h1 class={{vudu 'title mb2'}}>{{product.title}}</h1>
+                <h1 class={{vudu 'title'}}>${{product.price}}</h1>
+              </div>
+            {{/link-to}}
+          </div>
         </div>
       </div>
-    </div>
-  {{/each}}
-</div>
+    {{/each}}
+  </div>
 {{/scroll-route}}

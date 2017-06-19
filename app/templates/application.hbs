@@ -1,12 +1,14 @@
 <div class={{styles.applicationRoute}}>
-  <div class={{v.smShow}}>
+  <div class='{{vudu "smShow z2"}}'>
     {{mobile-nav-bar}}
   </div>
   {{mobile-nav-content clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
 
-  <div class='{{v.smHide}}'>
+  <div class='{{vudu "smHide z2"}}'>
     {{nav-bar clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
   </div>
 
   {{liquid-outlet}}
+
+  {{cloud-call}}
 </div>

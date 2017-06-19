@@ -1,9 +1,10 @@
 {{#scroll-route contentLoaded=true}}
   <div class="{{styles.workRoute}} {{vudu 'liquidInner'}}">
-    <div class={{vudu 'relative'}}>
-      <img class={{vudu 'mirror fullWidth'}} src='images/stroke.svg'>
-      {{scroll-to-arrow direction="down"}}
+    <div class='{{vudu "cloudWindow"}}'>
+      <div class='{{vudu "cloudTriangleUp"}}'></div>
     </div>
-    {{outlet}}
+    <div class='{{vudu "topLevelContent"}}'>
+      {{outlet}}
+    </div>
   </div>
 {{/scroll-route}}

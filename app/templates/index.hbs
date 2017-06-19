@@ -1,25 +1,26 @@
 <div class="{{styles.indexRoute}} {{vudu 'liquidInner'}}" id="index-route-scroll-context">
-  {{#index-scroll-container indexSubSection=s}}
-    {{#each model as |group|}}
-      {{#scroll-section
-        class=(concat 'index--' group.title)
-        action=(action "didHitWaypoint" group.title null)
-      }}
-        <p class={{vudu 'p pt4 pb5'}}>
-          {{#each group.combined as |c|}}
-            <span class="{{if c.break (concat v.relative " " v.flex " " v.spacer) v.relative}}">
-              {{c.text}}
-              {{#if c.url}}
-                {{scroll-image url=c.url}}
-              {{/if}}
-            </span>
-          {{/each}}
-        </p>
-      {{/scroll-section}}
-    {{/each}}
-  {{/index-scroll-container}}
-  <div class="{{styles.triangleContainer}} {{vudu 'footerHeight relative'}}">
-    {{scroll-to-arrow direction="up" }}
-    <img src='images/triangle-south.svg'>
+  <div class='{{vudu "topLevelContent"}}'>
+    {{#index-scroll-container indexSubSection=s}}
+      {{#each model as |group|}}
+        {{#scroll-section
+          class=(concat 'index--' group.title)
+          action=(action "didHitWaypoint" group.title null)
+        }}
+          <p class={{vudu 'p pt4 pb5'}}>
+            {{#each group.combined as |c|}}
+              <span class="{{if c.break (concat v.relative " " v.flex " " v.spacer) v.relative}}">
+                {{c.text}}
+                {{#if c.url}}
+                  {{scroll-image url=c.url}}
+                {{/if}}
+              </span>
+            {{/each}}
+          </p>
+        {{/scroll-section}}
+      {{/each}}
+    {{/index-scroll-container}}
+  </div>
+  <div class='{{vudu "cloudWindow"}}'>
+    <div class='{{vudu "cloudTriangleDown"}}'></div>
   </div>
 </div>
