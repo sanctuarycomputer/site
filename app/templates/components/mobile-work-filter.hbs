@@ -12,7 +12,7 @@
         {{filter-button
             typeFilter=typeFilter
             filter=type
-            filterAction=(route-action 'toggleTypeFilter' type)}}
+            filterAction=(route-action 'toggleFilter' type)}}
       {{/each}}
     </ul>
   </div>
@@ -23,7 +23,7 @@
           {{filter-button
               techFilter=techFilter
               filter=tech
-              filterAction=(route-action 'toggleTechFilter' tech)}}
+              filterAction=(route-action 'toggleFilter' tech)}}
         </span>
       {{/each}}
     </ul>

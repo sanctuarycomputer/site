@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
+import { technologies } from 'site/lib/constants';
 
 const {
   get,
@@ -31,80 +32,27 @@ export default Route.extend({
   },
 
   actions: {
-    toggleTypeFilter(type) {
-      let allProjects      = get(this, 'controller.allProjects');
+    toggleFilter(filterName) {
+      let type = technologies.includes(filterName) ? 'tech' : 'type';
+
+      if (get(this, `controller.${type}Filter`) === filterName) {
+        set(this, `controller.${type}Filter`, null);
+      } else {
+        set(this, `controller.${type}Filter`, filterName);
+      }
+
       let activeTypeFilter = get(this, 'controller.typeFilter');
       let activeTechFilter = get(this, 'controller.techFilter');
+      let allProjects      = get(this, 'controller.allProjects');
+      let filtered         = Ember.A(allProjects);
 
       if (activeTechFilter) {
-        if (activeTypeFilter && activeTypeFilter === type) {
-          let filtered = filteredByType.filter((pj) => {
-            if (pj.get('technology')) {
-              return pj.get('technology').includes(activeTechFilter);
-            }
-          });
-          set(this, 'controller.typeFilter', null);
-          return set(this, 'controller.model', filtered);
-        }
-        let filteredByTech = allProjects.filter((pj) => {
-          if (pj.get('technology')) {
-            return pj.get('technology').includes(activeTechFilter);
-          }
-        });
-        let filtered = filteredByTech.filterBy('projectType', type);
-        set(this, 'controller.typeFilter', type);
-        return set(this, 'controller.model', filtered);
+        filtered = filtered.filter(project => (get(project, 'technology') || []).includes(activeTechFilter));
       }
-      if (activeTypeFilter && activeTypeFilter === type) {
-        set(this, 'controller.typeFilter', null);
-        return set(this, 'controller.model', allProjects)
-      }
-      let filtered = allProjects.filterBy('projectType', type);
-      set(this, 'controller.typeFilter', type);
-      return set(this, 'controller.model', filtered);
-    },
-    toggleTechFilter(tech) {
-      let allProjects      = get(this, 'controller.allProjects');
-      let activeTechFilter = get(this, 'controller.techFilter');
-      let activeTypeFilter = get(this, 'controller.typeFilter');
-
-      //If projects are filtered by type
       if (activeTypeFilter) {
-        //Toggle active tech filter off
-        //filter projects by just type
-        if (activeTechFilter && activeTechFilter === tech) {
-          let filtered = allProjects.filterBy('projectType', activeTypeFilter);
-          set(this, 'controller.techFilter', null);
-
-          return set(this, 'controller.model', filtered);
-        }
-        //Filter by active type filter &&
-        //active tech filter
-        let filteredByType = allProjects.filterBy('projectType', activeTypeFilter);
-        let filtered = filteredByType.filter((pj) => {
-          if (pj.get('technology')) {
-            return pj.get('technology').includes(tech);
-          }
-        });
-
-        set(this, 'controller.techFilter', tech);
-        return set(this, 'controller.model', filtered);
+        filtered = filtered.filterBy('projectType', activeTypeFilter);
       }
-
-      if (activeTechFilter && activeTechFilter === tech) {
-        set(this, 'controller.techFilter', null);
-
-        return set(this, 'controller.model', allProjects);
-      }
-      //Filter projects by active tech filter
-      let filtered = allProjects.filter((pj) => {
-        if (pj.get('technology')) {
-          return pj.get('technology').includes(tech);
-        }
-      });
-
-      set(this, 'controller.techFilter', tech);
-      return set(this, 'controller.model', filtered);
+      set(this, 'controller.model', filtered);
     },
     clearFilters() {
       set(this, 'controller.techFilter', null);
