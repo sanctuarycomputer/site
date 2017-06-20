@@ -42,17 +42,6 @@ const styles = v({
         backgroundColor: c.black.color,
         zIndex: 2,
         overflow: 'hidden',
-        '.work-title': {
-          display: 'none',
-          [breakpoints.lg]: {
-            display: 'block',
-            '@composes': [c.title, c.z3, c.absolute],
-            color: c.white.color,
-            left: '50%',
-            top:'50%',
-            transform: 'translate(-50%)',
-          }
-        },
         'img': {
           transition: 'opacity 350ms ease-in-out',
           position: 'absolute',
