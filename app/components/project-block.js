@@ -11,7 +11,7 @@ const WIDTH = 18;
 
 const styles = v({
   workItem: {
-    '@composes': [c.my4],
+    '@composes': [c.my5],
     position: 'relative',
     ':before': {
       display: 'block',
@@ -27,7 +27,7 @@ const styles = v({
       bottom: 0,
       cursor: 'pointer',
       ':hover': {
-        '.work .work-title': {
+        '.work .work-title-block': {
           opacity: 0
         },
         '.work img': {
@@ -192,12 +192,33 @@ const styles = v({
     '.work-title-block': {
       '@composes': [c.center, c.absolute, c.col12, c.py4],
       [breakpoints.lg]: {
-        display: 'none',
+        '@composes': [
+          c.absolute,
+          c.flex,
+          c.alignCenter,
+          c.justifyCenter,
+          c.t0,
+          c.l0,
+          c.r0,
+          c.b0,
+          c.pointerNone
+        ]
       },
       'h1': {
         '@composes': [c.title, c.black, c.serifLight],
+        [breakpoints.lg]: {
+          '@composes': [c.white, c.z2],
+        }
       }
     },
+    [breakpoints.lg]: {
+      ':hover': {
+        '.work-title-block': {
+          cursor: 'pointer',
+          opacity: 0,
+        }
+      }
+    }
   }
 });
 
