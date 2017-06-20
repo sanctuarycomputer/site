@@ -12,14 +12,14 @@ const {
 
 const styles = v({
   workWrapper: {
-    '@composes': [c.mxAuto, c.col12, c.smCol11]
+    '@composes': [c.mxAuto, c.col12, c.pb5]
   },
 });
 
 export default Route.extend({
   sanctu: service(),
   model() {
-    return this.modelFor('work');
+    return this.modelFor('work').sortBy('variant')
   },
 
   setupController(controller, model) {
