@@ -27,9 +27,6 @@ const styles = v({
       bottom: 0,
       cursor: 'pointer',
       ':hover': {
-        '.work .work-title-block': {
-          opacity: 0
-        },
         '.work img': {
           opacity: 0
         },
