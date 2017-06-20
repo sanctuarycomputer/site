@@ -4,6 +4,7 @@ html, body {
   font-family: 'Austin News Deck';
   -webkit-font-smoothing: antialiased;
   background-color: #073763;
+  font-size: 100%;
 }
 
 body > .ember-view {

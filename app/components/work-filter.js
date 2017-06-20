@@ -17,6 +17,7 @@ const styles = vudu({
       c.borderTopThin,
       c.py1,
       c.sansLight,
+      c.z1,
     ],
     display: 'none',
     [breakpoints.md]: {

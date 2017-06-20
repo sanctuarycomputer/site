@@ -137,6 +137,14 @@ c.listNone = {
   listStyle: 'none',
 };
 
+c.mdTwoColumn = {
+  columnCount: 1,
+};
+
+c.mdTwoColumn[breakpoints.md] = {
+  columnCount: 2,
+};
+
 // RESPONSIVE
 c.smHide = {
   display: 'none',
@@ -188,32 +196,46 @@ c.decorationNone = {
   textDecoration: 'none',
 };
 
-c.p = {
+c.pLarge = {
   fontSize: '1.125em',
   lineHeight: '1.222em',
   fontFamily: 'Austin News Deck',
   fontWeight: 300,
 }
 
-c.p[breakpoints.md] = {
+c.pLarge[breakpoints.md] = {
   fontSize: '2.125em',
   lineHeight: '1.117em',
 };
 
-c.p[breakpoints.lg] = {
+c.pLarge[breakpoints.lg] = {
   fontSize: '2.25em',
   lineHeight: '1.111em',
 };
 
-c.p[breakpoints.xl] = {
+c.pLarge[breakpoints.xl] = {
   fontSize: '3.45em',
   lineHeight: '1.085em',
 };
 
-c.p[breakpoints.xx] = {
+c.pLarge[breakpoints.xx] = {
   fontSize: '4.25em',
   lineHeight: '1em',
 };
+
+c.p = {
+  fontSize: '1.065em',
+  lineHeight: '1.47em',
+  fontFamily: 'Austin News Deck',
+  fontWeight: 300,
+}
+
+c.p[breakpoints.lg] = {
+  fontSize: '1.125em',
+  lineHeight: '1.47em',
+  fontFamily: 'Austin News Deck',
+  fontWeight: 300,
+}
 
 c.pSmall = {
   fontSize: '1em',
@@ -261,6 +283,10 @@ c.title[breakpoints.xl] = {
   lineHeight: '1em',
 };
 
+c.small = {
+  fontSize: '0.875em',
+};
+
 // WHITESPACE
 c.spacer = {
   paddingTop: '0.5rem',
@@ -277,6 +303,21 @@ c.spacer[breakpoints.lg] = {
   paddingBottom: '1rem',
 };
 
+c.pt2_5 = {
+  '@composes': [c.pt2],
+};
+
+c.pt2_5[breakpoints.md] = {
+  '@composes': [c.pt5],
+};
+
+c.py2_5 = {
+  '@composes': [c.py2],
+};
+
+c.py2_5[breakpoints.md] = {
+  '@composes': [c.py5],
+};
 
 // GLOBAL
 c.liquidInner = {
@@ -345,6 +386,18 @@ c.borderBottomThin = {
 
 c.pointer = {
   cursor: 'pointer',
+};
+
+c.pointerNone = {
+  pointerEvents: 'none',
+};
+
+c.linkStyle = {
+  color: colors.electricBlue,
+  transition: 'opacity 200ms ease-in-out',
+  ':hover': {
+    opacity: '0.8',
+  }
 };
 
 export default c;
