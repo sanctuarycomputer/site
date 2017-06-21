@@ -199,8 +199,6 @@ c.decorationNone = {
 c.pLarge = {
   fontSize: '1.125em',
   lineHeight: '1.222em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 300,
 }
 
 c.pLarge[breakpoints.md] = {
@@ -226,29 +224,21 @@ c.pLarge[breakpoints.xx] = {
 c.p = {
   fontSize: '1.065em',
   lineHeight: '1.47em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 300,
 }
 
 c.p[breakpoints.lg] = {
   fontSize: '1.125em',
   lineHeight: '1.47em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 300,
 }
 
 c.pSmall = {
   fontSize: '1em',
   lineHeight: '1.25em',
-  fontFamily: 'AtlasGroteskLight',
-  fontWeight: 300,
 };
 
 c.navLink = {
   fontSize: '3em',
   lineHeight: '1em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 'normal',
 };
 
 c.navLink[breakpoints.sm] = {
@@ -269,8 +259,6 @@ c.navLink[breakpoints.md] = {
 c.title = {
   fontSize: '1.125em',
   lineHeight: '1.222em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 'normal',
 };
 
 c.title[breakpoints.md] = {
