@@ -32,7 +32,7 @@ const styles = v({
     },
     '.shop': {
       position: 'absolute',
-      backgroundColor: c.black.color,
+      backgroundColor: c.white.color,
       zIndex: 2,
       overflow: 'hidden',
       '.overlay': {

@@ -1,8 +1,8 @@
 <div class='content'>
   <div class='shop shop-{{product.variant}}'>
     {{#link-to 'shop.show' product.slug class="link-wrapper"}}
-      <img class="image" src={{product.featuredImage.file.url}} />
-      <img class="overlay" src={{product.featuredImageOverlay.file.url}} />
+      <img class="image" src={{product.altImage.file.url}} />
+      <img class="overlay" src={{product.featuredImage.file.url}} />
       <div class={{vudu 'z3'}}>
         <h1 class={{vudu 'title mb2'}}>{{product.title}}</h1>
         <h1 class={{vudu 'title'}}>${{product.price}}</h1>

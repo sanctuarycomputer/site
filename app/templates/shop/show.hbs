@@ -1,8 +1,11 @@
 {{#fade-in}}
 <div class="{{styles.shopShow}}">
   <div class="{{vudu 'col12 mdCol6 mdFlex flexColumn alignEnd fullHeight'}}">
-    <div class="{{styles.productImage}} {{vudu 'col12'}}" style='background-image: url({{model.gallery.firstObject.file.url}})'>
-    </div>
+    {{#slick-slider fade=true}}
+      {{#each model.gallery as |image|}}
+        <div class="slide {{styles.productImage}} {{vudu 'col12'}}" style='background-image: url({{image.file.url}})'></div>
+      {{/each}}
+    {{/slick-slider}}
   </div>
   <div class={{vudu 'col12 mdCol6 flex flexColumn px2 py4'}}>
     <div class={{vudu 'col12 lgCol8'}}>

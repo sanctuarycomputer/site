@@ -6,6 +6,7 @@ const {
   Route,
   get,
   set,
+  $,
 } = Ember;
 
 const styles = v({
@@ -15,6 +16,29 @@ const styles = v({
       '@composes': [c.p2],
       display: 'flex',
       height: `calc(100vh - ${vars.navBarHeight}px)`,
+      '.slick-slider': {
+        '@composes': [c.fullWidth, c.fullHeight],
+      },
+      '.slick-slider .slick-list': {
+        height: '100% !important',
+      },
+      '.slick-slider .slick-track': {
+        '@composes': [c.fullWidth, c.fullHeight],
+      },
+      '.slick-slider .slick-next': {
+        position: 'absolute',
+        left: 0,
+        top: '50%',
+        right: 0,
+        bottom: 0,
+        height: '100%',
+        width: '100%',
+        opacity: 0,
+        zIndex: 1,
+      },
+      '.slick-slider .slick-prev': {
+        display: 'none',
+      },
     }
   },
   productImage: {
