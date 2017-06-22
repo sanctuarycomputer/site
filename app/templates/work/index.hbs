@@ -8,9 +8,9 @@
       {{else}}
         <div class={{vudu 'fullHeightSubNav fullWidth flex alignCenter justifyCenter'}}>
           {{#if (eq typeFilter 'product')}}
-            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We couldn't find any <span class={{vudu 'electricBlue'}}>{{typeFilter}}s</span> made with <span class={{vudu 'electricBlue'}}>{{techFilter}}</span></h1>
+            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We haven't made any <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' techFilter)}}>{{typeFilter}}s</span> with <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' typeFilter)}}>{{techFilter}}</span> (yet!)</h1>
             {{else}}
-            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>we couldn't find any <span class={{vudu 'electricBlue'}}>{{typeFilter}}</span> projects made with <span class={{vudu 'electricBlue'}}>{{techFilter}}</span></h1>
+            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We haven't worked on any <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' techFilter)}}>{{typeFilter}}</span> projects made with <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' typeFilter)}}>{{techFilter}}</span> (yet!)</h1>
           {{/if}}
         </div>
       {{/each}}

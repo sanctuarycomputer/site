@@ -329,7 +329,7 @@ c.cloudWindow = {
 };
 
 c.cloudTriangleDown = {
-  borderTop: `20vw solid ${colors.lightGray}`,
+  borderTop: `14vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
@@ -345,7 +345,7 @@ c.cloudTriangleDown = {
 };
 
 c.cloudTriangleUp = {
-  borderBottom: `20vw solid ${colors.lightGray}`,
+  borderBottom: `14vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
