@@ -14,7 +14,7 @@ const styles = v({
     top: 0
   },
   feedWrapper: {
-    '@composes': [c.col10, c.mdCol11, c.mxAuto, c.pt5]
+    '@composes': [c.col12, c.lgCol10, c.mxAuto, c.pt5]
   },
 });
 

@@ -278,7 +278,7 @@ c.small = {
 // WHITESPACE
 c.spacer = {
   paddingTop: '0.5rem',
-  marginBottom: '0.5rem',
+  paddingBottom: '0.5rem',
 };
 
 c.spacer[breakpoints.md] = {
@@ -370,6 +370,10 @@ c.borderTopThin = {
 
 c.borderBottomThin = {
   borderBottom: `solid 1px ${colors.black}`,
+};
+
+c.borderBottomMedium = {
+  borderBottom: `solid 2px ${colors.black}`,
 };
 
 c.pointer = {

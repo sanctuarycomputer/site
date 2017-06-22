@@ -1,8 +1,11 @@
 {{#fade-in slug=slug}}
   {{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
-  <div class="{{vudu 'col12 mdCol10 mxAuto'}} {{styles.articleWrapper}}">
-    <p>{{article.title}}</p>
-    {{{article.content:encoded}}}
+  <div class="{{vudu ' mxAuto'}} {{styles.articleWrapper}}">
+    <p class={{vudu 'pLarge mb3'}}>{{moment-format articleujj.pubDate 'MM.DD.YYYY'}}</p>
+    <p class={{vudu 'pLarge mb2 inlineBlock borderBottomMedium pb1'}}>{{article.title}}</p>
+    <div class="content">
+      {{{article.content:encoded}}}
+    </div>
   </div>
   {{/with}}
 
