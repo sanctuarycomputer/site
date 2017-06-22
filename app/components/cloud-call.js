@@ -87,10 +87,10 @@ export default Component.extend({
       smokeParticles.forEach((particle, i) => {
         let u = new TWEEN.Tween(particle.position)
           .to({ x: particle.position.x, z: 900, y: particle.position.y }, 20000)
-          .easing(TWEEN.Easing.Quadratic.InOut);
+          .easing(TWEEN.Easing.Exponential.InOut);
         let d = new TWEEN.Tween(particle.position)
           .to({ x: particle.position.x, z: 0, y: particle.position.y }, 20000)
-          .easing(TWEEN.Easing.Quadratic.InOut);
+          .easing(TWEEN.Easing.Exponential.InOut);
         u.chain(d);
         d.chain(u);
         i % 2 === 0 ? u.start() : d.start()
@@ -99,7 +99,7 @@ export default Component.extend({
 
     const rotate = () => {
       smokeParticles.forEach((particle) => {
-        particle.rotation.z += 0.001;
+        particle.rotation.z += 0.002;
       });
     }
 
