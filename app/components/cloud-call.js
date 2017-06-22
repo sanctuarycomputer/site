@@ -86,14 +86,14 @@ export default Component.extend({
     const zoom = () => {
       smokeParticles.forEach((particle, i) => {
         let u = new TWEEN.Tween(particle.position)
-          .to({ x: particle.position.x, z: 900, y: particle.position.y }, 20000)
+          .to({ x: particle.position.x, z: 800, y: particle.position.y }, 25000)
           .easing(TWEEN.Easing.Exponential.InOut);
         let d = new TWEEN.Tween(particle.position)
-          .to({ x: particle.position.x, z: 0, y: particle.position.y }, 20000)
+          .to({ x: particle.position.x, z: 300, y: particle.position.y }, 25000)
           .easing(TWEEN.Easing.Exponential.InOut);
         u.chain(d);
         d.chain(u);
-        i % 2 === 0 ? u.start() : d.start()
+        setTimeout(() => i % 2 === 0 ? u.start() : d.start(), i * 200);
       });
     };
 
