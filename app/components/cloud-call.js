@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-const {Component, assign} = Ember;
+const {Component} = Ember;
 
 const styles = v({
   cloudCall: {
