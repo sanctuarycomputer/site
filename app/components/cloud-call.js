@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-const { Component } = Ember;
+const {Component} = Ember;
 
 const styles = v({
   cloudCall: {
@@ -12,10 +12,10 @@ const styles = v({
     top: 0,
     left: 0,
     zIndex: 0,
-    'canvas': {
-      backgroundColor: '#173963'
-    }
-  }
+    canvas: {
+      backgroundColor: '#173963',
+    },
+  },
 });
 
 export default Component.extend({
@@ -23,7 +23,7 @@ export default Component.extend({
   styles,
   didInsertElement() {
     let w = $(window).width();
-    let h =  $(window).height();
+    let h = $(window).height();
     let mobile = w < 500;
     let renderer = null;
     let scene = null;
@@ -40,12 +40,12 @@ export default Component.extend({
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
-    }
+    };
 
     const init = () => {
       window.addEventListener('resize', resize, false);
       clock = new THREE.Clock();
-      renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer = new THREE.WebGLRenderer({alpha: true});
       renderer.setSize(w, h);
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, w / h, 1, 10000);
@@ -57,13 +57,10 @@ export default Component.extend({
       scene.add(light);
 
       const loader = new THREE.TextureLoader();
-      loader.load(
-        '/images/smoke.png',
-        tex => generateSmoke(tex)
-      )
+      loader.load('/images/smoke.png', tex => generateSmoke(tex));
     };
 
-    const generateSmoke = (tex) => {
+    const generateSmoke = tex => {
       const smokeMaterial = new THREE.MeshStandardMaterial({
         color: 0x000,
         emissive: 0x000,
@@ -85,13 +82,19 @@ export default Component.extend({
         smokeParticles.push(particle);
       }
       container.appendChild(renderer.domElement);
-    }
+    };
 
     const evolveSmoke = () => {
       if (!smokeParticles) return;
       let sp = smokeParticles.length;
-      while (sp -= 1) smokeParticles[sp].rotation.z += delta * 0.06;
-    }
+      while ((sp -= 1)) {
+        let r = smokeParticles[sp].rotation;
+        let p = smokeParticles[sp].position;
+        let rN = Object.assign({ z: r.z += delta * 0.06 }, r);
+        let pN = Object.assign({ z: p.z < 500 ? p.z += 0.1 : p.z -= 0.1 }, p);
+        smokeParticles[sp] = Object.assign({ position: pN, rotation: rN }, smokeParticles[sp]);
+      }
+    };
 
     const render = () => renderer.render(scene, camera);
 
@@ -104,5 +107,5 @@ export default Component.extend({
 
     init();
     animate();
-  }
+  },
 });
