@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-const {Component} = Ember;
+const {Component, assign} = Ember;
 
 const styles = v({
   cloudCall: {
@@ -67,7 +67,8 @@ export default Component.extend({
 
       const smokeGeo = new THREE.PlaneGeometry(300, 300);
       smokeParticles = [];
-      for (let p = 0; p < 45; p += 1) {
+      let n = 0;
+      while (n < 45) {
         const particle = new THREE.Mesh(smokeGeo, smokeMaterial);
         particle.position.set(
           Math.random() * 500 - 250,
@@ -77,8 +78,8 @@ export default Component.extend({
         particle.rotation.z = Math.random() * 360;
         scene.add(particle);
         smokeParticles.push(particle);
+        n += 1;
       }
-
       render();
       zoom();
     };
@@ -86,10 +87,10 @@ export default Component.extend({
     const zoom = () => {
       smokeParticles.forEach((particle, i) => {
         let u = new TWEEN.Tween(particle.position)
-          .to({ x: particle.position.x, z: 800, y: particle.position.y }, 25000)
+          .to({ ...particle.position, z: 800 }, 80000)
           .easing(TWEEN.Easing.Exponential.InOut);
         let d = new TWEEN.Tween(particle.position)
-          .to({ x: particle.position.x, z: 300, y: particle.position.y }, 25000)
+          .to({ ...particle.position, z: 300 }, 80000)
           .easing(TWEEN.Easing.Exponential.InOut);
         u.chain(d);
         d.chain(u);
@@ -97,11 +98,7 @@ export default Component.extend({
       });
     };
 
-    const rotate = () => {
-      smokeParticles.forEach((particle) => {
-        particle.rotation.z += 0.002;
-      });
-    }
+    const rotate = () => smokeParticles.forEach(particle => particle.rotation.z += 0.001);
 
     const render = () => {
       requestAnimationFrame(render);
