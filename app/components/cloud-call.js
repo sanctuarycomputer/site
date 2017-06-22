@@ -28,7 +28,6 @@ export default Component.extend({
     let renderer = null;
     let scene = null;
     let camera = null;
-    let smokeTexture = null;
     let clock = null;
     let delta = null;
     let smokeParticles = null;
@@ -60,18 +59,15 @@ export default Component.extend({
       const loader = new THREE.TextureLoader();
       loader.load(
         '/images/smoke.png',
-        (texture) => {
-          smokeTexture = texture;
-          generateSmoke();
-        }
+        tex => generateSmoke(tex)
       )
     };
 
-    const generateSmoke = () => {
+    const generateSmoke = (tex) => {
       const smokeMaterial = new THREE.MeshStandardMaterial({
         color: 0x000,
         emissive: 0x000,
-        map: smokeTexture,
+        map: tex,
         transparent: true,
       });
 
