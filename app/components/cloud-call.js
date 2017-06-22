@@ -24,12 +24,9 @@ export default Component.extend({
   didInsertElement() {
     let w = $(window).width();
     let h = $(window).height();
-    let mobile = w < 500;
     let renderer = null;
     let scene = null;
     let camera = null;
-    let clock = null;
-    let delta = null;
     let smokeParticles = null;
     let container = this.element;
 
@@ -44,9 +41,9 @@ export default Component.extend({
 
     const init = () => {
       window.addEventListener('resize', resize, false);
-      clock = new THREE.Clock();
       renderer = new THREE.WebGLRenderer({alpha: true});
       renderer.setSize(w, h);
+      container.appendChild(renderer.domElement);
       scene = new THREE.Scene();
       camera = new THREE.PerspectiveCamera(75, w / h, 1, 10000);
       camera.position.z = 1000;
@@ -81,31 +78,38 @@ export default Component.extend({
         scene.add(particle);
         smokeParticles.push(particle);
       }
-      container.appendChild(renderer.domElement);
-    };
 
-    const evolveSmoke = () => {
-      if (!smokeParticles) return;
-      let sp = smokeParticles.length;
-      while ((sp -= 1)) {
-        let r = smokeParticles[sp].rotation;
-        let p = smokeParticles[sp].position;
-        let rN = Object.assign({ z: r.z += delta * 0.06 }, r);
-        let pN = Object.assign({ z: p.z < 500 ? p.z += 0.1 : p.z -= 0.1 }, p);
-        smokeParticles[sp] = Object.assign({ position: pN, rotation: rN }, smokeParticles[sp]);
-      }
-    };
-
-    const render = () => renderer.render(scene, camera);
-
-    const animate = () => {
-      delta = clock.getDelta();
-      requestAnimationFrame(animate);
-      evolveSmoke();
       render();
+      zoom();
+    };
+
+    const zoom = () => {
+      smokeParticles.forEach((particle, i) => {
+        let u = new TWEEN.Tween(particle.position)
+          .to({ x: particle.position.x, z: 900, y: particle.position.y }, 20000)
+          .easing(TWEEN.Easing.Quadratic.InOut);
+        let d = new TWEEN.Tween(particle.position)
+          .to({ x: particle.position.x, z: 0, y: particle.position.y }, 20000)
+          .easing(TWEEN.Easing.Quadratic.InOut);
+        u.chain(d);
+        d.chain(u);
+        i % 2 === 0 ? u.start() : d.start()
+      });
+    };
+
+    const rotate = () => {
+      smokeParticles.forEach((particle) => {
+        particle.rotation.z += 0.001;
+      });
+    }
+
+    const render = () => {
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+      rotate();
+      TWEEN.update();
     };
 
     init();
-    animate();
   },
 });
