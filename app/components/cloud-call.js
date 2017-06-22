@@ -37,7 +37,7 @@ export default Component.extend({
     const resize = () => {
       if (!camera || !renderer) return;
       w = $(window).width();
-      h =  $(window).height();
+      h = $(window).height();
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
