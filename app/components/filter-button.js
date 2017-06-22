@@ -18,7 +18,7 @@ const styles = vudu({
 
 export default Component.extend({
   classNameBindings: [`isActive:${styles.active}`],
-  classNames: [v.sansRegular, v.pointer, v.small],
+  classNames: [v.sansRegular, v.pointer, v.small, v.capitalize],
   tagName: 'li',
 
   isActive: computed('typeFilter', 'filter', 'techFilter', function() {

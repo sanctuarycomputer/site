@@ -380,12 +380,20 @@ c.pointerNone = {
   pointerEvents: 'none',
 };
 
+c.fullHeightSubNav = {
+  height: `calc(100vh - ${vars.navBarHeight}px)`,
+};
+
 c.linkStyle = {
   color: colors.electricBlue,
   transition: 'opacity 200ms ease-in-out',
   ':hover': {
     opacity: '0.8',
   }
+};
+
+c.capitalize = {
+  textTransform: 'capitalize',
 };
 
 export default c;
