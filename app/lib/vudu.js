@@ -271,6 +271,16 @@ c.title[breakpoints.xl] = {
   lineHeight: '1em',
 };
 
+c.subtitle = {
+  fontSize: '0.95em',
+  lineHeight: '1em',
+};
+
+c.subtitle[breakpoints.md] = {
+  fontSize: '1.35em',
+  lineHeight: '1em',
+};
+
 c.small = {
   fontSize: '0.875em',
 };
@@ -395,5 +405,29 @@ c.linkStyle = {
 c.capitalize = {
   textTransform: 'capitalize',
 };
+
+//Responsive Table
+c.mdTable = {
+  display: 'block',
+  [breakpoints.md]: {
+    '@composes': [c.table],
+  },
+};
+
+c.mdTableRow = {
+  display: 'block',
+  [breakpoints.md]: {
+    '@composes': [c.tableRow],
+  },
+};
+
+c.mdTableCell = {
+  display: 'block',
+  [breakpoints.md]: {
+    '@composes': [c.tableCell],
+  },
+};
+
+
 
 export default c;

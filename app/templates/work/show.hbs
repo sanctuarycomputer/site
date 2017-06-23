@@ -1,21 +1,96 @@
 <div>
-  <p class={{vudu 'title col11 mxAuto py2_5 serifLight'}}>{{model.title}}</p>
-  <img class={{vudu 'col12'}} src={{model.featuredImage.file.url}} />
-  <p class={{vudu 'title col11 pt2_5 mxAuto serifLight'}}>{{model.summaryHeader}}</p>
-  <p class={{vudu 'p col11 mxAuto py2_5 serifLight mdTwoColumn'}}>{{model.summary}}</p>
-  <div class={{vudu 'mdFlex col11 mxAuto spaceAround wrap'}}>
-    {{#each model.assets as |asset|}}
-      <div class={{vudu 'col12 mdCol6 mxAuto mdFlex justifyCenter alignCenter'}}>
-        <img class={{vudu 'col12 p4'}} src={{asset.file.url}} />
+  {{#each model.blocks as |block|}}
+    <!-- TITLE BLOCK -->
+    {{#if (eq block.blockType 'title block')}}
+      <div class={{vudu 'col11 pt2_5 mxAuto'}}>
+        <h1 class={{vudu 'title serifLight py1'}}>{{block.title}}</h1>
+        {{#if block.subtitle}}
+          <h2 class={{vudu 'subtitle serifLight italic py1 col8 mdCol12 '}}>{{block.subtitle}}</h2>
+        {{/if}}
       </div>
-    {{/each}}
-  </div>
-  <p class={{vudu 'title col11 pt2_5 mxAuto serifLight'}}>{{model.bodyHeader}}</p>
-  <p class={{vudu 'p py2_5 col11 mxAuto serifLight mdTwoColumn'}}>{{model.body}}</p>
-  <div class={{vudu 'col11 mxAuto py2_5'}}>
-    <p class={{vudu 'p serifLight col12 mdCol6'}}>{{model.takeaway}}</p>
-    <a class={{vudu 'linkStyle inlineBlock'}} href={{model.url}} target="_blank">
-      <p class={{vudu 'title serifLight py2_5'}}>Checkout Dame Product</p>
-    </a>
-  </div>
+    {{/if}}
+
+    <!-- FULL WIDTH IMAGE  -->
+    {{#if (eq block.blockType 'full width')}}
+      <div class={{vudu 'col12 pt2_5'}}>
+        <img class={{vudu 'col12'}} src={{block.image1.file.url}} />
+      </div>
+    {{/if}}
+
+    <!-- DOUBLE PARAGRAPH  -->
+    {{#if (eq block.blockType 'double paragraph')}}
+      <div class={{vudu 'col11 mxAuto py2_5'}}>
+        <p class={{vudu 'p mxAuto serifLight mdTwoColumn'}}>{{block.paragraph1}}</p>
+        {{#if block.paragraph2}}
+          <p class={{vudu 'p mxAuto serifLight mdTwoColumn'}}>{{block.paragraph2}}</p>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    <!-- SINGLE PARAGRAPH  -->
+    {{#if (eq block.blockType 'single paragraph')}}
+      <div class={{vudu 'col11 mxAuto py2_5'}}>
+        <p class={{vudu 'p serifLight col12 mdCol6'}}>{{block.paragraph1}}</p>
+        {{#if block.paragraph2}}
+          <p class={{vudu 'p serifLight col12 mdCol6'}}>{{block.paragraph2}}</p>
+        {{/if}}
+      </div>
+    {{/if}}
+
+    <!-- COPY IMAGE | IMAGE COPY -->
+    {{#if (eq block.blockType 'copy image')}}
+      <div class={{vudu 'mdTable py2_5'}}>
+        <div class={{vudu 'col11 mxAuto'}}>
+          <div class={{vudu 'mdTableRow'}}>
+            <!-- Paragraph Left | Image Right -->
+            {{#if block.paragraph1}}
+              <div class={{vudu 'mdTableCell col12 mdCol6'}}>
+                <p class={{vudu 'p serifLight'}}>{{block.paragraph1}}</p>
+              </div>
+              {{#if block.image2}}
+                <div class={{vudu 'mdTableCell col12 mdCol6 p4'}}>
+                  <img class={{vudu 'col12'}} src={{block.image2.file.url}} />
+                </div>
+              {{/if}}
+            {{/if}}
+
+            <!-- Paragraph Right | Image Left -->
+            {{#if block.image1}}
+              <div class={{vudu 'mdTableCell col12 mdCol6 p4'}}>
+                <img class={{vudu 'col12'}} src={{block.image1.file.url}} />
+              </div>
+              {{#if block.paragraph2}}
+                <div class={{vudu 'mdTableCell col12 mdCol6'}}>
+                  <p class={{vudu 'p serifLight'}}>{{block.paragraph2}}</p>
+                </div>
+              {{/if}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
+    <!-- IMAGE GRID -->
+    {{#if (eq block.blockType 'image grid')}}
+      {{#if block.gallery}}
+        <div class={{vudu 'mdFlex col11 mxAuto spaceAround wrap'}}>
+          {{#each block.gallery as |image|}}
+            <div class={{vudu 'col12 mdCol6 mxAuto mdFlex justifyCenter alignCenter'}}>
+              <img class={{vudu 'col12 p4'}} src={{image.file.url}} />
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/if}}
+
+    <!-- LINK BLOCK -->
+    {{#if (eq block.blockType 'link block')}}
+      <div class={{vudu 'col11 mxAuto py2_5'}}>
+        <a class={{vudu 'linkStyle inlineBlock'}} href={{block.url}} target="_blank">
+          <p class={{vudu 'title serifLight'}}>{{block.linkCopy}}</p>
+        </a>
+      </div>
+    {{/if}}
+
+  {{/each}}
 </div>
