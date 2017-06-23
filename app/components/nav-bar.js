@@ -10,6 +10,7 @@ const {
 
 const styles = v({
   navBarComponent: {
+    opacity: 1,
     height: `${vars.navBarHeight}px`,
     backgroundColor: `${c.white.color}`,
     width: '100%',
@@ -75,6 +76,7 @@ export default Component.extend({
         'border-top-color': `${c.black.color}`
       });
     } else {
+      this.$().attr('data-top', true);
       this.$().css({
         'border-bottom-color': `${c.black.color}`
       });

@@ -1,17 +1,17 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-const { Component } = Ember;
+const { Component, set, get, inject: { service } } = Ember;
 
-const styles = v({
+const local = v({
   cloudCall: {
     backgroundColor: 'black',
     position: 'fixed',
     width: '100%',
     height: '100%',
     top: 0,
-    left: 0,
     zIndex: 0,
+    opacity: 1,
     'canvas': {
       backgroundColor: '#073763'
     }
@@ -19,8 +19,8 @@ const styles = v({
 });
 
 export default Component.extend({
-  classNames: [styles.cloudCall],
-  styles,
+  classNames: [local.cloudCall],
+  sanctu: service(),
   didInsertElement() {
     const mobile = $(window).width() < 500;
     let renderer = null;
@@ -30,6 +30,7 @@ export default Component.extend({
     let delta = null;
     let smokeParticles = null;
     let container = this.element;
+    let firstRender = false;
 
     const init = () => {
       clock = new THREE.Clock();
@@ -48,7 +49,7 @@ export default Component.extend({
 
       // TODO: Adjust Emissive & Color
       const smokeMaterial = new THREE.MeshPhongMaterial({
-        color: 0x000,
+        color: 0x222222,
         emissive: 0x000,
         map: smokeTexture,
         transparent: true,
@@ -56,7 +57,7 @@ export default Component.extend({
 
       const smokeGeo = new THREE.PlaneGeometry(300, 300);
       smokeParticles = [];
-      for (let p = 0; p < 45; p++) {
+      for (let p = 0; p < 60; p++) {
         const particle = new THREE.Mesh(smokeGeo, smokeMaterial);
         particle.position.set(
           Math.random() * 500 - 250,
@@ -78,6 +79,10 @@ export default Component.extend({
 
     const render = () => {
       renderer.render(scene, camera);
+      if (!firstRender) {
+        firstRender = true;
+        this.onFirstRender();
+      }
     }
 
     const animate = () => {
@@ -89,5 +94,9 @@ export default Component.extend({
 
     init();
     animate();
+  },
+
+  onFirstRender() {
+    get(this, 'sanctu').cloudsDidRender(this.element);
   }
 });

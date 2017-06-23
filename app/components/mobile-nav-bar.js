@@ -65,6 +65,7 @@ export default Component.extend({
         'border-top-color': `${c.black.color}`
       });
     } else {
+      this.$().attr('data-top', true);
       this.$().css({
         'border-bottom-color': `${c.black.color}`
       });
