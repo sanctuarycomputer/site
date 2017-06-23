@@ -16,10 +16,12 @@ export default Contentful.extend({
   colorBlock: attr('string'),
   assets: hasMany('contentful-asset'),
   variant: attr('number'),
+  summaryHeader: attr('string'),
   summary: attr('string'),
+  bodyHeader: attr('string'),
   body: attr('string'),
   takeaway: attr('string'),
   url: attr('string'),
-  type: attr('array'),
+  projectType: attr('string'),
   technology: attr('array'),
 });

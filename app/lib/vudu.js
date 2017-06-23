@@ -17,6 +17,8 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   lightGray: '#FAFAFA',
+  sanctuBlue: '#073763',
+  electricBlue: '#0000FF',
 };
 
 const c = v.config({ colors });
@@ -135,6 +137,14 @@ c.listNone = {
   listStyle: 'none',
 };
 
+c.mdTwoColumn = {
+  columnCount: 1,
+};
+
+c.mdTwoColumn[breakpoints.md] = {
+  columnCount: 2,
+};
+
 // RESPONSIVE
 c.smHide = {
   display: 'none',
@@ -163,13 +173,13 @@ c.smFullWidth[breakpoints.sm] = {
 
 // TYPE
 c.sansRegular = {
-  fontFamily: 'AtlasGroteskLight',
-  fontWeight: 300,
+  fontFamily: 'AtlasGroteskRegular',
+  fontWeight: 'normal',
 };
 
 c.sansLight = {
   fontFamily: 'AtlasGroteskLight',
-  fontWeight: 300,
+  fontWeight: 100,
 };
 
 c.serifRegular = {
@@ -186,45 +196,49 @@ c.decorationNone = {
   textDecoration: 'none',
 };
 
-c.p = {
+c.pLarge = {
   fontSize: '1.125em',
   lineHeight: '1.222em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 300,
 }
 
-c.p[breakpoints.md] = {
+c.pLarge[breakpoints.md] = {
   fontSize: '2.125em',
   lineHeight: '1.117em',
 };
 
-c.p[breakpoints.lg] = {
+c.pLarge[breakpoints.lg] = {
   fontSize: '2.25em',
   lineHeight: '1.111em',
 };
 
-c.p[breakpoints.xl] = {
+c.pLarge[breakpoints.xl] = {
   fontSize: '3.45em',
   lineHeight: '1.085em',
 };
 
-c.p[breakpoints.xx] = {
+c.pLarge[breakpoints.xx] = {
   fontSize: '4.25em',
   lineHeight: '1em',
 };
 
+c.p = {
+  fontSize: '1.065em',
+  lineHeight: '1.47em',
+}
+
+c.p[breakpoints.lg] = {
+  fontSize: '1.125em',
+  lineHeight: '1.47em',
+}
+
 c.pSmall = {
   fontSize: '1em',
   lineHeight: '1.25em',
-  fontFamily: 'AtlasGroteskLight',
-  fontWeight: 300,
 };
 
 c.navLink = {
   fontSize: '3em',
   lineHeight: '1em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 'normal',
 };
 
 c.navLink[breakpoints.sm] = {
@@ -245,8 +259,6 @@ c.navLink[breakpoints.md] = {
 c.title = {
   fontSize: '1.125em',
   lineHeight: '1.222em',
-  fontFamily: 'Austin News Deck',
-  fontWeight: 'normal',
 };
 
 c.title[breakpoints.md] = {
@@ -259,10 +271,14 @@ c.title[breakpoints.xl] = {
   lineHeight: '1em',
 };
 
+c.small = {
+  fontSize: '0.875em',
+};
+
 // WHITESPACE
 c.spacer = {
   paddingTop: '0.5rem',
-  marginBottom: '0.5rem',
+  paddingBottom: '0.5rem',
 };
 
 c.spacer[breakpoints.md] = {
@@ -275,6 +291,21 @@ c.spacer[breakpoints.lg] = {
   paddingBottom: '1rem',
 };
 
+c.pt2_5 = {
+  '@composes': [c.pt2],
+};
+
+c.pt2_5[breakpoints.md] = {
+  '@composes': [c.pt5],
+};
+
+c.py2_5 = {
+  '@composes': [c.py2],
+};
+
+c.py2_5[breakpoints.md] = {
+  '@composes': [c.py5],
+};
 
 // GLOBAL
 c.liquidInner = {
@@ -339,6 +370,34 @@ c.borderTopThin = {
 
 c.borderBottomThin = {
   borderBottom: `solid 1px ${colors.black}`,
+};
+
+c.borderBottomMedium = {
+  borderBottom: `solid 2px ${colors.black}`,
+};
+
+c.pointer = {
+  cursor: 'pointer',
+};
+
+c.pointerNone = {
+  pointerEvents: 'none',
+};
+
+c.fullHeightSubNav = {
+  height: `calc(100vh - ${vars.navBarHeight}px)`,
+};
+
+c.linkStyle = {
+  color: colors.electricBlue,
+  transition: 'opacity 200ms ease-in-out',
+  ':hover': {
+    opacity: '0.8',
+  }
+};
+
+c.capitalize = {
+  textTransform: 'capitalize',
 };
 
 export default c;

@@ -1,0 +1,31 @@
+<div class="{{vudu 'sansRegular center py4 borderTopThin small'}}">
+  <span {{action 'toggleFilterBlock'}}>Filter</span>
+  {{#if isFiltered}}
+    <span>:</span>
+    <span class={{vudu 'pointer sansRegular ml1 underline'}} {{action 'clearFilters'}}>clear all</span>
+  {{/if}}
+</div>
+<div class="filter-block {{vudu 'flex flexColumn'}}">
+  <div class={{vudu 'py4 borderBottomThin'}}>
+    <ul class={{vudu 'flex spaceAround'}}>
+      {{#each types as |type|}}
+        {{filter-button
+            typeFilter=typeFilter
+            filter=type
+            filterAction=(route-action 'toggleFilter' type)}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class={{vudu 'py4'}}>
+    <ul class={{vudu 'flex wrap'}}>
+      {{#each technologies as |tech|}}
+        <span class={{vudu 'col4 center py4'}}>
+          {{filter-button
+              techFilter=techFilter
+              filter=tech
+              filterAction=(route-action 'toggleFilter' tech)}}
+        </span>
+      {{/each}}
+    </ul>
+  </div>
+</div>

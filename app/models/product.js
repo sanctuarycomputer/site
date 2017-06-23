@@ -9,8 +9,9 @@ const {
 
 export default Contentful.extend({
   slug: attr('string'),
+  variant: attr('number'),
   featuredImage: belongsTo('contentful-asset'),
-  featuredImageOverlay: belongsTo('contentful-asset'),
+  altImage: belongsTo('contentful-asset'),
   gallery: hasMany('contentful-asset'),
   title: attr('string'),
   description: attr('string'),

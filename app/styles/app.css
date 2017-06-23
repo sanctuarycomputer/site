@@ -5,6 +5,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   background-color: black;
   overflow: hidden;
+  font-size: 100%;
 }
 
 body > .ember-view {

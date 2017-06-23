@@ -1,7 +1,30 @@
 <div class={{styles.workWrapper}}>
-  {{#each model as |project|}}
-    {{#link-to 'work.show' project.slug}}
-      {{project-block project=project}}
-    {{/link-to}}
-  {{/each}}
+  {{#liquid-bind model use="fade" as |project|}}
+    <div class={{vudu 'flex wrap'}}>
+      {{#each project as |pj|}}
+        {{#link-to 'work.show' pj.slug class=(vudu 'col12 mdCol6 px4')}}
+          {{project-block project=pj}}
+        {{/link-to}}
+      {{else}}
+        <div class={{vudu 'fullHeightSubNav fullWidth flex alignCenter justifyCenter'}}>
+          {{#if (eq typeFilter 'product')}}
+            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We couldn't find any <span class={{vudu 'electricBlue'}}>{{typeFilter}}s</span> made with <span class={{vudu 'electricBlue'}}>{{techFilter}}</span></h1>
+            {{else}}
+            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>we couldn't find any <span class={{vudu 'electricBlue'}}>{{typeFilter}}</span> projects made with <span class={{vudu 'electricBlue'}}>{{techFilter}}</span></h1>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  {{/liquid-bind}}
 </div>
+{{work-filter
+    typeFilter=typeFilter
+    techFilter=techFilter
+    clearFilters=(route-action 'clearFilters')
+    toggleFilter=(route-action 'toggleFilter')}}
+
+{{mobile-work-filter
+    typeFilter=typeFilter
+    techFilter=techFilter
+    clearFilters=(route-action 'clearFilters')
+    toggleFilter=(route-action 'toggleFilter')}}

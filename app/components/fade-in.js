@@ -28,10 +28,14 @@ export default Component.extend({
   },
   didUpdateAttrs() {
     let innerScrollingContainerClass = v(c).liquidInner;
+    let topLevelContent = v(c).topLevelContent;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
+    let $topLevelContent = $(`.${topLevelContent}`);
+    let offsetTop = $topLevelContent[0].offsetTop;
+
     this.$().removeClass(styles.fadeIn);
     Ember.run.next(this, () => {
-      $scrollContainer.scrollTop(0,0)
+      $scrollContainer.scrollTop(offsetTop, 0)
       this.$().addClass(styles.fadeIn);
     });
   }
