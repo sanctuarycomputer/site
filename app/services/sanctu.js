@@ -52,4 +52,39 @@ export default Service.extend({
     }
     set(this, 'navLabel', navLabel);
   },
+
+  cloudsDidRender(clouds) {
+    /* At this point, the first render has happened. We can run the animation! */
+    let application        = Ember.$(`.${get(this, 'applicationRouteClass')}`);
+    let mainContainer      = application.find('.liquid-container:last');
+    let imageAnimation     = Ember.$('.GLOBAL--image-animation');
+    let desktopNav         = Ember.$('.GLOBAL--nav-bar');
+    let mobileNav          = Ember.$('.GLOBAL--mobile-nav-bar');
+    let desktopViewHeight  = Ember.$(window).height() - desktopNav.height();
+    let mobileViewHeight   = Ember.$(window).height() - mobileNav.height();
+    let navStartingFromTop = !!desktopNav.attr('data-top');
+    let isRoot             = window.location.pathname === "/";
+
+    let timeline = new TimelineLite().from(clouds, 1.5, { opacity: 0 });
+
+    if (isRoot) {
+      timeline
+        .from(imageAnimation, 1.5, { opacity: 0, transform: "translateY(-20px)" }, "-=0.5")
+        .to(imageAnimation, 1.5, { opacity: 0 }, "+=0.5")
+    } else {
+      imageAnimation.hide();
+    }
+    if (navStartingFromTop) {
+      timeline
+        .from(desktopNav, 1.2, { transform: `translateY(-${desktopNav.height()}px)` }, "entrance")
+        .from(mobileNav, 1.2, { transform: `translateY(-${mobileNav.height()}px)` }, "entrance")
+        .from(mainContainer, 1.2, { transform: `translateY(${mainContainer.outerHeight()}px)` }, "entrance")
+    } else {
+      timeline
+        .from(desktopNav, 1.2, { transform: `translateY(${desktopViewHeight + desktopNav.height()}px)` }, "entrance")
+        .from(mobileNav, 1.2, { transform: `translateY(${mobileViewHeight + mobileNav.height()}px)` }, "entrance")
+        .from(mainContainer, 1.2, { transform: `translateY(${-mainContainer.outerHeight()}px)` }, "entrance")
+    }
+    timeline.play();
+  }
 });

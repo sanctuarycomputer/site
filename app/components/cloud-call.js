@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-const {Component} = Ember;
+const { Component, get, inject: { service } } = Ember;
 
 const styles = v({
   cloudCall: {
@@ -20,6 +20,7 @@ const styles = v({
 
 export default Component.extend({
   classNames: [styles.cloudCall],
+  sanctu: service(),
   styles,
   didInsertElement() {
     let w = $(window).width();
@@ -29,6 +30,7 @@ export default Component.extend({
     let camera = null;
     let smokeParticles = null;
     let container = this.element;
+    let firstRender = false;
 
     const resize = () => {
       if (!camera || !renderer) return;
@@ -105,8 +107,16 @@ export default Component.extend({
       renderer.render(scene, camera);
       rotate();
       TWEEN.update();
+      if (!firstRender) {
+        firstRender = true;
+        this.onFirstRender();
+      }
     };
 
     init();
   },
+
+  onFirstRender() {
+    get(this, 'sanctu').cloudsDidRender(this.element);
+  }
 });
