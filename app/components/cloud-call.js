@@ -1,35 +1,27 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-<<<<<<< HEAD
-const { Component, set, get, inject: { service } } = Ember;
-=======
+const { Component, get, inject: { service } } = Ember;
 
-const local = v({
+const styles = v({
   cloudCall: {
     backgroundColor: 'black',
     position: 'fixed',
     width: '100%',
     height: '100%',
     top: 0,
+    left: 0,
     zIndex: 0,
-<<<<<<< HEAD
-    opacity: 1,
-    'canvas': {
-      backgroundColor: '#073763'
-    }
-  }
-=======
     canvas: {
       backgroundColor: '#173963',
     },
   },
->>>>>>> master
 });
 
 export default Component.extend({
-  classNames: [local.cloudCall],
+  classNames: [styles.cloudCall],
   sanctu: service(),
+  styles,
   didInsertElement() {
     let w = $(window).width();
     let h = $(window).height();
@@ -67,15 +59,9 @@ export default Component.extend({
       loader.load('/images/smoke.png', tex => generateSmoke(tex));
     };
 
-<<<<<<< HEAD
-      // TODO: Adjust Emissive & Color
-      const smokeMaterial = new THREE.MeshPhongMaterial({
-        color: 0x222222,
-=======
     const generateSmoke = tex => {
       const smokeMaterial = new THREE.MeshStandardMaterial({
         color: 0x000,
->>>>>>> master
         emissive: 0x000,
         map: tex,
         transparent: true,
@@ -83,11 +69,7 @@ export default Component.extend({
 
       const smokeGeo = new THREE.PlaneGeometry(300, 300);
       smokeParticles = [];
-<<<<<<< HEAD
-      for (let p = 0; p < 60; p++) {
-=======
       for (let p = 0; p < 45; p += 1) {
->>>>>>> master
         const particle = new THREE.Mesh(smokeGeo, smokeMaterial);
         particle.position.set(
           Math.random() * 500 - 250,
@@ -126,33 +108,18 @@ export default Component.extend({
     const render = () => {
       requestAnimationFrame(render);
       renderer.render(scene, camera);
-<<<<<<< HEAD
+      rotate();
+      TWEEN.update();
       if (!firstRender) {
         firstRender = true;
         this.onFirstRender();
       }
-    }
-
-    const animate = () => {
-      delta = clock.getDelta();
-      requestAnimationFrame(animate);
-      evolveSmoke();
-      render();
     };
 
     init();
-    animate();
   },
 
   onFirstRender() {
     get(this, 'sanctu').cloudsDidRender(this.element);
   }
-=======
-      rotate();
-      TWEEN.update();
-    };
-
-    init();
-  },
->>>>>>> master
 });
