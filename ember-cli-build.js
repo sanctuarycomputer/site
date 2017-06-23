@@ -37,6 +37,11 @@ module.exports = function(defaults) {
       crossorigin: 'use-credentials',
       runsIn: ['production', 'staging', 'test'],
     },
+    babel: {
+      plugins: [
+        'transform-object-rest-spread'
+      ]
+    },
     fingerprint: fingerprintOptions,
     sourcemaps: {
       enabled: !isProductionLikeBuild,
