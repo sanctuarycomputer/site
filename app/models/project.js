@@ -16,5 +16,6 @@ export default Contentful.extend({
   colorBlock: attr('string'),
   variant: attr('number'),
   technology: attr('array'),
+  projectType: attr('string'),
   blocks: hasMany('block'),
 });

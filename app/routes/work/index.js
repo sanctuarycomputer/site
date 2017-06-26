@@ -29,6 +29,8 @@ export default Route.extend({
     set(controller, 'techFilter', null);
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
+    set(controller, 'sanctu', get(this, 'sanctu'));
+
   },
 
   actions: {
