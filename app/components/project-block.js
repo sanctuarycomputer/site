@@ -6,6 +6,7 @@ const {
   set,
   run: { later},
   inject: { service },
+  RSVP: { Promise },
 } = Ember;
 
 const BASE_DELAY = 500;
