@@ -271,6 +271,16 @@ c.title[breakpoints.xl] = {
   lineHeight: '1em',
 };
 
+c.subtitle = {
+  fontSize: '0.95em',
+  lineHeight: '1em',
+};
+
+c.subtitle[breakpoints.md] = {
+  fontSize: '1.35em',
+  lineHeight: '1em',
+};
+
 c.small = {
   fontSize: '0.875em',
 };
@@ -329,7 +339,7 @@ c.cloudWindow = {
 };
 
 c.cloudTriangleDown = {
-  borderTop: `20vw solid ${colors.lightGray}`,
+  borderTop: `14vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
@@ -345,7 +355,7 @@ c.cloudTriangleDown = {
 };
 
 c.cloudTriangleUp = {
-  borderBottom: `20vw solid ${colors.lightGray}`,
+  borderBottom: `14vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
@@ -399,5 +409,29 @@ c.linkStyle = {
 c.capitalize = {
   textTransform: 'capitalize',
 };
+
+//Responsive Table
+c.mdTable = {
+  display: 'block',
+  [breakpoints.md]: {
+    '@composes': [c.table],
+  },
+};
+
+c.mdTableRow = {
+  display: 'block',
+  [breakpoints.md]: {
+    '@composes': [c.tableRow],
+  },
+};
+
+c.mdTableCell = {
+  display: 'block',
+  [breakpoints.md]: {
+    '@composes': [c.tableCell],
+  },
+};
+
+
 
 export default c;
