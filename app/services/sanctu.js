@@ -10,6 +10,7 @@ const {
 export default Service.extend({
   navLabel: 'Info',
   indexSubSection: null,
+  animationComplete: false,
 
   router: service('-routing'),
 
@@ -85,6 +86,7 @@ export default Service.extend({
         .from(mobileNav, 1.2, { transform: `translateY(${mobileViewHeight + mobileNav.height()}px)` }, "entrance")
         .from(mainContainer, 1.2, { transform: `translateY(${-mainContainer.outerHeight()}px)` }, "entrance")
     }
+    timeline.eventCallback("onComplete", () => set(this, 'animationComplete', true));
     timeline.play();
   }
 });

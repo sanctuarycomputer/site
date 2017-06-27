@@ -17,7 +17,7 @@ const styles = vudu({
       c.borderTopThin,
       c.py1,
       c.sansLight,
-      c.z1,
+      c.z2,
     ],
     display: 'none',
     [breakpoints.md]: {
@@ -26,7 +26,7 @@ const styles = vudu({
       left: 0,
       right: 0,
       backgroundColor: c.lightGray.color,
-      bottom: `${vars.navBarHeight}px`,
+      bottom: `${vars.navBarHeight - vars.navBarFudge}px`,
     }
   },
   filterBlock: {

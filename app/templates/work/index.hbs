@@ -1,7 +1,7 @@
 <div class={{styles.workWrapper}}>
-  {{#liquid-bind model use="fade" as |project|}}
-    <div class={{vudu 'flex wrap'}}>
-      {{#each project as |pj|}}
+  <div class={{vudu 'flex wrap'}}>
+    {{#if sanctu.animationComplete}}
+      {{#each model as |pj|}}
         {{#link-to 'work.show' pj.slug class=(vudu 'col12 mdCol6 px4')}}
           {{project-block project=pj}}
         {{/link-to}}
@@ -14,8 +14,8 @@
           {{/if}}
         </div>
       {{/each}}
-    </div>
-  {{/liquid-bind}}
+    {{/if}}
+  </div>
 </div>
 {{work-filter
     typeFilter=typeFilter
