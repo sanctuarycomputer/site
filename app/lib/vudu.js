@@ -20,6 +20,7 @@ const colors = {
   lightGray: '#FAFAFA',
   sanctuBlue: '#073763',
   electricBlue: '#0000FF',
+  transparent: 'rgba(0,0,0,0)',
 };
 
 const c = v.config({ colors });
@@ -409,6 +410,10 @@ c.linkStyle = {
 
 c.capitalize = {
   textTransform: 'capitalize',
+};
+
+c.borderNone = {
+  border: 'none',
 };
 
 //Responsive Table

@@ -1,7 +1,7 @@
 {{#if positionTop}}
   <div class="{{styles.topContent}} {{vudu 'center'}}">
     <img src='images/logo_white.svg' />
-    <h2 class={{vudu 'title white serifLight mt6'}}>The Safest Place On Earth</h2>
+    <h2 class={{vudu 'pLarge white serifLight mt6'}}>The Safest Place On Earth</h2>
   </div>
   <div class={{vudu 'absolute b0 r0'}}>
     {{scroll-to-arrow isDown=true fill='white'}}
@@ -11,7 +11,11 @@
     {{scroll-to-arrow isUp=true fill='white'}}
   </div>
   <div class="{{styles.bottomContent}} {{vudu 'center'}}">
-    <h2 class={{vudu 'title white serifLight mb6'}}>The Safest Place On Earth</h2>
+    {{ember-chimp
+      class=(vudu 'mb6')
+      placeholder="Email Address"
+      formAction="//computer.us13.list-manage.com/subscribe/post?u=34f42ff6e96e744a76ebc78c8&amp;id=925214fac6"
+      buttonText="Subscribe"}}
     <img src='images/logo_white.svg' />
   </div>
 {{/if}}

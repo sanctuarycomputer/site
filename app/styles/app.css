@@ -95,6 +95,17 @@ a {
   text-decoration: none;
 }
 
+/*
+ Mailchimp form
+*/
+.signup-form {
+  display: flex;
+}
+.chimp-input {
+  background: transparent;
+  border: none;
+}
+
 
 @font-face {
 	font-family: 'Austin News Deck';
