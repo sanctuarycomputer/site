@@ -35,7 +35,7 @@ const styles = vudu({
   topContent: {
     position: 'absolute',
     left: '50%',
-    top: '50%',
+    top: '40%',
     transform: 'translate(-50%)',
     color: 'white',
   },
