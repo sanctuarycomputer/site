@@ -15,7 +15,7 @@ const styles = v({
     backgroundColor: `${c.white.color}`,
     width: '100%',
     position: 'fixed',
-    zIndex: 2,
+    zIndex: 3,
     display: 'flex',
     alignItems: 'center',
     borderTopWidth: '1px',

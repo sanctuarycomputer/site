@@ -1,6 +1,7 @@
 import v from 'npm:vudu';
 
 export const vars = {
+  triangleBorderValue: 14,
   navBarHeight: 110,
   pageTransitionDuration: 650,
 };
@@ -339,7 +340,7 @@ c.cloudWindow = {
 };
 
 c.cloudTriangleDown = {
-  borderTop: `14vw solid ${colors.lightGray}`,
+  borderTop: `${vars.triangleBorderValue}vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
@@ -355,7 +356,7 @@ c.cloudTriangleDown = {
 };
 
 c.cloudTriangleUp = {
-  borderBottom: `14vw solid ${colors.lightGray}`,
+  borderBottom: `${vars.triangleBorderValue}vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,

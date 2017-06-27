@@ -15,7 +15,7 @@ const styles = v({
     height: `${vars.navBarHeight}px`,
     width: '100%',
     position: 'fixed',
-    zIndex: 2,
+    zIndex: 3,
     display: 'flex',
     alignItems: 'center',
     borderTopWidth: '1px',
