@@ -11,6 +11,7 @@ export default Service.extend({
   navLabel: 'Info',
   indexSubSection: null,
   cloudOverlayIsShowing: false,
+  animationComplete: false,
 
   router: service('-routing'),
 
@@ -54,7 +55,8 @@ export default Service.extend({
     set(this, 'navLabel', navLabel);
   },
 
-  showCloudOverlay() {
+  animationCompleted() {
+    set(this, 'animationComplete', true)
     set(this, 'cloudOverlayIsShowing', true);
   },
 
@@ -70,7 +72,7 @@ export default Service.extend({
     let navStartingFromTop = !!desktopNav.attr('data-top');
     let isRoot             = window.location.pathname === "/";
 
-    let timeline = new TimelineLite({ onComplete: () => { this.showCloudOverlay() }}).from(clouds, 1.5, { opacity: 0 });
+    let timeline = new TimelineLite().from(clouds, 1.5, { opacity: 0 });
 
     if (isRoot) {
       timeline
@@ -90,6 +92,7 @@ export default Service.extend({
         .from(mobileNav, 1.2, { transform: `translateY(${mobileViewHeight + mobileNav.height()}px)` }, "entrance")
         .from(mainContainer, 1.2, { transform: `translateY(${-mainContainer.outerHeight()}px)` }, "entrance")
     }
+    timeline.eventCallback("onComplete", () => this.animationCompleted());
     timeline.play();
   }
 });

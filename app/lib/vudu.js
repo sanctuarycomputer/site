@@ -2,6 +2,7 @@ import v from 'npm:vudu';
 
 export const vars = {
   triangleBorderValue: 14,
+  navBarFudge: 2,
   navBarHeight: 110,
   pageTransitionDuration: 650,
 };
@@ -297,7 +298,7 @@ c.small = {
 // WHITESPACE
 c.spacer = {
   paddingTop: '0.5rem',
-  paddingBottom: '0.5rem',
+  marginBottom: '0.5rem',
 };
 
 c.spacer[breakpoints.md] = {
@@ -332,7 +333,7 @@ c.liquidInner = {
   backgroundColor: 'transparent',
   bottom: 0,
   width: '100%',
-  height: `calc(100% - ${vars.navBarHeight}px)`,
+  height: `calc(100% - ${vars.navBarHeight - vars.navBarFudge}px)`,
   overflow: 'scroll',
   '-webkit-overflow-scrolling': 'touch',
 };
@@ -391,10 +392,6 @@ c.borderTopThin = {
 
 c.borderBottomThin = {
   borderBottom: `solid 1px ${colors.black}`,
-};
-
-c.borderBottomMedium = {
-  borderBottom: `solid 2px ${colors.black}`,
 };
 
 c.pointer = {
@@ -467,7 +464,6 @@ c.cloudContentTop = {
     transform: 'translate(-50%)',
     color: 'white',
   };
-
 
 
 export default c;
