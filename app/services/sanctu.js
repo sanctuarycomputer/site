@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const TOP    = 'top';
-const BOTTOM = 'bottom';
 const {
   get,
   set,
@@ -13,7 +11,6 @@ export default Service.extend({
   navLabel: 'Info',
   indexSubSection: null,
   cloudOverlayIsShowing: false,
-  cloudOverlay: BOTTOM,
 
   router: service('-routing'),
 
@@ -27,10 +24,8 @@ export default Service.extend({
   computeNavLabel() {
     set(this, 'mobileNavShowing', false);
     let navLabel;
-    let cloudOverlay;
     switch (get(this, 'router.currentRouteName')) {
       case 'index':
-        cloudOverlay = BOTTOM;
         switch (get(this, 'indexSubSection')) {
           case 'jobs':
             navLabel = 'Jobs';
@@ -45,21 +40,17 @@ export default Service.extend({
         break;
       case 'feed.index':
       case 'feed.show':
-        cloudOverlay = TOP;
         navLabel = 'Feed';
         break;
       case 'work.index':
       case 'work.show':
-        cloudOverlay = TOP;
         navLabel = 'Work';
         break;
       case 'shop.index':
       case 'shop.show':
-        cloudOverlay = TOP;
         navLabel = 'Shop';
         break;
     }
-    set(this, 'cloudOverlay', cloudOverlay);
     set(this, 'navLabel', navLabel);
   },
 

@@ -16,6 +16,7 @@ export const breakpoints = {
 
 const colors = {
   white: '#ffffff',
+  offWhite: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
   lightGray: '#FAFAFA',
   sanctuBlue: '#073763',
@@ -46,6 +47,12 @@ c.opac1 = {
 c.opac0 = {
   opacity: 0,
 }
+
+c.absoluteCenter = {
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
+};
 
 c.mdFlex = {
   display: 'initial',
@@ -331,8 +338,10 @@ c.liquidInner = {
 };
 
 c.topLevelContent = {
+  position: 'relative',
   backgroundColor: colors.lightGray,
-  minHeight: '100%'
+  minHeight: '100%',
+  zIndex: 2,
 };
 
 c.cloudWindow = {
@@ -416,6 +425,10 @@ c.borderNone = {
   border: 'none',
 };
 
+c.pointerAuto = {
+  pointerEvents: 'auto',
+};
+
 //Responsive Table
 c.mdTable = {
   display: 'block',
@@ -437,6 +450,23 @@ c.mdTableCell = {
     '@composes': [c.tableCell],
   },
 };
+
+//Cloud Overlay content
+c.cloudContentTop = {
+    position: 'absolute',
+    left: '50%',
+    top: '40%',
+    transform: 'translate(-50%)',
+    color: 'white',
+  };
+
+  c.cloudContentBottom = {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%)',
+    color: 'white',
+  };
 
 
 

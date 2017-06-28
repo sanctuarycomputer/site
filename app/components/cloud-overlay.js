@@ -7,13 +7,17 @@ const {
   get,
   computed,
   inject: { service },
-  computed: { alias, equal },
+  computed: {
+    alias,
+    equal,
+  },
 } = Ember;
 
 const v = vudu(c);
 
 const styles = vudu({
   cloudOverlay: {
+    pointerEvents: 'none',
     display: 'none',
     height: `calc(100% - (${vars.navBarHeight}px + 14vw))`,
     left: 0,
@@ -29,22 +33,8 @@ const styles = vudu({
     bottom: 'auto',
   },
   positionBottom: {
-    top: 'auto',
+    top: '20%',
     bottom: 0,
-  },
-  topContent: {
-    position: 'absolute',
-    left: '50%',
-    top: '40%',
-    transform: 'translate(-50%)',
-    color: 'white',
-  },
-  bottomContent: {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%)',
-    color: 'white',
   },
 });
 
@@ -54,7 +44,6 @@ export default Component.extend({
   styles,
   sanctu: service(),
   active: alias('sanctu.cloudOverlayIsShowing'),
-  positionTop: equal('sanctu.cloudOverlay', 'top'),
-  positionBottom: equal('sanctu.cloudOverlay', 'bottom'),
-
+  positionTop: false,
+  positionBottom: false,
 });
