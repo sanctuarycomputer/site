@@ -10,6 +10,7 @@ const {
 export default Service.extend({
   navLabel: 'Info',
   indexSubSection: null,
+  cloudOverlayIsShowing: false,
   animationComplete: false,
 
   router: service('-routing'),
@@ -54,6 +55,11 @@ export default Service.extend({
     set(this, 'navLabel', navLabel);
   },
 
+  animationCompleted() {
+    set(this, 'animationComplete', true)
+    set(this, 'cloudOverlayIsShowing', true);
+  },
+
   cloudsDidRender(clouds) {
     /* At this point, the first render has happened. We can run the animation! */
     let application        = Ember.$(`.${get(this, 'applicationRouteClass')}`);
@@ -86,7 +92,7 @@ export default Service.extend({
         .from(mobileNav, 1.2, { transform: `translateY(${mobileViewHeight + mobileNav.height()}px)` }, "entrance")
         .from(mainContainer, 1.2, { transform: `translateY(${-mainContainer.outerHeight()}px)` }, "entrance")
     }
-    timeline.eventCallback("onComplete", () => set(this, 'animationComplete', true));
+    timeline.eventCallback("onComplete", () => this.animationCompleted());
     timeline.play();
   }
 });

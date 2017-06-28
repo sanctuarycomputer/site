@@ -1,6 +1,7 @@
 import v from 'npm:vudu';
 
 export const vars = {
+  triangleBorderValue: 14,
   navBarFudge: 2,
   navBarHeight: 110,
   pageTransitionDuration: 650,
@@ -16,10 +17,12 @@ export const breakpoints = {
 
 const colors = {
   white: '#ffffff',
+  offWhite: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
   lightGray: '#FAFAFA',
   sanctuBlue: '#073763',
   electricBlue: '#0000FF',
+  transparent: 'rgba(0,0,0,0)',
 };
 
 const c = v.config({ colors });
@@ -45,6 +48,12 @@ c.opac1 = {
 c.opac0 = {
   opacity: 0,
 }
+
+c.absoluteCenter = {
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
+};
 
 c.mdFlex = {
   display: 'initial',
@@ -330,8 +339,10 @@ c.liquidInner = {
 };
 
 c.topLevelContent = {
+  position: 'relative',
   backgroundColor: colors.lightGray,
-  minHeight: '100%'
+  minHeight: '100%',
+  zIndex: 2,
 };
 
 c.cloudWindow = {
@@ -340,7 +351,7 @@ c.cloudWindow = {
 };
 
 c.cloudTriangleDown = {
-  borderTop: `14vw solid ${colors.lightGray}`,
+  borderTop: `${vars.triangleBorderValue}vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
@@ -356,7 +367,7 @@ c.cloudTriangleDown = {
 };
 
 c.cloudTriangleUp = {
-  borderBottom: `14vw solid ${colors.lightGray}`,
+  borderBottom: `${vars.triangleBorderValue}vw solid ${colors.lightGray}`,
   borderLeft: '50vw solid transparent',
   borderRight: '50vw solid transparent',
   width: 0,
@@ -407,6 +418,14 @@ c.capitalize = {
   textTransform: 'capitalize',
 };
 
+c.borderNone = {
+  border: 'none',
+};
+
+c.pointerAuto = {
+  pointerEvents: 'auto',
+};
+
 //Responsive Table
 c.mdTable = {
   display: 'block',
@@ -428,6 +447,23 @@ c.mdTableCell = {
     '@composes': [c.tableCell],
   },
 };
+
+//Cloud Overlay content
+c.cloudContentTop = {
+    position: 'absolute',
+    left: '50%',
+    top: '40%',
+    transform: 'translate(-50%)',
+    color: 'white',
+  };
+
+  c.cloudContentBottom = {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%)',
+    color: 'white',
+  };
 
 
 export default c;

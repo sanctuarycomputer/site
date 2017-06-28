@@ -1,0 +1,10 @@
+<div class={{vudu 'flex'}}>
+  {{input class=(vudu 'pLarge serifLight bgTransparent borderNone rightAlign offWhite firstLetterCaps col7')
+          key-press="valueDidChange"
+          placeholder=placeholder
+          value=value
+          type="email"
+          name="EMAIL"}}
+  <button type="submit" class={{vudu 'pLarge serifLight bgTransparent borderNone white'}}>{{if isLoading loadingText buttonText}}</button>
+</div>
+<div class="chimp-says {{vudu 'absoluteCenter sansLight'}}">{{chimpSays}}</div>
