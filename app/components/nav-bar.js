@@ -44,11 +44,12 @@ const styles = v({
     '@composes': [c.mx3]
   },
   stripe: {
-    height: '1px',
+    height: '1.25px',
     left: 0,
     position: 'absolute',
     backgroundColor: c.black.color,
-    transition: `${vars.pageTransitionDuration}ms`
+    transition: `${vars.pageTransitionDuration}ms`,
+    transform: 'translateY(-5px)',
   }
 });
 
@@ -60,11 +61,12 @@ export default Component.extend({
 
   positionStripe() {
     let $linkEl = this.$(`a:contains(${get(this, 'sanctu.navLabel')})`);
-    let width = $linkEl.outerWidth();
-    let left = $linkEl.offset().left;
+    let $textNode = $($linkEl.children()[0]);
+    let width = $textNode.outerWidth();
+    let left = $textNode.offset().left;
     this.$('.GLOBAL--nav-bar--stripe').css({
       width: `${width}px`,
-      transform: `translateX(${left}px)`
+      transform: `translate(${left}px, 6px)`
     });
   },
 
