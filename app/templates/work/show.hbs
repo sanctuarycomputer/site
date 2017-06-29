@@ -1,8 +1,7 @@
+{{#fade-in}}
 <div>
   <div class={{vudu 'col11 mxAuto'}}>
-    {{#link-to 'work' class=(vudu 'flex alignCenter black')}}
-      <img class={{vudu 'rotateNeg90'}} src="images/arrow.svg"/>
-    {{/link-to}}
+    {{back-button}}
   </div>
   {{#each model.blocks as |block|}}
     <!-- TITLE BLOCK -->
@@ -107,3 +106,4 @@
 
   {{/each}}
 </div>
+{{/fade-in}}

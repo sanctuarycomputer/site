@@ -1,4 +1,7 @@
 {{#fade-in slug=slug}}
+  <div class={{vudu 'mxAuto'}}>
+    {{back-button}}
+  </div>
   {{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
   <div class="{{vudu ' mxAuto'}} {{styles.articleWrapper}}">
     <p class={{vudu 'pLarge mb3'}}>{{moment-format articleujj.pubDate 'MM.DD.YYYY'}}</p>
