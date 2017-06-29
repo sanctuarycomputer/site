@@ -1,7 +1,7 @@
 {{#fade-in slug=slug}}
   {{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
   <div class="{{vudu ' mxAuto'}} {{styles.articleWrapper}}">
-    <p class={{vudu 'pLarge mb3'}}>{{moment-format articleujj.pubDate 'MM.DD.YYYY'}}</p>
+    <p class={{vudu 'pLarge mb3'}}>{{moment-format article.pubDate 'MM.DD.YYYY'}}</p>
     <p class={{vudu 'pLarge mb2 inlineBlock borderBottomMedium pb1'}}>{{article.title}}</p>
     <div class="content">
       {{{article.content:encoded}}}
@@ -12,7 +12,7 @@
   {{#with (filtered-feed-data sanctu.feedData slug) as |filteredFeedData|}}
     <div class={{vudu 'py5 borderTopThin'}}>
       {{#each filteredFeedData as |post|}}
-        {{#link-to 'feed.show' (medium-slug post.link)}}
+        {{#link-to 'feed.show' (medium-slug post.link) class=(vudu 'inlineBlock col12 borderBottomThin')}}
           {{feed-list-item post=post}}
         {{/link-to}}
       {{/each}}
