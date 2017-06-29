@@ -28,11 +28,11 @@ export default Service.extend({
     switch (get(this, 'router.currentRouteName')) {
       case 'index':
         switch (get(this, 'indexSubSection')) {
-          case 'contact':
-            navLabel = 'Contact';
-            break;
           case 'jobs':
             navLabel = 'Jobs';
+            break;
+          case 'contact':
+            navLabel = 'Contact';
             break;
           default:
             navLabel = 'Info';
