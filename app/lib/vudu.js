@@ -426,6 +426,10 @@ c.pointerAuto = {
   pointerEvents: 'auto',
 };
 
+c.rotateNeg90 = {
+  transform: 'rotate(-90deg)',
+}
+
 //Responsive Table
 c.mdTable = {
   display: 'block',
