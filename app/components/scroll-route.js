@@ -28,6 +28,6 @@ export default Component.extend({
     let innerScrollingContainerClass = v(c).liquidInner;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     let bottom = $scrollContainer.prop('scrollHeight');
-    return $scrollContainer.animate({ scrollTop: bottom }, 1000);
+    return $scrollContainer.scrollTop(bottom);
   },
 });
