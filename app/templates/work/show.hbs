@@ -1,5 +1,10 @@
 {{#fade-in}}
   <div>
+    <div class={{vudu 'col11 mxAuto'}}>
+      {{#link-to 'work' class=(vudu 'flex alignCenter black')}}
+        <img class={{vudu 'rotateNeg90'}} src="images/arrow.svg"/>
+      {{/link-to}}
+    </div>
     {{#each model.blocks as |block|}}
       <!-- TITLE BLOCK -->
       {{#if (eq block.blockType 'title block')}}
@@ -14,7 +19,9 @@
       <!-- FULL WIDTH IMAGE  -->
       {{#if (eq block.blockType 'full width')}}
         <div class={{vudu 'col12 pt2_5'}}>
-          <img class={{vudu 'col12'}} src={{block.image1.file.url}} />
+          {{fade-in-image tagName="img"
+                          class=(vudu 'col12')
+                          imageSource=block.image1.file.url}}
         </div>
       {{/if}}
 
@@ -50,7 +57,9 @@
                 </div>
                 {{#if block.image2}}
                   <div class={{vudu 'mdTableCell col12 mdCol6 p4'}}>
-                    <img class={{vudu 'col12'}} src={{block.image2.file.url}} />
+                    {{fade-in-image tagName="img"
+                                    class=(vudu 'col12')
+                                    imageSource=block.image2.file.url}}
                   </div>
                 {{/if}}
               {{/if}}
@@ -58,7 +67,9 @@
               <!-- Paragraph Right | Image Left -->
               {{#if block.image1}}
                 <div class={{vudu 'mdTableCell col12 mdCol6 p4'}}>
-                  <img class={{vudu 'col12'}} src={{block.image1.file.url}} />
+                  {{fade-in-image tagName="img"
+                                  class=(vudu 'col12')
+                                  imageSource=block.image1.file.url}}
                 </div>
                 {{#if block.paragraph2}}
                   <div class={{vudu 'mdTableCell col12 mdCol6'}}>
@@ -77,7 +88,9 @@
           <div class={{vudu 'mdFlex col11 mxAuto spaceAround wrap'}}>
             {{#each block.gallery as |image|}}
               <div class={{vudu 'col12 mdCol6 mxAuto mdFlex justifyCenter alignCenter'}}>
-                <img class={{vudu 'col12 p4'}} src={{image.file.url}} />
+                {{fade-in-image tagName="img"
+                                class=(vudu 'col12 p4')
+                                imageSource=image.file.url}}
               </div>
             {{/each}}
           </div>
