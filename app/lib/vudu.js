@@ -15,7 +15,7 @@ export const breakpoints = {
   xx: '@media (min-width: 88em)',
 };
 
-const colors = {
+export const colors = {
   white: '#ffffff',
   offWhite: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
