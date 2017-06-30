@@ -1,7 +1,7 @@
 import InViewportMixin from 'ember-in-viewport';
 import Ember from 'ember';
 import vudu from 'npm:vudu';
-import c from 'site/lib/vudu';
+import c, { breakpoints } from 'site/lib/vudu';
 
 const {
   Component,
@@ -10,7 +10,18 @@ const {
 } = Ember;
 
 const v = vudu(c);
+
+const styles = vudu({
+  scrollImageSize: {
+    '@composes': [c.maxWidth100, c.maxHeight100],
+    [breakpoints.md] : {
+      '@composes': [c.maxWidth400, c.maxHeight400],
+    },
+  }
+});
+
 export default Component.extend(InViewportMixin, {
+  styles,
   v: v,
   classNames: [v.absolute, v.t0],
   sanctu: service(),
@@ -20,7 +31,7 @@ export default Component.extend(InViewportMixin, {
    this.iW = $(window).width(),
    this.iH = $(window).height(),
    this.max = this.iW - 200,
-   this.tolerance = this.iH * -0.25,
+   this.tolerance = 50,
    this.randomN = Math.floor(Math.random() * this.max),
    this.random = `${this.randomN}px`,
    this.handleResize = Ember.run.bind(this, () => {
@@ -51,10 +62,12 @@ export default Component.extend(InViewportMixin, {
   }),
 
   didEnterViewport() {
+    this.$().parent().css({color: 'red'});
     this.set('active', true);
   },
 
   didExitViewport() {
+    this.$().parent().css({color: 'black'});
     this.set('active', false);
   },
 });

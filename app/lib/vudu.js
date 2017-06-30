@@ -28,7 +28,7 @@ const colors = {
 const c = v.config({ colors });
 // LAYOUT
 
-const numbers = [0, 50, 100];
+const numbers = [0, 50, 100, 200, 300, 400];
 
 numbers.forEach((n) => {
   c[`maxHeight${n}`] = { maxHeight: `${n}px` };
