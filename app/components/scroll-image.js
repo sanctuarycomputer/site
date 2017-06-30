@@ -23,7 +23,15 @@ const styles = vudu({
     ':hover': {
       opacity: 0.8,
     }
-  }
+  },
+  active: {
+    opacity: 1,
+    pointerEvents: 'auto',
+  },
+  inactive: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
 });
 
 export default Component.extend(InViewportMixin, {
