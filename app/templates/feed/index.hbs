@@ -1,7 +1,7 @@
 {{#scroll-route contentLoaded=sanctu.feedData}}
-  <div class={{vudu 'borderTopThin'}}>
+  <div class="{{styles.feedIndex}} {{vudu 'borderTopThin'}}">
     {{#each sanctu.feedData as |post|}}
-      {{#link-to 'feed.show' (medium-slug post.link)}}
+      {{#link-to 'feed.show' (medium-slug post.link) class=(vudu 'inlineBlock col12')}}
         {{feed-list-item post=post}}
       {{/link-to}}
     {{/each}}

@@ -10,10 +10,15 @@ const {
 } = Ember;
 
 const styles = v({
+  feedIndex: {
+    'a:not(:last-of-type)': {
+      '@compose': [c.borderBottomThin],
+    }
+  },
   feedItem: {
     '@composes': [c.borderBottomThin],
-    display: 'flex'
-  }
+    display: 'flex',
+  },
 });
 
 export default Route.extend({
