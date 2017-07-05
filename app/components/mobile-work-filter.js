@@ -28,10 +28,6 @@ const styles = vudu({
       animationTimingFunction: 'ease-in-out',
     },
     '@keyframes fadeIn': {
-      '0%': {
-        display: 'none',
-        opacity: 0,
-      },
       '1%': {
         display: 'block',
         opacity: 0,
