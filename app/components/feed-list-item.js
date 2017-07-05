@@ -8,10 +8,10 @@ const {
 
 const styles = v({
   feedItem: {
-    '@composes': [c.col12, c.flex, c.flexColumn, c.justifyCenter, c.pt4],
-    borderBottom: `1px solid ${c.black.color}`,
+    '@composes': [c.col12, c.flex, c.flexColumn, c.justifyCenter, c.pb4],
+    paddingTop: '6rem',
     [breakpoints.md]: {
-      '@composes': [c.justifyCenter, c.pt4, c.flexRow],
+      '@composes': [c.justifyCenter, c.flexRow],
     }
   },
   columnLeft: {

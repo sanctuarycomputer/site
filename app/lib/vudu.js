@@ -15,7 +15,7 @@ export const breakpoints = {
   xx: '@media (min-width: 88em)',
 };
 
-const colors = {
+export const colors = {
   white: '#ffffff',
   offWhite: 'rgba(255, 255, 255, 0.5)',
   black: '#000000',
@@ -28,7 +28,7 @@ const colors = {
 const c = v.config({ colors });
 // LAYOUT
 
-const numbers = [0, 50, 100];
+const numbers = [0, 50, 100, 200, 300, 400];
 
 numbers.forEach((n) => {
   c[`maxHeight${n}`] = { maxHeight: `${n}px` };
