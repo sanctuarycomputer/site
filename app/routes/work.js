@@ -7,7 +7,6 @@ const {
   set,
   Route,
   computed,
-  inject: { service },
 } = Ember;
 
 const styles = v({
@@ -17,7 +16,6 @@ const styles = v({
 });
 
 export default Route.extend({
-  sanctu: service(),
   model() {
     return this.store.findAll('project')
   },
