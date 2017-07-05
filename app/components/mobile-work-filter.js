@@ -21,15 +21,31 @@ const styles = vudu({
   },
   show: {
     '.filter-block': {
-      display: 'flex',
-      flexDirection: 'column',
-      opacity: 1,
-    }
+      transition: '1s ease-in-out',
+      height: 'auto',
+      animationName: 'fadeIn',
+      animationDuration: '1s',
+      animationTimingFunction: 'ease-in-out',
+    },
+    '@keyframes fadeIn': {
+      '0%': {
+        display: 'none',
+        opacity: 0,
+      },
+      '1%': {
+        display: 'block',
+        opacity: 0,
+      },
+      '100%': {
+        display: 'block',
+        opacity: 1,
+      }
+    },
   },
   hide: {
     '.filter-block': {
       display: 'none',
-      opacity: 0,
+      height: 0,
     }
   },
 });
@@ -47,13 +63,20 @@ export default Component.extend({
       return this.attrs.clearFilters();
     },
     toggleFilterBlock() {
+      let innerScrollingContainerClass = vudu(c).liquidInner;
+      let $scrollContainer = $(`.${innerScrollingContainerClass}`);
+      let bottom = $scrollContainer.prop('scrollHeight');
+
       if (get(this, 'showFilterBlock')) {
         if (get(this, 'isFiltered')) {
           this.attrs.clearFilters();
+          $scrollContainer.animate({ scrollTop: bottom });
           return set(this, 'showFilterBlock', false);
         }
+        $scrollContainer.animate({ scrollTop: bottom });
         return set(this, 'showFilterBlock', false);
       }
+      $scrollContainer.animate({ scrollTop: bottom });
       return set(this, 'showFilterBlock', true);
     },
   }
