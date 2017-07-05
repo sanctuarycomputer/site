@@ -1,7 +1,7 @@
 import InViewportMixin from 'ember-in-viewport';
 import Ember from 'ember';
 import vudu from 'npm:vudu';
-import c from 'site/lib/vudu';
+import c, { breakpoints, colors, vars } from 'site/lib/vudu';
 
 const {
   Component,
@@ -9,8 +9,33 @@ const {
   $,
 } = Ember;
 
+const MAX_TOLERANCE = (vars.navBarHeight * 5);
+const IMAGE_PERCENT = 20;
+
 const v = vudu(c);
+
+const styles = vudu({
+  scrollImage: {
+    position: 'fixed',
+    width: `${IMAGE_PERCENT}%`,
+    top: 0,
+    left: 0,
+    ':hover': {
+      opacity: 0.8,
+    }
+  },
+  active: {
+    opacity: 1,
+    pointerEvents: 'auto',
+  },
+  inactive: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+});
+
 export default Component.extend(InViewportMixin, {
+  styles,
   v: v,
   classNames: [v.absolute, v.t0],
   sanctu: service(),
@@ -19,24 +44,14 @@ export default Component.extend(InViewportMixin, {
    this.active = false,
    this.iW = $(window).width(),
    this.iH = $(window).height(),
-   this.max = this.iW - 200,
-   this.tolerance = this.iH * -0.25,
-   this.randomN = Math.floor(Math.random() * this.max),
-   this.random = `${this.randomN}px`,
-   this.handleResize = Ember.run.bind(this, () => {
-     let nW = $(window).width();
-     let nH = $(window).height();
-     let wDif = nW - this.iW;
-     if (this.iW !== nW) this.set('random', `${this.randomN + wDif}px`);
-     if (this.iH !== nH) this.set('tolerance', nH * -0.25);
-   });
-   Ember.run.next(this, this.handleResize);
-   $(window).on('resize', this.handleResize);
-  },
-
-  willDestroyElement() {
-    $(window).off('resize', this.handleResize);
-  },
+   this.imageFactor = (100 / IMAGE_PERCENT),
+   this.max = (this.imageFactor - 1) * 100,
+   this.tolerance = 50,
+   this.rX = Math.floor(Math.random() * this.max),
+   this.rY = Math.floor(Math.random() * ((this.iH - MAX_TOLERANCE) - vars.navBarHeight) + vars.navBarHeight),
+   this.randomX = `${this.rX}%`,
+   this.randomY = `${this.rY}px`
+ },
 
   viewportOptionsOverride: Ember.on('didInsertElement', function () {
     Ember.setProperties(this, {
@@ -51,10 +66,18 @@ export default Component.extend(InViewportMixin, {
   }),
 
   didEnterViewport() {
+    this.$().parent().css({
+      color: `${colors.electricBlue}`,
+      transition: '500ms ease-in-out',
+    });
     this.set('active', true);
   },
 
   didExitViewport() {
+    this.$().parent().css({
+      color: `${colors.black}`,
+      transition: '',
+    });
     this.set('active', false);
   },
 });
