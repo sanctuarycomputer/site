@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import vudu from 'npm:vudu';
-import c, { breakpoints } from 'site/lib/vudu';
+import c, { breakpoints, vars, colors, } from 'site/lib/vudu';
 import { types, technologies } from 'site/lib/constants';
 
 const {
@@ -8,6 +8,7 @@ const {
   computed,
   get,
   set,
+  $,
 } = Ember;
 
 const v = vudu(c);
@@ -15,37 +16,24 @@ const v = vudu(c);
 const styles = vudu({
   mobileWorkFilter: {
     '@composes': [c.col12, c.flex, c.flexColumn],
+    position: 'fixed',
+    bottom: `${vars.navBarHeight - vars.navBarFudge}px`,
+    left: 0,
+    right: 0,
+    backgroundColor: colors.white,
+    zIndex: 3,
     [breakpoints.md]: {
       display: 'none',
-    }
-  },
-  show: {
-    '.filter-block': {
-      transition: '1s ease-in-out',
-      height: 'auto',
-      animation: 'fadeIn 1s ease-in-out',
     },
-    '@keyframes fadeIn': {
-      '1%': {
-        display: 'block',
-        opacity: 0,
-      },
-      '100%': {
-        display: 'block',
-        opacity: 1,
-      }
-    },
-  },
-  hide: {
     '.filter-block': {
       display: 'none',
       height: 0,
+      opacity: 0,
     }
   },
 });
 
 export default Component.extend({
-  classNameBindings: [`showFilterBlock:${styles.show}:${styles.hide}`],
   classNames: [styles.mobileWorkFilter],
   types,
   technologies,
@@ -57,20 +45,17 @@ export default Component.extend({
       return this.attrs.clearFilters();
     },
     toggleFilterBlock() {
-      let innerScrollingContainerClass = vudu(c).liquidInner;
-      let $scrollContainer = $(`.${innerScrollingContainerClass}`);
-      let bottom = $scrollContainer.prop('scrollHeight');
-
+      let $mobileFilterBlock = $('.filter-block');
       if (get(this, 'showFilterBlock')) {
         if (get(this, 'isFiltered')) {
           this.attrs.clearFilters();
-          $scrollContainer.animate({ scrollTop: bottom });
+          TweenLite.to($mobileFilterBlock, 0.25, { opacity: 0, height: 0, display: 'none', ease:Power2.easeInOut});
           return set(this, 'showFilterBlock', false);
         }
-        $scrollContainer.animate({ scrollTop: bottom });
+        TweenLite.to($mobileFilterBlock, 0.25, { opacity: 0, height: 0, display: 'none', ease:Power2.easeInOut});
         return set(this, 'showFilterBlock', false);
       }
-      $scrollContainer.animate({ scrollTop: bottom });
+      TweenLite.to($mobileFilterBlock, 0.5, { opacity: 1, height: 'auto', display: 'block', ease:Power2.easeInOut});
       return set(this, 'showFilterBlock', true);
     },
   }
