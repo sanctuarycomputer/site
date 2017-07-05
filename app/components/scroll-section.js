@@ -12,7 +12,7 @@ export default Component.extend(InViewportMixin, {
     Ember.setProperties(this, {
       viewportSpy: true,
       viewportTolerance: {
-        top: 200,
+        top: 50,
         bottom: 0,
         left: 0,
         right: 0,

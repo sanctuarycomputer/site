@@ -40,9 +40,9 @@ export default Component.extend({
       return;
     }
 
-    const scrollTop = $indexPage.scrollTop() +
-      $indexPageSubsection.offset().top -
-      vars.navBarHeight;
+    const scrollTop = $indexPage.scrollTop() + $indexPageSubsection.offset().top - (vars.navBarHeight - vars.navBarFudge);
+
+
     $indexPage.stop().animate({ scrollTop }, vars.pageTransitionDuration, 'swing');
   },
 });
