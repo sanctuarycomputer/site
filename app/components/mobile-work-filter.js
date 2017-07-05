@@ -23,9 +23,7 @@ const styles = vudu({
     '.filter-block': {
       transition: '1s ease-in-out',
       height: 'auto',
-      animationName: 'fadeIn',
-      animationDuration: '1s',
-      animationTimingFunction: 'ease-in-out',
+      animation: 'fadeIn 1s ease-in-out',
     },
     '@keyframes fadeIn': {
       '1%': {
