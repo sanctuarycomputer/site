@@ -33,7 +33,6 @@ export default Component.extend({
   classNames: [styles.mobileNavContentComponent, 'GLOBAL--mobile-nav-content'],
   styles,
   sanctu: service(),
-  active: alias('sanctu.mobileNavShowing'),
   router: service('-routing'),
 
   didInsertElement() {

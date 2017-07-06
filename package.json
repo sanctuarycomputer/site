@@ -56,7 +56,5 @@
     "node": ">= 4"
   },
   "private": true,
-  "dependencies": {
-    "svg-tween": "^3.0.0"
-  }
+  "dependencies": {}
 }

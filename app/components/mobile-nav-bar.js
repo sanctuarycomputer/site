@@ -7,8 +7,6 @@ const {
   computed: { alias },
   inject: { service },
   Component,
-  $,
-  set,
 } = Ember;
 
 const styles = v({
@@ -67,8 +65,6 @@ export default Component.extend({
   classNames: ['GLOBAL--mobile-nav-bar', styles.mobileNavBarComponent],
   styles,
   sanctu: service(),
-  active: alias('sanctu.mobileNavShowing'),
-  isAnimating: false,
 
   setupDOM() {
     if (window.location.pathname !== "/") {
