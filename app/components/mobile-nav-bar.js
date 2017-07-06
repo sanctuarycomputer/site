@@ -6,7 +6,9 @@ const {
   get,
   computed: { alias },
   inject: { service },
-  Component
+  Component,
+  $,
+  set,
 } = Ember;
 
 const styles = v({
@@ -38,7 +40,11 @@ const styles = v({
     '.liquid-child': {
       width: '100%',
       margin: '0 auto'
-    }
+    },
+    '.logo-mobile': {
+      opacity: 0,
+      display: 'none',
+    },
   },
   strikeThrough: {
     '@composes': [c.bgBlack],
@@ -48,6 +54,12 @@ const styles = v({
     left: '50%',
     top: '50%',
     transform: 'translate(-50%)',
+  },
+  navIcons: {
+    '.x-icon': {
+      display: 'none',
+      opacity: 0,
+    }
   }
 });
 
@@ -56,6 +68,7 @@ export default Component.extend({
   styles,
   sanctu: service(),
   active: alias('sanctu.mobileNavShowing'),
+  isAnimating: false,
 
   setupDOM() {
     if (window.location.pathname !== "/") {
@@ -79,7 +92,33 @@ export default Component.extend({
 
   actions: {
     toggleNav() {
-      get(this, 'sanctu').toggleProperty('mobileNavShowing');
+      let $logoMobile = $('.logo-mobile');
+      let $xIcon = $('.x-icon');
+      let $menuIcon = $('.menu-icon');
+      let $strike = $('.strike');
+      let $bind = $('.bind');
+
+      if(!get(this, 'isAnimating')) {
+        let tl = new TimelineLite();
+
+        tl.fromTo($menuIcon, 0.25,{ opacity: 1, display: 'block'}, { opacity: 0, display: 'none'});
+        tl.fromTo($xIcon, 0.25, { opacity: 0, display: 'none'}, { opacity: 1, display: 'block'});
+        tl.fromTo($bind, 0.25,{ opacity: 1, display: 'block'}, { opacity: 0, display: 'none'});
+        tl.fromTo($strike, 0.25,{ opacity: 1, display: 'block'}, { opacity: 0, display: 'none'});
+        tl.fromTo($logoMobile, 0.25, { opacity: 0, display: 'none'}, { opacity: 1, display: 'initial'});
+        tl.eventCallback("onStart", () => set(this, 'isAnimating', true));
+        tl.eventCallback("onComplete", () => set(this, 'isAnimating', false));
+
+        if(get(this, 'active')) {
+          tl.reverse(0)
+        } else {
+          tl.play()
+        }
+
+        get(this, 'sanctu').toggleProperty('mobileNavShowing');
+      
+      }
+
     }
   }
 });

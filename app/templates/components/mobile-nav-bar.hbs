@@ -1,15 +1,34 @@
 <div {{action (action 'toggleNav')}}>
-  {{#if active}}
+  <!-- {{#if active}}
     <img src='images/icon-x.svg' />
     {{else}}
     <img src='images/icon-hamburger.svg' />
-  {{/if}}
+  {{/if}} -->
+  <svg class={{styles.navIcons}} xmlns="http://www.w3.org/2000/svg" width="39" height="41" viewBox="0 0 39 41">
+    <g class="menu-icon" fill="none">
+      <g stroke="#000">
+        <g transform="translate(-31 -30)translate(31 31)">
+          <path id="bottom" d="M0 31L38.9 31"/>
+          <path d="M0 13L38.9 13"/>
+          <path d="M0 22L38.9 22"/>
+          <polyline id="top" points="0 5.5 19.3 0 38.7 5.5"/>
+        </g>
+      </g>
+    </g>
+
+    <g class="x-icon" fill="none">
+      <g stroke="#000">
+        <g transform="translate(-31 -29)translate(31 30)">
+          <polyline points="0.2 0.2 19.5 19.4 0.2 38.6 0.2 38.6"/>
+          <polyline points="38.7 38.6 19.5 19.4 38.7 0.2"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+
 </div>
 <div class={{styles.navLabel}} id="GLOBAL--mobile-nav-bar--nav-label">
-  {{#if active}}
-    <img src='images/logo.svg' />
-  {{else}}
-    <div class={{styles.strikeThrough}}></div>
-    {{liquid-bind sanctu.navLabel}}
-  {{/if}}
+  <img class="logo-mobile" src='images/logo.svg' />
+  <div class='strike {{styles.strikeThrough}}'></div>
+  {{liquid-bind sanctu.navLabel class="bind"}}
 </div>
