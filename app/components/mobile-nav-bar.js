@@ -92,33 +92,7 @@ export default Component.extend({
 
   actions: {
     toggleNav() {
-      let $logoMobile = $('.logo-mobile');
-      let $xIcon = $('.x-icon');
-      let $menuIcon = $('.menu-icon');
-      let $strike = $('.strike');
-      let $bind = $('.bind');
-
-      if(!get(this, 'isAnimating')) {
-        let tl = new TimelineLite();
-
-        tl.fromTo($menuIcon, 0.25,{ opacity: 1, display: 'block'}, { opacity: 0, display: 'none'});
-        tl.fromTo($xIcon, 0.25, { opacity: 0, display: 'none'}, { opacity: 1, display: 'block'});
-        tl.fromTo($bind, 0.25,{ opacity: 1, display: 'block'}, { opacity: 0, display: 'none'});
-        tl.fromTo($strike, 0.25,{ opacity: 1, display: 'block'}, { opacity: 0, display: 'none'});
-        tl.fromTo($logoMobile, 0.25, { opacity: 0, display: 'none'}, { opacity: 1, display: 'initial'});
-        tl.eventCallback("onStart", () => set(this, 'isAnimating', true));
-        tl.eventCallback("onComplete", () => set(this, 'isAnimating', false));
-
-        if(get(this, 'active')) {
-          tl.reverse(0)
-        } else {
-          tl.play()
-        }
-
-        get(this, 'sanctu').toggleProperty('mobileNavShowing');
-      
-      }
-
+      get(this, 'sanctu').toggleMobileNav();
     }
   }
 });

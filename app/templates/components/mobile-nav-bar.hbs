@@ -1,10 +1,7 @@
 <div {{action (action 'toggleNav')}}>
-  <!-- {{#if active}}
-    <img src='images/icon-x.svg' />
-    {{else}}
-    <img src='images/icon-hamburger.svg' />
-  {{/if}} -->
+
   <svg class={{styles.navIcons}} xmlns="http://www.w3.org/2000/svg" width="39" height="41" viewBox="0 0 39 41">
+    {{!-- Menu Icon --}}
     <g class="menu-icon" fill="none">
       <g stroke="#000">
         <g transform="translate(-31 -30)translate(31 31)">
@@ -16,6 +13,7 @@
       </g>
     </g>
 
+    {{!-- X Icon --}}
     <g class="x-icon" fill="none">
       <g stroke="#000">
         <g transform="translate(-31 -29)translate(31 30)">
