@@ -3,13 +3,17 @@
     {{#cloud-overlay positionTop=true}}
       <div class="{{vudu 'center cloudContentTop'}}">
         <img src='images/logo_white.svg' />
-        <h2 class={{vudu 'pLarge white serifLight mt6'}}>The Safest Place On Earth</h2>
+        {{ember-chimp
+          class=(vudu 'mt4 pointerAuto')
+          placeholder="Email Address"
+          formAction="//computer.us13.list-manage.com/subscribe/post?u=34f42ff6e96e744a76ebc78c8&amp;id=925214fac6"
+          buttonText="Subscribe"}}
       </div>
-      <div class={{vudu 'absolute b0 r0'}}>
+      <div class="arrow-wrapper {{vudu 'absolute b0 r0 pointerAuto'}}">
         {{scroll-to-arrow isDown=true fill='white'}}
       </div>
     {{/cloud-overlay}}
-    <div class='{{vudu "cloudTriangleUp"}}'></div>
+    <div class='{{vudu "cloudTriangleUp pointerNone"}}'></div>
   </div>
   <div class='{{vudu "topLevelContent"}}'>
     {{outlet}}

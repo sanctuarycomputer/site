@@ -23,18 +23,16 @@ const styles = v({
     }
   },
   downArrowPosition: {
-    display: 'none',
-    visibility: 'hidden',
-    opacity: 0,
+    display: 'block',
+    visibility: 'visible',
+    opacity: 1,
+    width: '50px',
+    '@composes': [c.absolute],
+    top: '50%',
+    right: '20px',
+    transform: 'translateY(-50%)',
     [breakpoints.md]: {
-      display: 'block',
-      visibility: 'visible',
-      opacity: 1,
       width: '100px',
-      '@composes': [c.absolute],
-      top: '50%',
-      right: '20px',
-      transform: 'translateY(-50%)',
     }
   },
   hide: {
@@ -62,7 +60,7 @@ export default Component.extend({
     this.$(window).on('resize', resizeListener);
   },
 
-  willDestroyElement() {
+willDestroyElement() {
     this.$(window).off('resize', get(this, 'resizeListener'));
   },
 
@@ -80,14 +78,13 @@ export default Component.extend({
   },
 
   click(/*e*/) {
-    let direction = get(this, 'direction');
     let innerScrollingContainerClass = v(c).liquidInner;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     let bottom = $scrollContainer.prop('scrollHeight');
 
-    if (direction === 'up') {
+    if (get(this, 'isUp')) {
       $scrollContainer.animate({ scrollTop: 0 }, 1000);
-    } else if (direction === 'down') {
+    } else if (get(this, 'isDown')) {
       $scrollContainer.animate({ scrollTop: bottom }, 1000);
     }
   }

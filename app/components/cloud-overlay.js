@@ -19,7 +19,7 @@ const styles = vudu({
   cloudOverlay: {
     pointerEvents: 'none',
     display: 'none',
-    height: `calc(100% - (${vars.navBarHeight}px + 14vw))`,
+    height: `calc(100% - (${vars.navBarHeight}px + 10vw))`,
     left: 0,
     right: 0,
     position: 'fixed',
@@ -31,10 +31,16 @@ const styles = vudu({
   positionTop: {
     top: 0,
     bottom: 'auto',
+    '.arrow-wrapper': {
+      bottom: '10%',
+    }
   },
   positionBottom: {
     top: '20%',
     bottom: 0,
+    '.arrow-wrapper': {
+      top: '14%',
+    }
   },
 });
 

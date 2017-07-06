@@ -402,6 +402,10 @@ c.pointerNone = {
   pointerEvents: 'none',
 };
 
+c.pointerAuto = {
+  pointerEvents: 'auto',
+};
+
 c.fullHeightSubNav = {
   height: `calc(100vh - ${vars.navBarHeight}px)`,
 };
@@ -420,10 +424,6 @@ c.capitalize = {
 
 c.borderNone = {
   border: 'none',
-};
-
-c.pointerAuto = {
-  pointerEvents: 'auto',
 };
 
 c.rotateNeg90 = {
