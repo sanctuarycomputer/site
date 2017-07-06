@@ -42,6 +42,13 @@ body > .ember-view {
   top: 0px;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 /*
 This is mostly for styling
 markup coming from medium on
