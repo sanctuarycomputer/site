@@ -26,10 +26,9 @@ const styles = vudu({
       display: 'none',
     },
     '.filter-block': {
-      display: 'none',
       height: 0,
       opacity: 0,
-    }
+    },
   },
 });
 
@@ -46,16 +45,21 @@ export default Component.extend({
     },
     toggleFilterBlock() {
       let $mobileFilterBlock = $('.filter-block');
+      let tl = new TimelineLite();
+      tl.from($mobileFilterBlock, 0, { opacity: 0, height: 0, ease:Power2.easeInOut});
+      tl.to($mobileFilterBlock, 0.25, { height: 'auto', ease:Power2.easeInOut});
+      tl.to($mobileFilterBlock, 0.5, { opacity: 1, ease:Power2.easeInOut});
+
       if (get(this, 'showFilterBlock')) {
         if (get(this, 'isFiltered')) {
           this.attrs.clearFilters();
-          TweenLite.to($mobileFilterBlock, 0.25, { opacity: 0, height: 0, display: 'none', ease:Power2.easeInOut});
+          tl.reverse()
           return set(this, 'showFilterBlock', false);
         }
-        TweenLite.to($mobileFilterBlock, 0.25, { opacity: 0, height: 0, display: 'none', ease:Power2.easeInOut});
+        tl.reverse()
         return set(this, 'showFilterBlock', false);
       }
-      TweenLite.to($mobileFilterBlock, 0.5, { opacity: 1, height: 'auto', display: 'block', ease:Power2.easeInOut});
+      tl.play()
       return set(this, 'showFilterBlock', true);
     },
   }
