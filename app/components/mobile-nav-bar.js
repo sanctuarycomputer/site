@@ -6,7 +6,7 @@ const {
   get,
   computed: { alias },
   inject: { service },
-  Component
+  Component,
 } = Ember;
 
 const styles = v({
@@ -38,7 +38,11 @@ const styles = v({
     '.liquid-child': {
       width: '100%',
       margin: '0 auto'
-    }
+    },
+    '.logo-mobile': {
+      opacity: 0,
+      display: 'none',
+    },
   },
   strikeThrough: {
     '@composes': [c.bgBlack],
@@ -48,6 +52,12 @@ const styles = v({
     left: '50%',
     top: '50%',
     transform: 'translate(-50%)',
+  },
+  navIcons: {
+    '.x-icon': {
+      display: 'none',
+      opacity: 0,
+    }
   }
 });
 
@@ -55,7 +65,6 @@ export default Component.extend({
   classNames: ['GLOBAL--mobile-nav-bar', styles.mobileNavBarComponent],
   styles,
   sanctu: service(),
-  active: alias('sanctu.mobileNavShowing'),
 
   setupDOM() {
     if (window.location.pathname !== "/") {
@@ -79,7 +88,7 @@ export default Component.extend({
 
   actions: {
     toggleNav() {
-      get(this, 'sanctu').toggleProperty('mobileNavShowing');
+      get(this, 'sanctu').toggleMobileNav();
     }
   }
 });

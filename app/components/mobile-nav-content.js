@@ -13,7 +13,7 @@ const styles = v({
   mobileNavContentComponent: {
     '@composes': [c.bgWhite],
     position: 'fixed',
-    height: `calc(100% - ${vars.navBarHeight}px)`,
+    height: `calc(100% - ${vars.navBarHeight - vars.navBarFudge}px)`,
     width: '100%',
     zIndex: 1,
     opacity: 0,
@@ -21,26 +21,19 @@ const styles = v({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
-
-  },
-  active: {
-    pointerEvents: 'auto',
-    opacity: 1,
-    zIndex: 3
+    justifyContent: 'space-around',
   },
   link: {
     '@composes': [c.black, c.navLink],
     textDecoration: 'none',
-  }
+  },
 });
 
 export default Component.extend({
   classNames: [styles.mobileNavContentComponent, 'GLOBAL--mobile-nav-content'],
   styles,
-  classNameBindings: [`active:${styles.active}`],
   sanctu: service(),
-  active: alias('sanctu.mobileNavShowing'),
+  router: service('-routing'),
 
   didInsertElement() {
     if (window.location.pathname === "/") {
@@ -49,8 +42,11 @@ export default Component.extend({
   },
 
   actions: {
-    clickedIndexSubsection() {
-      get(this, 'clickedIndexSubsection')(...arguments);
-    }
+    animateThenGoTo(routeName, isSubSection) {
+      if(isSubSection) {
+        return get(this, 'sanctu').toggleMobileNav(() => get(this, 'clickedIndexSubsection')(routeName));
+      }
+      return get(this, 'sanctu').toggleMobileNav(() => get(this, 'router').transitionTo(routeName));
+    },
   }
 });

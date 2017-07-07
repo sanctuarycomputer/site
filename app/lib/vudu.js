@@ -341,7 +341,6 @@ c.liquidInner = {
 c.topLevelContent = {
   position: 'relative',
   backgroundColor: colors.lightGray,
-  minHeight: '100%',
   zIndex: 2,
 };
 
