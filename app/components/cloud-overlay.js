@@ -1,19 +1,14 @@
 import Ember from 'ember';
 import vudu from 'npm:vudu';
-import c, { vars } from 'site/lib/vudu';
+import { vars } from 'site/lib/vudu';
 
 const {
   Component,
-  get,
-  computed,
   inject: { service },
   computed: {
     alias,
-    equal,
   },
 } = Ember;
-
-const v = vudu(c);
 
 const styles = vudu({
   cloudOverlay: {

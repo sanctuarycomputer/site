@@ -5,6 +5,7 @@ import v from 'npm:vudu';
 import c from 'site/lib/vudu';
 
 const {
+  get,
   set,
   inject: { service },
   Route,
@@ -48,7 +49,8 @@ export default Route.extend({
 
   setupController(controller) {
     this._super(...arguments);
+    set(controller, 'sanctu', get(this, 'sanctu'));
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
-  },
+  }
 });

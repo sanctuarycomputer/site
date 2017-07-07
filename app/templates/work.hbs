@@ -3,12 +3,8 @@
     <div class='{{vudu "cloudWindow"}}'>
       {{#cloud-overlay positionTop=true}}
         <div class="{{vudu 'center cloudContentTop'}}">
-          <img src='images/logo_white.svg' />
-          {{ember-chimp
-            class=(vudu 'mt4 pointerAuto')
-            placeholder="Email Address"
-            formAction="//computer.us13.list-manage.com/subscribe/post?u=34f42ff6e96e744a76ebc78c8&amp;id=925214fac6"
-            buttonText="Subscribe"}}
+          <img class={{vudu 'mb6'}} src='images/logo_white.svg' />
+          {{sanctu-chimp submitAction="emberChimpDidSubmit"}}
         </div>
         <div class="arrow-wrapper {{vudu 'absolute b0 r0 pointerAuto'}}">
           {{scroll-to-arrow isDown=true fill='white'}}

@@ -43,11 +43,11 @@ numbers.forEach((n) => {
 
 c.opac1 = {
   opacity: 1,
-}
+};
 
 c.opac0 = {
   opacity: 0,
-}
+};
 
 c.absoluteCenter = {
   position: 'absolute',
@@ -101,7 +101,7 @@ c.justifyCenter = {
 
 c.justifyStart = {
   justifyContent: 'flex-start'
-}
+};
 
 c.justifyEnd = {
   justifyContent: 'flex-end',
@@ -209,7 +209,7 @@ c.decorationNone = {
 c.pLarge = {
   fontSize: '1.125em',
   lineHeight: '1.222em',
-}
+};
 
 c.pLarge[breakpoints.md] = {
   fontSize: '2.125em',
@@ -234,12 +234,12 @@ c.pLarge[breakpoints.xx] = {
 c.p = {
   fontSize: '1.065em',
   lineHeight: '1.47em',
-}
+};
 
 c.p[breakpoints.lg] = {
   fontSize: '1.125em',
   lineHeight: '1.47em',
-}
+};
 
 c.pSmall = {
   fontSize: '1em',
@@ -427,8 +427,8 @@ c.borderNone = {
 };
 
 c.rotateNeg90 = {
-  transform: 'rotate(-90deg)',
-}
+  transform: 'rotate(-90deg)'
+};
 
 //Responsive Table
 c.mdTable = {
@@ -454,14 +454,16 @@ c.mdTableCell = {
 
 //Cloud Overlay content
 c.cloudContentTop = {
+    width: '100%',
     position: 'absolute',
     left: '50%',
-    top: '40%',
+    top: '30%',
     transform: 'translate(-50%)',
     color: 'white',
   };
 
   c.cloudContentBottom = {
+    width: '100%',
     position: 'absolute',
     left: '50%',
     top: '50%',
