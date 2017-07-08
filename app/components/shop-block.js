@@ -46,7 +46,7 @@ const styles = v({
     '.shop-1': {
       width: '50%',
       top: 0,
-      left: 0,
+      left: '10%',
       right: '50%',
       bottom: '50%',
     },
@@ -110,15 +110,6 @@ const styles = v({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    ':hover': {
-      color: c.black.color,
-      '.overlay': {
-        opacity: 0,
-      },
-      '.image': {
-        opacity: 1,
-      },
-    },
   },
 });
 
