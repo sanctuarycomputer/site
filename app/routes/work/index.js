@@ -12,7 +12,7 @@ const {
 
 const styles = v({
   workWrapper: {
-    '@composes': [c.mxAuto, c.col12, c.pb5]
+    '@composes': [c.mxAuto, c.col12, c.pb6]
   },
 });
 

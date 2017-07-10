@@ -1,4 +1,5 @@
 <div class={{styles.workWrapper}}>
+  {{#scroll-route contentLoaded=true}}
   <div class={{vudu 'flex wrap'}}>
     {{#if sanctu.animationComplete}}
       {{#each model as |pj|}}
@@ -16,15 +17,16 @@
       {{/each}}
     {{/if}}
   </div>
+  {{/scroll-route}}
 </div>
-{{work-filter
-    typeFilter=typeFilter
-    techFilter=techFilter
-    clearFilters=(route-action 'clearFilters')
-    toggleFilter=(route-action 'toggleFilter')}}
+  {{work-filter
+      typeFilter=typeFilter
+      techFilter=techFilter
+      clearFilters=(route-action 'clearFilters')
+      toggleFilter=(route-action 'toggleFilter')}}
 
-{{mobile-work-filter
-    typeFilter=typeFilter
-    techFilter=techFilter
-    clearFilters=(route-action 'clearFilters')
+  {{mobile-work-filter
+      typeFilter=typeFilter
+      techFilter=techFilter
+      clearFilters=(route-action 'clearFilters')
     toggleFilter=(route-action 'toggleFilter')}}
