@@ -1,0 +1,12 @@
+{{#if didSubmitEmail}}
+  <h4 class={{vudu 'pLarge'}}>Thanks for subscribing</h4>
+  <h4 class={{vudu 'title'}}>Check your email to confirm</h4>
+{{else}}
+  {{ember-chimp
+    class=(vudu 'mb4 pointerAuto col6 mxAuto')
+    placeholder="Email Address"
+    formAction="//computer.us13.list-manage.com/subscribe/post?u=34f42ff6e96e744a76ebc78c8&amp;id=925214fac6"
+    buttonText="Subscribe"
+    loadingText="Working..."
+    didSubmitAction=submitAction}}
+{{/if}}

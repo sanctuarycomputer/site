@@ -12,6 +12,7 @@ export default Service.extend({
   indexSubSection: null,
   cloudOverlayIsShowing: false,
   animationComplete: false,
+  didSubmitEmail: false,
 
   router: service('-routing'),
 
