@@ -1,5 +1,5 @@
 {{#fade-in slug=slug}}
-  <div class={{vudu 'mxAuto'}}>
+  <div class={{vudu 'mxAuto pl2'}}>
     {{back-button}}
   </div>
   {{#with (medium-item-for-slug sanctu.feedData slug) as |article|}}
@@ -13,7 +13,7 @@
   {{/with}}
 
   {{#with (filtered-feed-data sanctu.feedData slug) as |filteredFeedData|}}
-    <div class={{vudu 'py5 borderTopThin'}}>
+    <div class={{vudu 'py5 borderTopThin col10 lgCol12 mxAuto'}}>
       {{#each filteredFeedData as |post|}}
         {{#link-to 'feed.show' (medium-slug post.link) class=(vudu 'inlineBlock col12 borderBottomThin')}}
           {{feed-list-item post=post}}

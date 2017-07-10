@@ -8,10 +8,10 @@
     {{/slick-slider}}
   </div>
   <div class={{vudu 'col12 mdCol6 flex flexColumn px2 py4'}}>
-    <div class={{vudu 'col12 lgCol8'}}>
+    <div class={{vudu 'col12'}}>
       <h1 class={{vudu 'title mb3 serifRegular'}}>{{model.title}}</h1>
       <h1 class={{vudu 'title mb5 serifLight'}}>${{model.price}}</h1>
-      <h4 class={{vudu 'pSmall mb3 serifLight'}}>{{model.description}}</h4>
+      <h4 class={{vudu 'pSmall col12 lgCol8 mb3 serifLight'}}>{{model.description}}</h4>
       <ul class={{vudu 'listNone p0 mb3 pSmall serifLight'}}>
         {{#each model.instructionList as |instruction|}}
           <li>{{instruction}}</li>
@@ -19,7 +19,7 @@
       </ul>
       <ul class={{vudu 'flex listNone p0 my5 spaceBetween'}}>
         {{#each model.options as |option|}}
-          <li class={{vudu 'title caps serifRegular'}}>{{option}}</li>
+          <li class={{vudu 'title caps outGray serifRegular'}}>{{option}}</li>
         {{/each}}
       </ul>
       <h1 class={{vudu 'title serifLight'}}>Buy Now</h1>

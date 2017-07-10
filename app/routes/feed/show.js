@@ -11,7 +11,7 @@ const {
 
 const styles = v({
   articleWrapper: {
-    '@composes': [c.p2],
+    '@composes': [c.p2, c.col10, c.lgCol12, c.mxAuto],
     [breakpoints.md]: { padding: 0 },
     '.content': {
       '> p:first-child': {
