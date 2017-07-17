@@ -15,7 +15,7 @@ module.exports = function(defaults) {
   var origin;
   switch (env) {
     case 'development':
-      origin = `http://localhost:4200/`;
+      origin = `http://${process.env.EMBER_HOST || 'localhost'}:4200/`;
       fingerprintOptions.prepend = origin;
     break;
     case 'staging':
