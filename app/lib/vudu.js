@@ -298,17 +298,14 @@ c.small = {
 
 // WHITESPACE
 c.spacer = {
-  paddingTop: '0.5rem',
-  marginBottom: '0.5rem',
+  paddingBottom: '0.5rem',
 };
 
 c.spacer[breakpoints.md] = {
-  paddingTop: '0.75rem',
   paddingBottom: '0.75rem',
 };
 
 c.spacer[breakpoints.lg] = {
-  paddingTop: '1rem',
   paddingBottom: '1rem',
 };
 
