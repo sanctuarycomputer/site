@@ -1,8 +1,37 @@
 import Ember from 'ember';
 import { animate, Promise } from "liquid-fire";
+import { TimelineLite, TweenLite } from 'gsap';
 import c, { vars } from 'site/lib/vudu';
 
-export default function bottomToTop(opts={}) {
+const gs = () => {
+  let tl = null;
+  const navBar = Ember.$('.GLOBAL--nav-bar');
+  const mobileNavBar = Ember.$('.GLOBAL--mobile-nav-bar');
+  const mobileNavContent = Ember.$('.GLOBAL--mobile-nav-content');
+  const viewHeight = Ember.$(window).height();
+  const distance = (viewHeight - navBar.height());
+  const routeWrapper = Ember.$(this.newElement.children()[0]);
+  let routeWrapperChildrenHeight = 0;
+  // routeWrapper.children().each(() => {
+  //   routeWrapperChildrenHeight = routeWrapperChildrenHeight + Ember.$(this).outerHeight();
+  // });
+  // const scrollTop = routeWrapperChildrenHeight - routeWrapper.height();
+
+  const promise = new Promise((resolve) => {
+    tl = new TimelineLite({ onComplete: resolve });
+    tl.add(TweenLite.to([navBar, mobileNavBar], 1, {
+      borderTopColor: `${c.black.color}`,
+      borderBottomColor: 'transparent',
+    }))
+    tl.play();
+  });
+  return {
+    tl,
+    promise,
+  };
+}
+
+const velocity = (opts = {}) => {
   if (!this.newElement) {
     return Promise.resolve();
   } else if (!this.oldElement) {
@@ -47,3 +76,5 @@ export default function bottomToTop(opts={}) {
     animate(this.oldElement, { translateY: [distance, 0] }, opts)
   ]);
 }
+
+export default gs;
