@@ -1,8 +1,8 @@
 <div class="{{styles.filterBlock}} {{vudu 'sansRegular small'}}">
-  Filter
   {{#if isFiltered}}
-    <span>:</span>
-    <span class={{vudu 'pointer sansRegular ml1 underline'}} {{action 'clearFilters'}}>clear all</span>
+    <img {{action 'clearFilters'}} class="{{vudu 'maxHeight15'}}" src='images/x.svg' />
+  {{else}}
+    <img src='images/filter.svg' class="{{vudu 'maxHeight15'}}" />
   {{/if}}
 </div>
 <div class="{{styles.projectType}}">
