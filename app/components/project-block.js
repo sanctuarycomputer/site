@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import v from 'npm:vudu';
+import vudu from 'npm:vudu';
 import c, { breakpoints } from 'site/lib/vudu';
 
 const {
@@ -14,7 +14,9 @@ const DURATION = 350;
 const HEIGHT = 12;
 const WIDTH = 18;
 
-const styles = v({
+const v = vudu(c);
+
+const styles = vudu({
   workItem: {
     '@composes': [c.my5],
     opacity: 0,
@@ -181,24 +183,26 @@ const styles = v({
         '@composes': [
           c.absolute,
           c.flex,
+          c.flexColumn,
           c.alignCenter,
           c.justifyCenter,
           c.t0,
           c.l0,
           c.r0,
           c.b0,
+          c.z10,
           c.pointerNone
         ]
       },
-      '.project-title': {
+      '.project-copy': {
         opacity: 0,
         transition: `${DURATION + 100}ms ease-in-out ${BASE_DELAY + 200}ms`,
         transform: 'translateY(20px)',
-        '@composes': [c.title, c.black, c.serifLight],
+        '@composes': [c.black, c.serifLight],
         [breakpoints.lg]: {
-          '@composes': [c.white, c.z2],
+          '@composes': [c.white],
         }
-      }
+      },
     },
     [breakpoints.lg]: {
       ':hover': {
@@ -241,10 +245,10 @@ const styles = v({
       },
     },
     '.work-title-block': {
-      '.project-title': {
+      '.project-copy': {
         transform: 'translateY(0)',
         opacity: 1,
-      }
+      },
     }
   }
 });
@@ -266,6 +270,7 @@ export default Ember.Component.extend({
   classNames: [styles.workItem],
   classNameBindings: [`inserted:${styles.inserted}`, `loaded:${styles.loaded}`],
   styles,
+  v: v,
   sanctu: service(),
   inserted: false,
   loaded: false,

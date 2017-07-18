@@ -10,6 +10,7 @@ const {
 export default Contentful.extend({
   slug: attr('string'),
   title: attr('string'),
+  description: attr('string'),
   featuredImage: belongsTo('contentful-asset'),
   featuredOverlay: belongsTo('contentful-asset'),
   featuredVideo: belongsTo('contentful-asset'),
