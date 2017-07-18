@@ -1,8 +1,8 @@
 <div class="{{vudu 'sansRegular center py4 borderTopThin small'}}">
-  <span {{action 'toggleFilterBlock'}}><img src='images/filter.svg' /></span>
   {{#if isFiltered}}
-    <span>:</span>
-    <span class={{vudu 'pointer sansRegular ml1 underline'}} {{action 'clearFilters'}}>clear all</span>
+    <img {{action 'clearFilters'}} class="{{vudu 'maxHeight15'}}" src='images/x.svg' />
+  {{else}}
+    <img {{action 'toggleFilterBlock'}} class="{{vudu 'maxHeight15'}}" src='images/filter.svg' />
   {{/if}}
 </div>
 <div class="filter-block">
