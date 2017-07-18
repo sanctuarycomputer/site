@@ -44,7 +44,7 @@ const styles = v({
     '@composes': [c.mx3]
   },
   stripe: {
-    height: '1.05px',
+    height: '1px',
     left: 0,
     position: 'absolute',
     backgroundColor: c.black.color,
