@@ -55,5 +55,5 @@ export default Route.extend({
       }
       return this.transitionTo('index', { queryParams: { s: section }});
     }
-  }
+  },
 });

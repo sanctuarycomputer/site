@@ -37,5 +37,8 @@ export default Route.extend({
     set(controller, 'sanctu', get(this, 'sanctu'));
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
+    Ember.run.schedule('afterRender', this, function () {
+      set(this, 'sanctu.cloudsWatch', 'feed');
+    });
   }
 });
