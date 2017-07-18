@@ -47,7 +47,6 @@ export default Component.extend({
 
     const init = () => {
       window.addEventListener('resize', resize, false);
-      // get(this, 'router').addObserver('currentRouteName', this, 'getScrollingEl');
       get(this, 'sanctu').addObserver('cloudsWatch', this, 'getScrollingEl');
       renderer = new THREE.WebGLRenderer({alpha: true});
       renderer.setSize(w, h);
