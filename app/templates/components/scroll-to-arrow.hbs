@@ -1,5 +1,5 @@
 {{#if isDown}}
-  <div class="{{styles.downArrowPosition}}">
+  <div class="{{styles.downArrowPosition}} {{v.pointer}}">
     <svg xmlns="http://www.w3.org/2000/svg" fill={{fill}} style="transform: rotate(180deg)" width="100%" viewBox="0 0 75 106">
       <g transform="translate(12 15)">
         <polygon points="52.1 29.7 52.9 29 26.4 0 0 29 0.7 29.7 26.4 1.5"/>
@@ -8,7 +8,7 @@
     </svg>
   </div>
 {{else if isUp}}
-  <div class="{{styles.upArrowPosition}}">
+  <div class="{{styles.upArrowPosition}} {{v.pointer}}">
     <svg xmlns="http://www.w3.org/2000/svg" fill={{fill}} width="100%" viewBox="0 0 75 106">
       <g transform="translate(12 15)">
         <polygon points="52.1 29.7 52.9 29 26.4 0 0 29 0.7 29.7 26.4 1.5"/>
