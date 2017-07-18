@@ -26,13 +26,13 @@ export default Contentful.extend({
     const pattern2 = /\n/g;
     if (titleArr.length) {
       textArr = body
-        .replace(pattern, x => `***${x}***`)
-        .replace(pattern2, x => `***${x}***`)
-        .split('***');
+        .replace(pattern, x => `%${x}%`)
+        .replace(pattern2, x => `%${x}%`)
+        .split('%');
     } else {
       textArr = body
-        .replace(pattern2, x => `***${x}***`)
-        .split('***');
+        .replace(pattern2, x => `%${x}%`)
+        .split('%');
     }
     const data = textArr.map((t) => {
       const fImage = imageArr.find(i => t.includes(i.text));
