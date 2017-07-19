@@ -120,6 +120,7 @@ export default Service.extend({
 
   cloudsDidRender(clouds) {
     /* At this point, the first render has happened. We can run the animation! */
+    const initialHide      = Ember.$('.initial-hide, .liquid-container');
     let application        = Ember.$(`.${get(this, 'applicationRouteClass')}`);
     let mainContainer      = application.find('.liquid-container:last');
     let imageAnimation     = Ember.$('.GLOBAL--image-animation');
@@ -129,6 +130,7 @@ export default Service.extend({
     let mobileViewHeight   = Ember.$(window).height() - mobileNav.height();
     let navStartingFromTop = !!desktopNav.attr('data-top');
     let isRoot             = window.location.pathname === "/";
+    Ember.$(initialHide).css('opacity', 1);
 
     let timeline = new TimelineLite().from(clouds, 1.5, { opacity: 0 });
 

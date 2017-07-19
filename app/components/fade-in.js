@@ -30,7 +30,6 @@ export default Component.extend({
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     let offsetTop = this.getOffsetTop();
     set(this, 'activeScrollContainer', $scrollContainer);
-
     Ember.run.next(this, () => {
       get(this, 'activeScrollContainer').scrollTop(offsetTop, 0)
       this.$().addClass(styles.fadeIn);

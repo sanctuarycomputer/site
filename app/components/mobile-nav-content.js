@@ -24,7 +24,7 @@ const styles = v({
     justifyContent: 'space-around',
   },
   link: {
-    '@composes': [c.black, c.navLink],
+    '@composes': [c.black, c.navLink, c.pointer],
     textDecoration: 'none',
   },
 });

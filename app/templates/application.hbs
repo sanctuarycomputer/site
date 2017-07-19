@@ -1,17 +1,17 @@
 <div class={{styles.applicationRoute}}>
-  <div class='{{vudu "smShow z3"}}'>
-    {{mobile-nav-bar label=sanctu.navLabel}}
-  </div>
-  {{mobile-nav-content clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
+    <div class='{{vudu "smShow z3"}} initial-hide'>
+      {{mobile-nav-bar label=sanctu.navLabel}}
+    </div>
+    {{mobile-nav-content clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
 
-  <div class='{{vudu "smHide z3"}}'>
-    {{nav-bar clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
-  </div>
+    <div class='{{vudu "smHide z3"}} initial-hide'>
+      {{nav-bar clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
+    </div>
 
-  {{liquid-outlet}}
+    {{liquid-outlet}}
 
   <div class='GLOBAL--image-animation {{styles.imageAnimation}}'>
     <img class='{{styles.imageAnimationLogo}}' src='http://www.sanctuary.computer/static/images/logo.png'>
   </div>
-  {{cloud-call route=sanctu.cloudsWatch}}
+  <div class='initial-hide'>{{cloud-call route=sanctu.cloudsWatch}}</div>
 </div>
