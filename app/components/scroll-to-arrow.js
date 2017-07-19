@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import v from 'npm:vudu';
+import vudu from 'npm:vudu';
 import c, { breakpoints } from 'site/lib/vudu';
 
 const {
@@ -11,7 +11,9 @@ const {
   computed,
 } =  Ember;
 
-const styles = v({
+const v = vudu(c);
+
+const styles = vudu({
   upArrowPosition: {
     width: '50px',
     '@composes': [c.absolute],
@@ -50,6 +52,7 @@ const styles = v({
 export default Component.extend({
   classNameBindings: [`shouldShow:${styles.show}:${styles.hide}`],
   styles,
+  v: v,
   sanctu: service(),
 
   didInsertElement() {
@@ -69,7 +72,7 @@ willDestroyElement() {
   isDown: computed.equal('direction', 'down'),
 
   checkScrollHeight: function() {
-    let innerScrollingContainerClass = v(c).liquidInner;
+    let innerScrollingContainerClass = vudu(c).liquidInner;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     let scrollHeight = $scrollContainer.prop('scrollHeight');
     if ($scrollContainer.height() < scrollHeight) {
@@ -78,7 +81,7 @@ willDestroyElement() {
   },
 
   click(/*e*/) {
-    let innerScrollingContainerClass = v(c).liquidInner;
+    let innerScrollingContainerClass = vudu(c).liquidInner;
     let $scrollContainer = $(`.${innerScrollingContainerClass}`);
     let bottom = $scrollContainer.prop('scrollHeight');
 
