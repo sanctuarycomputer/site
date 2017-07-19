@@ -87,7 +87,7 @@ export default Component.extend({
     this.setupDOM();
     Ember.$(window).on('resize', () => this.setupDOM());
     this.setProperties({ strikeEl: Ember.$('.strike'), labelEl: Ember.$('.mobile-nav-label') });
-    new TimelineLite().to(this.strikeEl, 0.5, { width: `${this.labelEl[0].offsetWidth + 40}px` });
+    TweenLite.to(this.strikeEl, 0.5, { width: `${this.labelEl[0].offsetWidth + 40}px` });
   },
   didReceiveAttrs() {
     if (this.pastLabel !== this.label) {
