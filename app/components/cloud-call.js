@@ -4,7 +4,6 @@ import c from 'site/lib/vudu';
 const { Component, get, inject: { service } } = Ember;
 
 let shouldRender = true;
-let route = 'index';
 
 const styles = v({
   cloudCall: {
@@ -25,7 +24,6 @@ export default Component.extend({
   classNames: [styles.cloudCall],
   sanctu: service(),
   styles,
-  router: service('-routing'),
   didInsertElement() {
     let w = $(window).width();
     let h = $(window).height();
