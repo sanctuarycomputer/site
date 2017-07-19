@@ -47,7 +47,6 @@ export default Component.extend({
 
     const init = () => {
       window.addEventListener('resize', resize, false);
-      get(this, 'sanctu').addObserver('cloudsWatch', this, 'getScrollingEl');
       renderer = new THREE.WebGLRenderer({alpha: true});
       renderer.setSize(w, h);
       container.appendChild(renderer.domElement);
@@ -120,14 +119,17 @@ export default Component.extend({
       }
     };
 
-    this.getScrollingEl();
     init();
   },
   onFirstRender() {
+    this.getScrollingEl();
     get(this, 'sanctu').cloudsDidRender(this.element);
   },
+  didReceiveAttrs() {
+    this.getScrollingEl()
+  },
   handleScroll: function(e) {
-    if (route !== 'index') {
+    if (this.route !== 'index') {
       if (e.target.scrollTop > e.target.clientHeight) shouldRender = false;
       else shouldRender = true;
     } else {
@@ -136,8 +138,7 @@ export default Component.extend({
     }
   },
   getScrollingEl: function() {
-    route = get(this, 'router.currentRouteName');
     const scrollingEl = Ember.$('.detectScroll')[0];
-    scrollingEl.addEventListener('scroll', this.handleScroll);
+    scrollingEl.addEventListener('scroll', this.handleScroll.bind(this));
   },
 });
