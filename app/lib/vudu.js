@@ -29,7 +29,7 @@ export const colors = {
 const c = v.config({ colors });
 // LAYOUT
 
-const numbers = [0, 15, 50, 100, 200, 300, 400];
+const numbers = [0, 10, 15, 50, 100, 200, 300, 400];
 
 numbers.forEach((n) => {
   c[`maxHeight${n}`] = { maxHeight: `${n}px` };
@@ -40,6 +40,7 @@ numbers.forEach((n) => {
   c[`r${n}`] = { right: `${n}px` };
   c[`b${n}`] = { bottom: `${n}px` };
   c[`l${n}`] = { left: `${n}px` };
+  c[`z${n}`] = { zIndex: n };
 });
 
 c.opac1 = {
