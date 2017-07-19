@@ -8,7 +8,13 @@ let App;
 App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
-  Resolver
+  Resolver,
+  ready: function() {
+    document.addEventListener('touchmove', (event) => {
+      event = event.originalEvent || event;
+      if (event.scale > 1) event.preventDefault();
+    }, false);
+  }
 });
 
 loadInitializers(App, config.modulePrefix);
