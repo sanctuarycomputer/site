@@ -13,6 +13,7 @@ export default Service.extend({
   cloudOverlayIsShowing: false,
   animationComplete: false,
   didSubmitEmail: false,
+  cloudsWatch: null,
 
   router: service('-routing'),
 
@@ -22,7 +23,6 @@ export default Service.extend({
     this.computeNavLabel();
     get(this, 'router').addObserver('currentRouteName', this, 'computeNavLabel');
   },
-
   computeNavLabel() {
     set(this, 'mobileNavShowing', false);
     let navLabel;

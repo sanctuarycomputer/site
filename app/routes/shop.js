@@ -4,7 +4,8 @@ import c from 'site/lib/vudu';
 
 const {
   set,
-  Route
+  Route,
+  inject: { service }
 } = Ember;
 
 const styles = v({
@@ -14,6 +15,7 @@ const styles = v({
 });
 
 export default Route.extend({
+  sanctu: service(),
   model() {
     return this.store.findAll('product');
   },
@@ -22,5 +24,8 @@ export default Route.extend({
     this._super(...arguments);
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
+    Ember.run.schedule('afterRender', this, function () {
+      set(this, 'sanctu.cloudsWatch', 'shop');
+    });
   }
 });

@@ -3,6 +3,8 @@ import v from 'npm:vudu';
 import c from 'site/lib/vudu';
 const { Component, get, inject: { service } } = Ember;
 
+let shouldRender = true;
+
 const styles = v({
   cloudCall: {
     backgroundColor: 'black',
@@ -87,6 +89,7 @@ export default Component.extend({
     };
 
     const zoom = () => {
+      if (!shouldRender) return;
       smokeParticles.forEach((particle, i) => {
         let u = new TWEEN.Tween(particle.position)
           .to({ ...particle.position, z: 800 }, 80000)
@@ -104,6 +107,7 @@ export default Component.extend({
 
     const render = () => {
       requestAnimationFrame(render);
+      if (!shouldRender) return;
       renderer.render(scene, camera);
       rotate();
       TWEEN.update();
@@ -115,8 +119,23 @@ export default Component.extend({
 
     init();
   },
-
   onFirstRender() {
     get(this, 'sanctu').cloudsDidRender(this.element);
-  }
+  },
+  didReceiveAttrs() {
+    this.getScrollingEl()
+  },
+  handleScroll: function(e) {
+    if (this.route !== 'index') {
+      if (e.target.scrollTop > e.target.clientHeight) shouldRender = false;
+      else shouldRender = true;
+    } else {
+      if (e.target.scrollTop >= (e.target.scrollHeight - (e.target.clientHeight * 2))) shouldRender = true;
+      else shouldRender = false;
+    }
+  },
+  getScrollingEl: function() {
+    const scrollingEl = Ember.$('.detectScroll')[0];
+    scrollingEl.addEventListener('scroll', this.handleScroll.bind(this));
+  },
 });
