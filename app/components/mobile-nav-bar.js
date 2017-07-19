@@ -48,11 +48,9 @@ const styles = v({
     '@composes': [c.bgBlack],
     position: 'absolute',
     height: '1px',
-    width: '10px',
     left: '50%',
     top: '50%',
     transform: 'translate(-50%)',
-    // transition: 'width 300ms ease',
   },
   navIcons: {
     '.x-icon': {
