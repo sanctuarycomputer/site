@@ -29,7 +29,7 @@ export const colors = {
 const c = v.config({ colors });
 // LAYOUT
 
-const numbers = [0, 10, 50, 100, 200, 300, 400];
+const numbers = [0, 10, 15, 50, 100, 200, 300, 400];
 
 numbers.forEach((n) => {
   c[`maxHeight${n}`] = { maxHeight: `${n}px` };
@@ -299,17 +299,14 @@ c.small = {
 
 // WHITESPACE
 c.spacer = {
-  paddingTop: '0.5rem',
-  marginBottom: '0.5rem',
+  paddingBottom: '0.5rem',
 };
 
 c.spacer[breakpoints.md] = {
-  paddingTop: '0.75rem',
   paddingBottom: '0.75rem',
 };
 
 c.spacer[breakpoints.lg] = {
-  paddingTop: '1rem',
   paddingBottom: '1rem',
 };
 

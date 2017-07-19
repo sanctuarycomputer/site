@@ -2,10 +2,10 @@
   <div class='{{vudu "cloudWindow"}}'>
     {{#cloud-overlay positionTop=true}}
       <div class="{{vudu 'center cloudContentTop'}}">
-        <img src='images/logo_white.svg' />
-        <h2 class={{vudu 'pLarge white serifLight mt6'}}>The Safest Place On Earth</h2>
+        <img class={{vudu 'mb6'}} src='images/logo_white.svg' />
+        {{sanctu-chimp submitAction="emberChimpDidSubmit"}}
       </div>
-      <div class={{vudu 'absolute b0 r0'}}>
+      <div class="arrow-wrapper {{vudu 'absolute b0 r0 pointerAuto'}}">
         {{scroll-to-arrow isDown=true fill='white'}}
       </div>
     {{/cloud-overlay}}
