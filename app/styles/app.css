@@ -3,13 +3,21 @@ html, body {
   margin: 0;
   font-family: 'Austin News Deck';
   -webkit-font-smoothing: antialiased;
-  background-color: black;
+  background-color: #173963;
   overflow: hidden;
   font-size: 100%;
 }
 
 body > .ember-view {
   height: 100%;
+}
+
+.initial-hide {
+  opacity: 0;
+}
+
+.liquid-container {
+  opacity: 0;
 }
 
 .liquid-container.ember-view {
