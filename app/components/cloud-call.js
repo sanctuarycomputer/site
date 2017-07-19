@@ -122,7 +122,6 @@ export default Component.extend({
     init();
   },
   onFirstRender() {
-    this.getScrollingEl();
     get(this, 'sanctu').cloudsDidRender(this.element);
   },
   didReceiveAttrs() {
