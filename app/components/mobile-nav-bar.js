@@ -32,9 +32,15 @@ const styles = v({
     position: 'absolute',
     left: 0,
     width: '100%',
+    height: '100%',
     pointerEvents: 'none',
     display: 'flex',
     justifyContent: 'center',
+    '.label-parent': {
+      justifyContent: 'center',
+      alignItems: 'center',
+      display: 'flex',
+    },
     '.liquid-outlet': {
       display: 'inline-block',
       verticalAlign: 'top'
@@ -43,8 +49,9 @@ const styles = v({
       opacity: 0,
       display: 'none',
       top: '50%',
+      left: '50%',
       position: 'absolute',
-      transform: 'translateY(-50%)',
+      transform: 'translateY(-50%) translateX(-50%)',
     },
   },
   strikeThrough: {
