@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c, { vars } from 'site/lib/vudu';
+import { TimelineLite, TweenLite } from 'gsap';
 
 const {
   get,
@@ -28,27 +29,28 @@ const styles = v({
   },
   navLabel: {
     '@composes': [c.navLink],
-    position: 'relative',
-    textAlign: 'center',
-    width: '80%',
+    position: 'absolute',
+    left: 0,
+    width: '100%',
+    pointerEvents: 'none',
+    display: 'flex',
+    justifyContent: 'center',
     '.liquid-outlet': {
       display: 'inline-block',
       verticalAlign: 'top'
     },
-    '.liquid-child': {
-      width: '100%',
-      margin: '0 auto'
-    },
     '.logo-mobile': {
       opacity: 0,
       display: 'none',
+      top: '50%',
+      position: 'absolute',
+      transform: 'translateY(-50%)',
     },
   },
   strikeThrough: {
     '@composes': [c.bgBlack],
     position: 'absolute',
     height: '1px',
-    width: '80%',
     left: '50%',
     top: '50%',
     transform: 'translate(-50%)',
@@ -65,6 +67,9 @@ export default Component.extend({
   classNames: ['GLOBAL--mobile-nav-bar', styles.mobileNavBarComponent],
   styles,
   sanctu: service(),
+  pastLabel: null,
+  labelEl: null,
+  strikeEl: null,
 
   setupDOM() {
     if (window.location.pathname !== "/") {
@@ -84,8 +89,26 @@ export default Component.extend({
   didInsertElement() {
     this.setupDOM();
     Ember.$(window).on('resize', () => this.setupDOM());
+    this.setProperties({ strikeEl: Ember.$('.strike'), labelEl: Ember.$('.mobile-nav-label') });
+    TweenLite.to(this.strikeEl, 0.5, { width: `${this.labelEl[0].offsetWidth + 40}px` });
   },
-
+  didReceiveAttrs() {
+    if (this.pastLabel !== this.label) {
+      if (!this.pastLabel) Ember.set(this, 'pastLabel', this.label);
+      else {
+        let tl = new TimelineLite();
+        tl
+        .to(this.labelEl, 0.5, { opacity: 0 })
+        .to(this.labelEl, 0.5, { opacity: 1 })
+        .add(() => {
+          Ember.set(this, 'pastLabel', this.label);
+          Ember.run.next(this, () => {
+            TweenLite.to(this.strikeEl, 0.5, { width: `${this.labelEl[0].offsetWidth + 40}px` });
+          });
+        } , tl.duration() / 2 );
+      }
+    }
+  },
   actions: {
     toggleNav() {
       get(this, 'sanctu').toggleMobileNav();

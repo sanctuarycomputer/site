@@ -71,7 +71,7 @@ export default Service.extend({
     let $xIcon = $mobileNav.find('.x-icon');
     let $menuIcon = $mobileNav.find('.menu-icon');
     let $strike = $mobileNav.find('.strike');
-    let $bind = $mobileNav.find('.bind');
+    let $labelParent = $mobileNav.find('.label-parent');
 
     let $mobileNavContent = Ember.$('.GLOBAL--mobile-nav-content');
     let $mobileNavLinks = $mobileNavContent.find('.mobile-nav-link');
@@ -86,8 +86,8 @@ export default Service.extend({
     tl.from($xIcon, 0.25, { css: { transform: 'translateZ(-100px)', opacity: 0, display: 'none' }, ease: Cubic.easeInOut }, 'initial')
       .to($xIcon, 0.25, { css: { transform: 'translateZ(0)', opacity: 1, display: 'initial' }, ease: Cubic.easeInOut }, 'initial');
     //Nav Bind
-    tl.from($bind, 0.25, { opacity: 1, display: 'block', ease: Cubic.easeInOut}, 'initial')
-      .to($bind, 0.25, { opacity: 0, display: 'none', ease: Cubic.easeInOut}, 'initial');
+    tl.from($labelParent, 0.25, { opacity: 1, display: 'block', ease: Cubic.easeInOut}, 'initial')
+      .to($labelParent, 0.25, { opacity: 0, display: 'none', ease: Cubic.easeInOut}, 'initial');
     //Strike
     tl.from($strike, 0.25, { opacity: 1, display: 'block', css: { left: '50%' }, ease: Cubic.easeInOut }, 'initial')
       .to($strike, 0.25, { opacity: 0, display: 'none', css: { left: '200%' }, ease: Cubic.easeInOut }, 'initial');
@@ -96,7 +96,7 @@ export default Service.extend({
       .to($logoMobile, 0.35, { opacity: 1, display: 'initial', ease: Cubic.easeInOut }, 'initial+=0.25');
 
     /* NAV CONTENT */
-    //Nav content
+    // Nav content
     tl.from($mobileNavContent, 0.1, { css: { opacity: 0, zIndex: 1, pointerEvents: 'none' }, ease: Cubic.easeInOut }, 'initial')
       .to($mobileNavContent, 0.1, { css: { opacity: 1, zIndex: 3, pointerEvents: 'auto' }, ease: Cubic.easeInOut }, 'initial');
 
