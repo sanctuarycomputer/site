@@ -42,6 +42,9 @@ const styles = v({
     '.logo-mobile': {
       opacity: 0,
       display: 'none',
+      top: '50%',
+      position: 'absolute',
+      transform: 'translateY(-50%)',
     },
   },
   strikeThrough: {
