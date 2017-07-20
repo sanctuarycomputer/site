@@ -67,6 +67,7 @@ export default Component.extend({
   pastLabel: null,
   labelEl: null,
   strikeEl: null,
+  labelParent: null,
 
   setupDOM() {
     if (window.location.pathname !== "/") {
@@ -86,7 +87,7 @@ export default Component.extend({
   didInsertElement() {
     this.setupDOM();
     Ember.$(window).on('resize', () => this.setupDOM());
-    this.setProperties({ strikeEl: Ember.$('.strike'), labelEl: Ember.$('.mobile-nav-label') });
+    this.setProperties({ strikeEl: Ember.$('.strike'), labelEl: Ember.$('.mobile-nav-label'), labelParent: Ember.$('.strike-parent') });
     TweenLite.to(this.strikeEl, 0.5, { width: `${this.labelEl[0].offsetWidth + 40}px` });
   },
   didReceiveAttrs() {

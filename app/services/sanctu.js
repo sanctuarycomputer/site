@@ -96,7 +96,7 @@ export default Service.extend({
       .to($logoMobile, 0.35, { opacity: 1, display: 'initial', ease: Cubic.easeInOut }, 'initial+=0.25');
 
     /* NAV CONTENT */
-    //Nav content
+    // Nav content
     tl.from($mobileNavContent, 0.1, { css: { opacity: 0, zIndex: 1, pointerEvents: 'none' }, ease: Cubic.easeInOut }, 'initial')
       .to($mobileNavContent, 0.1, { css: { opacity: 1, zIndex: 3, pointerEvents: 'auto' }, ease: Cubic.easeInOut }, 'initial');
 
