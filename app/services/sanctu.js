@@ -86,14 +86,14 @@ export default Service.extend({
     tl.from($xIcon, 0.25, { css: { transform: 'translateZ(-100px)', opacity: 0, display: 'none' }, ease: Cubic.easeInOut }, 'initial')
       .to($xIcon, 0.25, { css: { transform: 'translateZ(0)', opacity: 1, display: 'initial' }, ease: Cubic.easeInOut }, 'initial');
     //Nav Bind
-    tl.from($labelParent, 0.25, { opacity: 1, display: 'block', ease: Cubic.easeInOut}, 'initial')
+    tl.from($labelParent, 0.25, { opacity: 1, display: 'flex', ease: Cubic.easeInOut}, 'initial')
       .to($labelParent, 0.25, { opacity: 0, display: 'none', ease: Cubic.easeInOut}, 'initial');
     //Strike
     tl.from($strike, 0.25, { opacity: 1, display: 'block', css: { left: '50%' }, ease: Cubic.easeInOut }, 'initial')
       .to($strike, 0.25, { opacity: 0, display: 'none', css: { left: '200%' }, ease: Cubic.easeInOut }, 'initial');
     //Logo
     tl.from($logoMobile, 0.35, { opacity: 0, display: 'none', ease: Cubic.easeInOut }, 'initial+=0.25')
-      .to($logoMobile, 0.35, { opacity: 1, display: 'initial', ease: Cubic.easeInOut }, 'initial+=0.25');
+      .to($logoMobile, 0.35, { opacity: 1, display: 'block', ease: Cubic.easeInOut }, 'initial+=0.25');
 
     /* NAV CONTENT */
     // Nav content
