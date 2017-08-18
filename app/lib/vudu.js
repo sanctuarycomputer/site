@@ -209,8 +209,8 @@ c.decorationNone = {
 };
 
 c.pLarge = {
-  fontSize: '1.125em',
-  lineHeight: '1.222em',
+  fontSize: '1.75em',
+  lineHeight: '1.117em',
 };
 
 c.pLarge[breakpoints.md] = {
