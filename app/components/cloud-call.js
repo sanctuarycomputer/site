@@ -45,7 +45,7 @@ export default Component.extend({
 
     const init = () => {
       window.addEventListener('resize', resize, false);
-      renderer = new THREE.WebGLRenderer({alpha: true});
+      renderer = new THREE.WebGLRenderer({ alpha: true });
       renderer.setSize(w, h);
       container.appendChild(renderer.domElement);
       scene = new THREE.Scene();
@@ -85,22 +85,6 @@ export default Component.extend({
         n += 1;
       }
       render();
-      zoom();
-    };
-
-    const zoom = () => {
-      if (!shouldRender) return;
-      smokeParticles.forEach((particle, i) => {
-        let u = new TWEEN.Tween(particle.position)
-          .to({ ...particle.position, z: 800 }, 80000)
-          .easing(TWEEN.Easing.Exponential.InOut);
-        let d = new TWEEN.Tween(particle.position)
-          .to({ ...particle.position, z: 300 }, 80000)
-          .easing(TWEEN.Easing.Exponential.InOut);
-        u.chain(d);
-        d.chain(u);
-        setTimeout(() => i % 2 === 0 ? u.start() : d.start(), i * 200);
-      });
     };
 
     const rotate = () => smokeParticles.forEach((particle, i) => i % 2 === 0 ? particle.rotation.z += 0.001 : particle.rotation.z -= 0.001 );
@@ -110,7 +94,6 @@ export default Component.extend({
       if (!shouldRender) return;
       renderer.render(scene, camera);
       rotate();
-      TWEEN.update();
       if (!firstRender) {
         firstRender = true;
         this.onFirstRender();
