@@ -210,7 +210,7 @@ c.decorationNone = {
 
 c.pLarge = {
   fontSize: '1.75em',
-  lineHeight: '1.117em',
+  lineHeight: '1.222em',
 };
 
 c.pLarge[breakpoints.md] = {
@@ -298,17 +298,11 @@ c.small = {
 };
 
 // WHITESPACE
-c.spacer = {
-  paddingBottom: '0.5rem',
-};
-
-c.spacer[breakpoints.md] = {
-  paddingBottom: '0.75rem',
-};
-
-c.spacer[breakpoints.lg] = {
-  paddingBottom: '1rem',
-};
+c.break = {
+  display: 'block',
+  width: '1px',
+  height: '16px',
+}
 
 c.pt2_5 = {
   '@composes': [c.pt2],
