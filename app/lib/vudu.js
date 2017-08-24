@@ -299,17 +299,10 @@ c.small = {
 
 // WHITESPACE
 c.break = {
-  display: 'inline-block',
+  display: 'block',
+  width: '1px',
   height: '16px',
 }
-
-c.break[breakpoints.md] = {
-  height: '10px',
-};
-
-c.break[breakpoints.lg] = {
-  height: '8px',
-};
 
 c.pt2_5 = {
   '@composes': [c.pt2],

@@ -8,14 +8,15 @@
         }}
           <p class={{vudu 'pLarge serifLight pb4 pt4'}}>
             {{#each group.combined as |c|}}
-              <span class="{{if c.break (concat v.relative " " v.flex) v.relative}}">
-                {{c.text}}
-                {{#if c.url}}
-                  {{scroll-image url=c.url}}
-                {{/if}}
-              </span>
               {{#if c.break}}
                 <div class="{{v.break}}"></div>
+                {{else}}
+                <span class="{{v.relative}}">
+                  {{c.text}}
+                  {{#if c.url}}
+                    {{scroll-image url=c.url}}
+                  {{/if}}
+                </span>
               {{/if}}
             {{/each}}
           </p>

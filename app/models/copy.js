@@ -42,6 +42,10 @@ export default Contentful.extend({
         url: fImage ? fImage.url : null,
       };
     });
-    return data;
+    const filter = data.filter((t) => (t.text && t.text.length) || t.break || t.url);
+
+    console.log(filter)
+
+    return filter;
   }),
 });
