@@ -31,8 +31,8 @@ export default function(){
   this.transition(
     this.fromRoute('work'),
     this.toRoute('shop'),
-    this.use('toLeft', { duration }),
-    this.reverse('toRight', { duration })
+    this.use('toRight', { duration }),
+    this.reverse('toLeft', { duration })
   );
 
   this.transition(
@@ -52,7 +52,7 @@ export default function(){
   this.transition(
     this.fromRoute('feed'),
     this.toRoute('shop'),
-    this.use('toLeft', { duration }),
-    this.reverse('toRight', { duration })
+    this.use('toRight', { duration }),
+    this.reverse('toLeft', { duration })
   );
 }
