@@ -16,7 +16,6 @@ const styles = v({
     width: '25vw',
     position: 'fixed',
     transform: 'translate3d(0,0,0)',
-    opacity: '.5',
   },
   active: {
     opacity: 1,
