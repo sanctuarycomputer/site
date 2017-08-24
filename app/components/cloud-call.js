@@ -4,6 +4,8 @@ import c from 'site/lib/vudu';
 const { Component, get, inject: { service } } = Ember;
 
 let shouldRender = true;
+let render = null;
+let rendering = false;
 
 const styles = v({
   cloudCall: {
@@ -19,6 +21,17 @@ const styles = v({
     },
   },
 });
+
+const startRender = () => {
+  shouldRender = true;
+  if (!rendering) render();
+  rendering = true;
+}
+
+const stopRender = () => {
+  rendering = false;
+  shouldRender = false;
+}
 
 export default Component.extend({
   classNames: [styles.cloudCall],
@@ -89,9 +102,9 @@ export default Component.extend({
 
     const rotate = () => smokeParticles.forEach((particle, i) => i % 2 === 0 ? particle.rotation.z += 0.001 : particle.rotation.z -= 0.001 );
 
-    const render = () => {
-      requestAnimationFrame(render);
+    render = () => {
       if (!shouldRender) return;
+      requestAnimationFrame(render);
       renderer.render(scene, camera);
       rotate();
       if (!firstRender) {
@@ -110,11 +123,11 @@ export default Component.extend({
   },
   handleScroll: function(e) {
     if (this.route !== 'index') {
-      if (e.target.scrollTop > e.target.clientHeight) shouldRender = false;
-      else shouldRender = true;
+      if (e.target.scrollTop > e.target.clientHeight) stopRender();
+      else startRender();
     } else {
-      if (e.target.scrollTop >= (e.target.scrollHeight - (e.target.clientHeight * 2))) shouldRender = true;
-      else shouldRender = false;
+      if (e.target.scrollTop >= (e.target.scrollHeight - (e.target.clientHeight * 2))) startRender();
+      else stopRender();
     }
   },
   getScrollingEl: function() {
