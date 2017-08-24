@@ -6,14 +6,17 @@
           class=(concat 'index--' group.title)
           action=(action "didHitWaypoint" group.title null)
         }}
-          <p class={{vudu 'pLarge serifLight pt4 pb5'}}>
+          <p class={{vudu 'pLarge serifLight pb4 pt4'}}>
             {{#each group.combined as |c|}}
-              <span class="{{if c.break (concat v.relative " " v.flex " " v.spacer) v.relative}}">
+              <span class="{{if c.break (concat v.relative " " v.flex) v.relative}}">
                 {{c.text}}
                 {{#if c.url}}
                   {{scroll-image url=c.url}}
                 {{/if}}
               </span>
+              {{#if c.break}}
+                <div class="{{v.break}}"></div>
+              {{/if}}
             {{/each}}
           </p>
         {{/scroll-section}}
