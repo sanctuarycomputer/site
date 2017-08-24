@@ -12,7 +12,8 @@ const {
 
 const styles = v({
   workRoute: {
-    top: 0
+    top: 0,
+    minHeight: '100vh'
   },
 });
 

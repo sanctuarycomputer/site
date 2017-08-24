@@ -12,7 +12,8 @@ const {
 
 const styles = v({
   workWrapper: {
-    '@composes': [c.mxAuto, c.col12, c.pb6]
+    '@composes': [c.mxAuto, c.col12, c.pb6],
+    minHeight: '100vh'
   },
 });
 
@@ -30,7 +31,6 @@ export default Route.extend({
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
     set(controller, 'sanctu', get(this, 'sanctu'));
-
   },
 
   actions: {
@@ -62,5 +62,10 @@ export default Route.extend({
 
       return set(this, 'controller.model', get(this, 'controller.allProjects'));
     },
+    didClickProject(project) {
+      /* Tell liquid-fire which element to pick, see transitions.js for more info */
+      set(this, 'sanctu.activeProject', project);
+      this.transitionTo('work.show', project);
+    }
   }
 });

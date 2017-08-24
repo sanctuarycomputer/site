@@ -63,7 +63,7 @@ export default Component.extend({
     this.$(window).on('resize', resizeListener);
   },
 
-willDestroyElement() {
+  willDestroyElement() {
     this.$(window).off('resize', get(this, 'resizeListener'));
   },
 

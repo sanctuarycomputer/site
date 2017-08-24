@@ -14,6 +14,7 @@ export default Service.extend({
   animationComplete: false,
   didSubmitEmail: false,
   cloudsWatch: null,
+  activeProject: null,
 
   router: service('-routing'),
 

@@ -55,4 +55,28 @@ export default function(){
     this.use('toLeft', { duration }),
     this.reverse('toRight', { duration })
   );
+
+  this.transition(
+    this.fromRoute('work.index'),
+    this.toRoute('work.show'),
+    this.use('explode', {
+      pickOld: '.explode.project-block' ,
+      pickNew: '.project-block',
+      use: ['work-explosion']
+    }, {
+      use: 'work-explosion-backing'
+    }),
+  );
+
+  this.transition(
+    this.fromRoute('work.show'),
+    this.toRoute('work.index'),
+    this.use('explode', {
+      pickOld: '.project-block' ,
+      pickNew: '.project-block.explode',
+      use: ['reverse-work-explosion']
+    }, {
+      use: 'cross-fade'
+    }),
+  );
 }

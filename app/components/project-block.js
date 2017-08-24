@@ -3,6 +3,7 @@ import vudu from 'npm:vudu';
 import c, { breakpoints } from 'site/lib/vudu';
 
 const {
+  get,
   set,
   run: { later},
   inject: { service },
@@ -18,7 +19,7 @@ const v = vudu(c);
 
 const styles = vudu({
   workItem: {
-    '@composes': [c.my5],
+    '@composes': [c.mb5],
     opacity: 0,
     position: 'relative',
     ':before': {
@@ -267,11 +268,14 @@ const loadVideoFromURL = (url) => {
 const randomize = (min, max) => (Math.floor(Math.random() * max) + min);
 
 export default Ember.Component.extend({
-  classNames: [styles.workItem],
-  classNameBindings: [`inserted:${styles.inserted}`, `loaded:${styles.loaded}`],
+  classNames: [styles.workItem, 'project-block'],
+  classNameBindings: [`inserted:${styles.inserted}`, `loaded:${styles.loaded}`, 'projectIsActive:explode'],
   styles,
   v: v,
   sanctu: service(),
+  projectIsActive: Ember.computed('sanctu.activeProject', 'project', function() {
+    return get(this, 'sanctu.activeProject') === get(this, 'project');
+  }),
   inserted: false,
   loaded: false,
   didInsertElement() {
@@ -293,7 +297,6 @@ export default Ember.Component.extend({
 
     imgLoader.onload = assetDidLoad;
     imgLoader.src = img.get(0).src;
-
     loadVideoFromURL(vid.get(0).src).then(() => assetDidLoad());
   }
 });

@@ -341,6 +341,7 @@ c.topLevelContent = {
   position: 'relative',
   backgroundColor: colors.lightGray,
   zIndex: 2,
+  minHeight: '100%'
 };
 
 c.cloudWindow = {

@@ -1,11 +1,10 @@
 <div class={{styles.workWrapper}}>
-  {{#scroll-route contentLoaded=true}}
   <div class={{vudu 'flex wrap'}}>
     {{#if sanctu.animationComplete}}
       {{#each model as |pj|}}
-        {{#link-to 'work.show' pj.slug class=(vudu 'col12 mdCol6 px4')}}
+        <div class="{{vudu 'col12 mdCol6 px4'}}" {{action (route-action 'didClickProject' pj)}} data-project-id={{pj.id}}>
           {{project-block project=pj}}
-        {{/link-to}}
+        </div>
       {{else}}
         <div class={{vudu 'fullHeightSubNav fullWidth flex alignCenter justifyCenter'}}>
           {{#if (eq typeFilter 'product')}}
@@ -17,8 +16,8 @@
       {{/each}}
     {{/if}}
   </div>
-  {{/scroll-route}}
 </div>
+
   {{work-filter
       typeFilter=typeFilter
       techFilter=techFilter
