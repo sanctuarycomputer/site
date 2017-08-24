@@ -24,8 +24,10 @@ const styles = v({
 
 const startRender = () => {
   shouldRender = true;
-  if (!rendering) render();
-  rendering = true;
+  if (!rendering) {
+    render();
+    rendering = true;
+  }
 }
 
 const stopRender = () => {
