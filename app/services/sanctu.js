@@ -145,7 +145,7 @@ export default Service.extend({
     if (navStartingFromTop) {
       timeline
         .from(desktopNav, 1.2, { transform: `translateY(-${desktopNav.height()}px)` }, "entrance")
-        .from(mobileNav, 1.2, { transform: `translateY(-${mobileNav.height()}px)` }, "entrance")
+        .from(mobileNav, 1.2, { transform: `translateY(-${mobileNav.height() + 1}px)` }, "entrance")
         .from(mainContainer, 1.2, { transform: `translateY(${mainContainer.outerHeight()}px)` }, "entrance")
     } else {
       timeline

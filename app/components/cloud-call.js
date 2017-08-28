@@ -4,6 +4,8 @@ import c from 'site/lib/vudu';
 const { Component, get, inject: { service } } = Ember;
 
 let shouldRender = true;
+let render = null;
+let rendering = false;
 
 const styles = v({
   cloudCall: {
@@ -19,6 +21,19 @@ const styles = v({
     },
   },
 });
+
+const startRender = () => {
+  shouldRender = true;
+  if (!rendering) {
+    render();
+    rendering = true;
+  }
+}
+
+const stopRender = () => {
+  rendering = false;
+  shouldRender = false;
+}
 
 export default Component.extend({
   classNames: [styles.cloudCall],
@@ -45,7 +60,7 @@ export default Component.extend({
 
     const init = () => {
       window.addEventListener('resize', resize, false);
-      renderer = new THREE.WebGLRenderer({alpha: true});
+      renderer = new THREE.WebGLRenderer({ alpha: true });
       renderer.setSize(w, h);
       container.appendChild(renderer.domElement);
       scene = new THREE.Scene();
@@ -85,32 +100,15 @@ export default Component.extend({
         n += 1;
       }
       render();
-      zoom();
-    };
-
-    const zoom = () => {
-      if (!shouldRender) return;
-      smokeParticles.forEach((particle, i) => {
-        let u = new TWEEN.Tween(particle.position)
-          .to({ ...particle.position, z: 800 }, 80000)
-          .easing(TWEEN.Easing.Exponential.InOut);
-        let d = new TWEEN.Tween(particle.position)
-          .to({ ...particle.position, z: 300 }, 80000)
-          .easing(TWEEN.Easing.Exponential.InOut);
-        u.chain(d);
-        d.chain(u);
-        setTimeout(() => i % 2 === 0 ? u.start() : d.start(), i * 200);
-      });
     };
 
     const rotate = () => smokeParticles.forEach((particle, i) => i % 2 === 0 ? particle.rotation.z += 0.001 : particle.rotation.z -= 0.001 );
 
-    const render = () => {
-      requestAnimationFrame(render);
+    render = () => {
       if (!shouldRender) return;
+      requestAnimationFrame(render);
       renderer.render(scene, camera);
       rotate();
-      TWEEN.update();
       if (!firstRender) {
         firstRender = true;
         this.onFirstRender();
@@ -128,11 +126,11 @@ export default Component.extend({
   },
   handleScroll: function(e) {
     if (this.route !== 'index') {
-      if (e.target.scrollTop > e.target.clientHeight) shouldRender = false;
-      else shouldRender = true;
+      if (e.target.scrollTop > e.target.clientHeight) stopRender();
+      else startRender();
     } else {
-      if (e.target.scrollTop >= (e.target.scrollHeight - (e.target.clientHeight * 2))) shouldRender = true;
-      else shouldRender = false;
+      if (e.target.scrollTop >= (e.target.scrollHeight - (e.target.clientHeight * 2))) startRender();
+      else stopRender();
     }
   },
   getScrollingEl: function() {
