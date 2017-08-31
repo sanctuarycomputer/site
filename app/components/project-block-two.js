@@ -8,11 +8,8 @@ const ease = easing.Expo.easeOut;
 const DURATION = 240;
 
 function random(min, max) {
-  if (min < 0) {
-    return min + Math.random() * (Math.abs(min)+max);
-  }else {
-    return min + Math.random() * max;
-  }
+  if (min < 0) return min + Math.random() * (Math.abs(min)+max);
+  return min + Math.random() * max;
 }
 
 const FADE_DURATION = 0.2;
@@ -147,6 +144,17 @@ export default Component.extend({
   sanctu: service(),
   styles,
   v,
+
+  mouseEnter() {
+    let vidEl = this.$('video').get(0);
+    vidEl.autoplay = true;
+    vidEl.load();
+  },
+  mouseLeave() {
+    let vidEl = this.$('video').get(0);
+    vidEl.autoplay = false;
+    vidEl.load();
+  },
 
   projectIsActive: Ember.computed('sanctu.activeProject', 'project', function() {
     return get(this, 'sanctu.activeProject') === get(this, 'project');

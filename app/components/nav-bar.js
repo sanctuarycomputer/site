@@ -100,7 +100,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this.setupDOM()
+    this.setupDOM();
     Ember.$(window).on('resize', () => this.setupDOM());
 
     let logoLoader = new Image();

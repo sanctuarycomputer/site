@@ -10,9 +10,9 @@ const styles = vudu({
   backButton: {
     display: 'inline-block',
     cursor: 'pointer',
+    transition: '120ms ease-out',
     ':hover': {
-      transition: '350ms ease-in-out',
-      transform: 'translateX(-10px)',
+      transform: 'translateX(-20px)',
     }
   },
 });

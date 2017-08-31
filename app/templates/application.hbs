@@ -1,8 +1,8 @@
 <div class={{styles.applicationRoute}}>
   <div class='{{vudu "smShow z3"}} initial-hide'>
     {{mobile-nav-bar label=sanctu.navLabel}}
+    {{mobile-nav-content clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
   </div>
-  {{mobile-nav-content clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
 
   <div class='{{vudu "smHide z3"}} initial-hide'>
     {{nav-bar clickedIndexSubsection=(route-action "clickedIndexSubsection") makeTransition=(route-action 'makeTransition')}}

@@ -105,8 +105,10 @@ export default Service.extend({
       .to($mobileNavContent, 0.1, { css: { opacity: 1, zIndex: 3, pointerEvents: 'auto' }, ease: Cubic.easeInOut }, 'initial');
 
     //Nav links
-    tl.staggerFrom($mobileNavLinks, 0.25, { css: { opacity: 0, transform: 'translateY(-10px)'}, ease: Cubic.easeInOut}, 0.1)
-      .staggerTo($mobileNavLinks, 0.25, { css: { opacity: 1, transform: 'translateY(0)'}, ease: Cubic.easeInOut}, 0.1);
+    tl.staggerFromTo($mobileNavLinks, 0.25,
+      { css: { opacity: 0, transform: 'translateY(-10px)'}, ease: easing.Expo.easeOut },
+      { css: { opacity: 1, transform: 'translateY(0)'}, ease: easing.Expo.easeIn },
+    0.1, 'initial')
 
     tl.eventCallback("onStart", () => set(this, 'mobileNavIsAnimating', true));
     tl.eventCallback("onComplete", () => set(this, 'mobileNavIsAnimating', false));
@@ -131,6 +133,7 @@ export default Service.extend({
     let imageAnimation     = Ember.$('.GLOBAL--image-animation');
     let desktopNav         = Ember.$('.GLOBAL--nav-bar');
     let mobileNav          = Ember.$('.GLOBAL--mobile-nav-bar');
+    let mobileNavContent   = Ember.$('.GLOBAL--mobile-nav-content');
     let desktopViewHeight  = Ember.$(window).height() - desktopNav.height();
     let mobileViewHeight   = Ember.$(window).height() - mobileNav.height();
     let navStartingFromTop = !!desktopNav.attr('data-top');
@@ -141,21 +144,24 @@ export default Service.extend({
 
     mainContainer.find('.initially-hidden').removeClass('initially-hidden');
     if (isRoot) {
+      mobileNavContent.css({ 'height': '100%' });
       timeline
-        .to(desktopNav, 0, { y: mainContainer.outerHeight()/2 - desktopNav.height()/2, ease })
+        .to(desktopNav, 0, { y: mainContainer.outerHeight()/2 - desktopNav.height()/2 })
+        .to(mobileNavContent, 0, { y: 0 })
         .from(imageAnimation, 1.5, { opacity: 0, transform: "translateY(-20px)" })
 
       timeline.add('stagger', '-=1');
       timeline.staggerFrom(desktopNav.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
-    } else {
+      timeline.staggerFrom(mobileNavContent.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
     }
+
     if (navStartingFromTop) {
+      mobileNav.hide();
       let $scroll = mainContainer.find('.detectScroll');
       $scroll.scrollTop(0);
       mainContainer.hide();
       let preInteractionTimeline = new TimelineLite()
           .to(imageAnimation, 0.2, { opacity: 0, y: -10, ease: easing.Expo.easeIn })
-          .from(mobileNav, 1.2, { y: mobileNav.height() + 1, ease }, "entrance")
           .pause()
       set(this, 'preInteractionTimeline', preInteractionTimeline);
     } else {
@@ -165,7 +171,6 @@ export default Service.extend({
       $scroll.scrollTop($scroll[0].scrollHeight);
       timeline
         .from(desktopNav, 0.8, { y: desktopViewHeight + desktopNav.height(), ease }, "entrance")
-        .from(mobileNav, 1.2, { y: mobileViewHeight + mobileNav.height(), ease }, "entrance")
         .from(mainContainer, 1.2, { y: -mainContainer.outerHeight(), ease, delay: 0.2 }, "entrance")
       timeline.play();
     }
@@ -181,17 +186,26 @@ export default Service.extend({
     let imageAnimation    = Ember.$('.GLOBAL--image-animation');
     let desktopNav        = Ember.$('.GLOBAL--nav-bar');
     let desktopViewHeight = Ember.$(window).height() - desktopNav.height();
+    let mobileNav         = Ember.$('.GLOBAL--mobile-nav-bar');
+    let mobileNavContent   = Ember.$('.GLOBAL--mobile-nav-content');
 
     setTimeout(() => { set(this, 'isPreInteraction', false); }, 200);
     if (navShouldBeTop) {
       timeline
         .to(desktopNav, 1.2, { y: 0, ease }, "entrance")
-        .from(mainContainer, 1.2, { y: mainContainer.outerHeight(), ease, delay: 0.2 }, "entrance")
+        .fromTo(mobileNav, 1.2, { y: -mobileNav.height() }, { y: 0, ease: easing.Expo.easeOut }, "entrance")
+        .from(mainContainer, 1.2, { y: mainContainer.outerHeight(), ease, }, "entrance")
+        .to(mobileNavContent, 0, { y: mobileNav.height() + 2 }, "entrance+=0.5")
     } else {
       let distance = mainContainer.outerHeight() - desktopNav.height();
+      let mobileDistance = mainContainer.outerHeight() - mobileNav.height();
       // the darkest code i have ever written
       document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION = true;
       desktopNav.css({
+        'border-top-color': `black`,
+        'border-bottom-color': `transparent`
+      });
+      mobileNav.css({
         'border-top-color': `black`,
         'border-bottom-color': `transparent`
       });
@@ -199,11 +213,15 @@ export default Service.extend({
       $('.index-scroll-container-component').css({ opacity: 0 });
       timeline
         .to(desktopNav, 1.2, { y: distance, ease }, "entrance")
+        .fromTo(mobileNav, 1.2, { y: mainContainer.height() }, { y: mobileDistance, ease: easing.Expo.easeOut }, "entrance")
         .from(mainContainer, 1.2, { y: -mainContainer.outerHeight(), ease, delay: 0.2 }, "entrance")
-
     }
     return new Ember.RSVP.Promise(resolve => {
-      timeline.eventCallback("onComplete", resolve);
+      timeline.eventCallback("onComplete", () => {
+        mobileNavContent.css({ 'height': '' });
+        resolve();
+      });
+      mobileNav.show();
       mainContainer.show();
       timeline.play();
     });
