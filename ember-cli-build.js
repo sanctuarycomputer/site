@@ -18,13 +18,9 @@ module.exports = function(defaults) {
       origin = `http://${process.env.EMBER_HOST || 'localhost'}:4200/`;
       fingerprintOptions.prepend = origin;
     break;
-    case 'staging':
-      origin = 'TBC';
-      fingerprintOptions.prepend = 'TBC';
-    break;
     case 'production':
-      origin = 'TBC';
-      fingerprintOptions.prepend = 'TBC';
+      origin = 'http://www.sanctuary.computer.s3-website-us-east-1.amazonaws.com/';
+      fingerprintOptions.prepend = origin;
     break;
   }
 

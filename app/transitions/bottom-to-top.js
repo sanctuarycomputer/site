@@ -11,7 +11,7 @@ export default function(opts = {}) {
   if (document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION) {
     let $scroll = this.newElement.find('.detectScroll');
     $scroll.scrollTop($scroll[0].scrollHeight);
-    document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION = false
+    document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION = false;
     return Promise.resolve();
   }
 
