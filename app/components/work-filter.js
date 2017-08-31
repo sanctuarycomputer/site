@@ -19,6 +19,8 @@ const styles = vudu({
       c.sansLight,
       c.z2,
     ],
+    transform: `translateY(100%)`,
+    opacity: 0,
     display: 'none',
     [breakpoints.md]: {
       display: 'flex',
@@ -51,7 +53,7 @@ const styles = vudu({
 });
 
 export default Component.extend({
-  classNames: [styles.workFilter],
+  classNames: [styles.workFilter, 'work-filter'],
   v: v,
   styles,
   types,

@@ -1,9 +1,9 @@
-<div class='GLOBAL--nav-bar--stripe {{styles.stripe}}'></div>
+<div class='GLOBAL--nav-bar--stripe {{styles.stripe}} {{if isPreInteraction styles.stripeHidden}}'></div>
 
 <div class={{styles.inner}}>
-  {{#link-to 'shop' class=styles.link}}<span>Shop</span>{{/link-to}}
-  {{#link-to 'feed' class=styles.link}}<span>Feed</span>{{/link-to}}
-  {{#link-to 'work' class=styles.link}}<span>Work</span>{{/link-to}}
+  <a class={{styles.link}} {{action 'clickedMainSection' 'shop'}}><span>Shop</span></a>
+  <a class={{styles.link}} {{action 'clickedMainSection' 'feed'}}><span>Feed</span></a>
+  <a class={{styles.link}} {{action 'clickedMainSection' 'work'}}><span>Work</span></a>
   <img class={{styles.logo}} src='images/logo.svg' />
   <a class={{styles.link}} {{action 'clickedIndexSubsection' null}}><span>Info</span></a>
   <a class={{styles.link}} {{action 'clickedIndexSubsection' 'jobs'}}><span>Jobs</span></a>

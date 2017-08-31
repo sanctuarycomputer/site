@@ -115,8 +115,7 @@ export default Component.extend({
       }
     };
 
-    get(this, 'sanctu').cloudsDidRender(this.element);
-    //init();
+    init();
   },
   onFirstRender() {
     get(this, 'sanctu').cloudsDidRender(this.element);

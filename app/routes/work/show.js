@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import v from 'npm:vudu';
 import c from 'site/lib/vudu';
-const { get, set, Route } = Ember;
+const { get, set, Route, inject: { service } } = Ember;
 
 const styles = v({
   workShowWrapper: {
@@ -10,6 +10,8 @@ const styles = v({
 });
 
 export default Route.extend({
+  sanctu: service(),
+
   model(params) {
     return this.store.queryRecord('project', {
       'fields.slug': params.slug

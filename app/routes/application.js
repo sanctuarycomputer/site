@@ -45,7 +45,6 @@ export default Route.extend({
     set(controller, 'sanctu.applicationRouteClass', styles.applicationRoute);
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
-    console.log(v(c));
   },
 
   actions: {
@@ -54,6 +53,9 @@ export default Route.extend({
         return set(this, 'sanctu.indexSubSection', section);
       }
       return this.transitionTo('index', { queryParams: { s: section }});
+    },
+    makeTransition(route) {
+      this.transitionTo(route);
     }
   },
 });

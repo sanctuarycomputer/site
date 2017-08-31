@@ -24,7 +24,7 @@ const styles = v({
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: 'transparent',
-    transition: `border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`
+    transition: `background-color 1s ease-out, border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`
   },
   inner: {
     display: 'flex',
@@ -43,21 +43,35 @@ const styles = v({
   logo: {
     '@composes': [c.mx3]
   },
+  'span': {
+    transition: `color ${vars.pageTransitionDuration}ms ease-out`
+  },
   stripe: {
     height: '1px',
     left: 0,
     position: 'absolute',
     backgroundColor: c.black.color,
-    transition: `${vars.pageTransitionDuration}ms`,
+    transition: `300ms ease-out, opacity 1000ms ease-out 1000ms`,
     transform: 'translateY(-5px)',
+  },
+  stripeHidden: {
+    opacity: 0
+  },
+  preInteraction: {
+    backgroundColor: 'transparent',
+    borderBottomColor: 'transparent !important',
+    'span': { color: 'white' },
+    'img': { opacity: 0 }
   }
 });
 
 export default Component.extend({
   classNames: ['GLOBAL--nav-bar', styles.navBarComponent],
+  classNameBindings: [`isPreInteraction:${styles.preInteraction}`],
   styles,
 
   sanctu: service(),
+  isPreInteraction: Ember.computed.alias('sanctu.isPreInteraction'),
 
   positionStripe() {
     let $linkEl = this.$(`a:contains(${get(this, 'sanctu.navLabel')})`);
@@ -99,7 +113,20 @@ export default Component.extend({
 
   actions: {
     clickedIndexSubsection() {
+      if (get(this, 'isPreInteraction')) {
+        return get(this, 'sanctu').didInteract().then(() => {
+          get(this, 'clickedIndexSubsection')(...arguments);
+        });
+      }
       get(this, 'clickedIndexSubsection')(...arguments);
+    },
+    clickedMainSection(section) {
+      if (get(this, 'isPreInteraction')) {
+        return get(this, 'sanctu').didInteract(false).then(() => {
+          this.attrs.makeTransition(section);
+        });
+      }
+      this.attrs.makeTransition(section);
     }
   }
 

@@ -9,7 +9,7 @@ module.exports = function(defaults) {
   var fingerprintOptions = {
     enabled: true,
     extensions: ['js', 'css', 'png', 'jpg', 'gif', 'svg'],
-    exclude: ['images/smoke']
+    exclude: ['images/smoke', 'images/frames/*']
   };
 
   var origin;

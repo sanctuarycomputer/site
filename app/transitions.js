@@ -45,23 +45,23 @@ export default function(){
   this.transition(
     this.fromRoute('work'),
     this.toRoute('feed'),
-    this.use('toRight', { duration }),
-    this.reverse('toLeft', { duration })
+    this.use('toRight', { duration: duration }),
+    this.reverse('toLeft', { duration: duration })
   );
 
   this.transition(
     this.fromRoute('feed'),
     this.toRoute('shop'),
-    this.use('toRight', { duration }),
-    this.reverse('toLeft', { duration })
+    this.use('toRight', { duration: duration }),
+    this.reverse('toLeft', { duration: duration })
   );
 
   this.transition(
     this.fromRoute('work.index'),
     this.toRoute('work.show'),
     this.use('explode', {
-      pickOld: '.explode.project-block' ,
-      pickNew: '.project-block',
+      pickOld: '.explode',
+      pickNew: '.explode',
       use: ['work-explosion']
     }, {
       use: 'work-explosion-backing'
@@ -72,11 +72,11 @@ export default function(){
     this.fromRoute('work.show'),
     this.toRoute('work.index'),
     this.use('explode', {
-      pickOld: '.project-block' ,
-      pickNew: '.project-block.explode',
+      pickOld: '.explode' ,
+      pickNew: '.explode',
       use: ['reverse-work-explosion']
     }, {
-      use: 'cross-fade'
+      use: 'reverse-work-explosion-backing'
     }),
   );
 }

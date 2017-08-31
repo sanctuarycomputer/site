@@ -1,4 +1,4 @@
-<div class="{{styles.workRoute}} {{vudu 'liquidInner'}} detectScroll">
+<div class="{{styles.workRoute}} {{vudu 'liquidInner'}} detectScroll initially-hidden">
   <div class='{{vudu "cloudWindow"}} GLOBAL--cloud-window'>
     {{#cloud-overlay positionTop=true}}
       <div class="{{vudu 'center cloudContentTop'}}">
@@ -12,6 +12,6 @@
     <div class='{{vudu "cloudTriangleUp z1 pointerNone"}}'></div>
   </div>
   <div class='{{vudu "topLevelContent"}}'>
-    {{liquid-outlet}}
+    {{liquid-outlet class='show-after-animation hidden'}}
   </div>
 </div>

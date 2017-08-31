@@ -1,5 +1,5 @@
 <div class={{styles.workShowWrapper}}>
-  <div class={{vudu 'col11 mxAuto'}}>
+  <div class={{vudu 'col11 mxAuto'}} style="min-height:106px">
     {{#link-to 'work' class=(vudu 'flex alignCenter black')}}
       <img class={{vudu 'rotateNeg90'}} src="images/arrow.svg"/>
     {{/link-to}}
@@ -9,7 +9,7 @@
     <!-- TITLE BLOCK -->
     {{#if (eq block.blockType 'title block')}}
       <div class={{vudu 'col6 px4 left'}}>
-        {{project-block project=model}}
+        {{project-block-two project=model}}
       </div>
       <div class={{vudu 'col6 px4 left'}}>
         <h1 class={{vudu 'title serifLight py1'}}>{{block.title}}</h1>

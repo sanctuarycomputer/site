@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { TimelineLite, easing } from 'gsap';
 
 const {
   get,
@@ -15,6 +16,7 @@ export default Service.extend({
   didSubmitEmail: false,
   cloudsWatch: null,
   activeProject: null,
+  isPreInteraction: true,
 
   router: service('-routing'),
 
@@ -24,6 +26,7 @@ export default Service.extend({
     this.computeNavLabel();
     get(this, 'router').addObserver('currentRouteName', this, 'computeNavLabel');
   },
+
   computeNavLabel() {
     set(this, 'mobileNavShowing', false);
     let navLabel;
@@ -120,10 +123,11 @@ export default Service.extend({
   },
 
   cloudsDidRender(clouds) {
+    const ease = easing.Expo.easeInOut;
     /* At this point, the first render has happened. We can run the animation! */
     const initialHide      = Ember.$('.initial-hide, .liquid-container');
     let application        = Ember.$(`.${get(this, 'applicationRouteClass')}`);
-    let mainContainer      = application.find('.liquid-container:last');
+    let mainContainer      = application.find('.liquid-container.main');
     let imageAnimation     = Ember.$('.GLOBAL--image-animation');
     let desktopNav         = Ember.$('.GLOBAL--nav-bar');
     let mobileNav          = Ember.$('.GLOBAL--mobile-nav-bar');
@@ -135,25 +139,74 @@ export default Service.extend({
 
     let timeline = new TimelineLite().from(clouds, 1.5, { opacity: 0 });
 
+    mainContainer.find('.initially-hidden').removeClass('initially-hidden');
     if (isRoot) {
       timeline
-        .from(imageAnimation, 1.5, { opacity: 0, transform: "translateY(-20px)" }, "-=0.5")
-        .to(imageAnimation, 1.5, { opacity: 0 }, "+=0.5")
+        .to(desktopNav, 0, { y: mainContainer.outerHeight()/2 - desktopNav.height()/2, ease })
+        .from(imageAnimation, 1.5, { opacity: 0, transform: "translateY(-20px)" })
+
+      timeline.add('stagger', '-=1');
+      timeline.staggerFrom(desktopNav.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
     } else {
-      imageAnimation.hide();
     }
     if (navStartingFromTop) {
-      timeline
-        .from(desktopNav, 1.2, { transform: `translateY(-${desktopNav.height()}px)` }, "entrance")
-        .from(mobileNav, 1.2, { transform: `translateY(-${mobileNav.height() + 1}px)` }, "entrance")
-        .from(mainContainer, 1.2, { transform: `translateY(${mainContainer.outerHeight()}px)` }, "entrance")
+      let $scroll = mainContainer.find('.detectScroll');
+      $scroll.scrollTop(0);
+      mainContainer.hide();
+      let preInteractionTimeline = new TimelineLite()
+          .to(imageAnimation, 0.2, { opacity: 0, y: -10, ease: easing.Expo.easeIn })
+          .from(mobileNav, 1.2, { y: mobileNav.height() + 1, ease }, "entrance")
+          .pause()
+      set(this, 'preInteractionTimeline', preInteractionTimeline);
     } else {
+      set(this, 'isPreInteraction', false);
+      imageAnimation.hide();
+      let $scroll = mainContainer.find('.detectScroll');
+      $scroll.scrollTop($scroll[0].scrollHeight);
       timeline
-        .from(desktopNav, 1.2, { transform: `translateY(${desktopViewHeight + desktopNav.height()}px)` }, "entrance")
-        .from(mobileNav, 1.2, { transform: `translateY(${mobileViewHeight + mobileNav.height()}px)` }, "entrance")
-        .from(mainContainer, 1.2, { transform: `translateY(${-mainContainer.outerHeight()}px)` }, "entrance")
+        .from(desktopNav, 0.8, { y: desktopViewHeight + desktopNav.height(), ease }, "entrance")
+        .from(mobileNav, 1.2, { y: mobileViewHeight + mobileNav.height(), ease }, "entrance")
+        .from(mainContainer, 1.2, { y: -mainContainer.outerHeight(), ease, delay: 0.2 }, "entrance")
+      timeline.play();
     }
     timeline.eventCallback("onComplete", () => this.animationCompleted());
-    timeline.play();
-  }
+  },
+
+  didInteract(navShouldBeTop = true) {
+
+    const ease            = easing.Expo.easeInOut;
+    const application     = Ember.$(`.${get(this, 'applicationRouteClass')}`);
+    const mainContainer   = application.find('.liquid-container.main');
+    const timeline        = get(this, 'preInteractionTimeline');
+    let imageAnimation    = Ember.$('.GLOBAL--image-animation');
+    let desktopNav        = Ember.$('.GLOBAL--nav-bar');
+    let desktopViewHeight = Ember.$(window).height() - desktopNav.height();
+
+    setTimeout(() => { set(this, 'isPreInteraction', false); }, 200);
+    if (navShouldBeTop) {
+      timeline
+        .to(desktopNav, 1.2, { y: 0, ease }, "entrance")
+        .from(mainContainer, 1.2, { y: mainContainer.outerHeight(), ease, delay: 0.2 }, "entrance")
+    } else {
+      let distance = mainContainer.outerHeight() - desktopNav.height();
+      // the darkest code i have ever written
+      document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION = true;
+      desktopNav.css({
+        'border-top-color': `black`,
+        'border-bottom-color': `transparent`
+      });
+      $('.detectScroll').css({ bottom: 'auto' });
+      $('.index-scroll-container-component').css({ opacity: 0 });
+      timeline
+        .to(desktopNav, 1.2, { y: distance, ease }, "entrance")
+        .from(mainContainer, 1.2, { y: -mainContainer.outerHeight(), ease, delay: 0.2 }, "entrance")
+
+    }
+    return new Ember.RSVP.Promise(resolve => {
+      timeline.eventCallback("onComplete", resolve);
+      mainContainer.show();
+      timeline.play();
+    });
+  },
+
 });

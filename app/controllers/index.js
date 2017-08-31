@@ -15,6 +15,7 @@ export default Controller.extend({
 
   actions: {
     didHitWaypoint(section) {
+      if (get(this, 'sanctu.isPreInteraction')) return;
       if (get(this, 'sanctu.duringAutoScroll')) { return; }
       set(this, 'sanctu.duringWaypointHit', true);
       set(this, 'sanctu.indexSubSection', section);
