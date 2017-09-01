@@ -1,15 +1,16 @@
 <div class={{styles.applicationRoute}}>
-    <div class='{{vudu "smShow z3"}} initial-hide'>
-      {{mobile-nav-bar label=sanctu.navLabel}}
-    </div>
+  <div class='{{vudu "smShow z3"}} initial-hide'>
+    {{mobile-nav-bar label=sanctu.navLabel}}
     {{mobile-nav-content clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
+  </div>
 
-    <div class='{{vudu "smHide z3"}} initial-hide'>
-      {{nav-bar clickedIndexSubsection=(route-action "clickedIndexSubsection")}}
-    </div>
+  <div class='{{vudu "smHide z3"}} initial-hide'>
+    {{nav-bar clickedIndexSubsection=(route-action "clickedIndexSubsection") makeTransition=(route-action 'makeTransition')}}
+  </div>
 
-    {{liquid-outlet}}
+  {{liquid-outlet class='main'}}
 
+  <div id="wormhole-work-index-filters"></div>
   <div class='GLOBAL--image-animation {{styles.imageAnimation}}'>
     <img class='{{styles.imageAnimationLogo}}' src='http://www.sanctuary.computer/static/images/logo.png'>
   </div>

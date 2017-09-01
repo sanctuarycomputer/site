@@ -12,12 +12,16 @@ body > .ember-view {
   height: 100%;
 }
 
+.initially-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .initial-hide {
   opacity: 0;
 }
 
 .liquid-container {
-  opacity: 0;
 }
 
 .liquid-container.ember-view {

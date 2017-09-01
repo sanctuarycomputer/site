@@ -5,6 +5,7 @@ import c, { vars } from 'site/lib/vudu';
 
 export default function(opts = {}) {
   this.newElement.css({ visibility: '' });
+  this.newElement.find('.initially-hidden').removeClass('initially-hidden');
   let tl = null;
   let navBar = Ember.$('.GLOBAL--nav-bar');
   let mobileNavBar = Ember.$('.GLOBAL--mobile-nav-bar');

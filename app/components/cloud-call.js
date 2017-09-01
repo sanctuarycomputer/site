@@ -102,7 +102,7 @@ export default Component.extend({
       render();
     };
 
-    const rotate = () => smokeParticles.forEach((particle, i) => i % 2 === 0 ? particle.rotation.z += 0.001 : particle.rotation.z -= 0.001 );
+    const rotate = () => (smokeParticles || []).forEach((particle, i) => i % 2 === 0 ? particle.rotation.z += 0.001 : particle.rotation.z -= 0.001 );
 
     render = () => {
       if (!shouldRender) return;

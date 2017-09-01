@@ -23,14 +23,14 @@ module.exports = function(environment) {
     }
   };
 
-  if (environment === 'development') {
-    ENV.contentful =  {
-      space: process.env.SANCTUARY_SPACE_ID,
-      accessToken: process.env.SANCTUARY_API_KEY,
-      previewAccessToken: process.env.SANCTUARY_PREVIEW_API_KEY,
-      usePreviewApi: false,
-    };
+  ENV.contentful =  {
+    space: process.env.SANCTUARY_SPACE_ID,
+    accessToken: process.env.SANCTUARY_API_KEY,
+    previewAccessToken: process.env.SANCTUARY_PREVIEW_API_KEY,
+    usePreviewApi: false,
+  };
 
+  if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

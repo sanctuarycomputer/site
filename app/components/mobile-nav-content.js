@@ -22,17 +22,28 @@ const styles = v({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-around',
+    '.pre-interaction-spacer': { display: 'none' },
   },
   link: {
     '@composes': [c.black, c.navLink, c.pointer],
     textDecoration: 'none',
   },
+  preInteraction: {
+    backgroundColor: 'transparent',
+    borderBottomColor: 'transparent !important',
+    pointerEvents: 'auto',
+    opacity: 1,
+    'a': { color: 'white' },
+    '.pre-interaction-spacer': { height: '100px', display: 'block' }
+  }
 });
 
 export default Component.extend({
   classNames: [styles.mobileNavContentComponent, 'GLOBAL--mobile-nav-content'],
+  classNameBindings: [`isPreInteraction:${styles.preInteraction}`],
   styles,
   sanctu: service(),
+  isPreInteraction: Ember.computed.alias('sanctu.isPreInteraction'),
   router: service('-routing'),
 
   didInsertElement() {
@@ -43,6 +54,12 @@ export default Component.extend({
 
   actions: {
     animateThenGoTo(routeName, isSubSection) {
+      if (get(this, 'isPreInteraction')) {
+        return get(this, 'sanctu').didInteract(!!isSubSection).then(() => {
+          if (isSubSection) return get(this, 'clickedIndexSubsection')(...arguments);
+          get(this, 'router').transitionTo(routeName)
+        });
+      }
       if(isSubSection) {
         return get(this, 'sanctu').toggleMobileNav(() => get(this, 'clickedIndexSubsection')(routeName));
       }

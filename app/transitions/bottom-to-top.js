@@ -5,6 +5,16 @@ import c, { vars } from 'site/lib/vudu';
 
 export default function(opts = {}) {
   this.newElement.css({ visibility: '' });
+  this.newElement.find('.initially-hidden').removeClass('initially-hidden');
+
+  // #good living
+  if (document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION) {
+    let $scroll = this.newElement.find('.detectScroll');
+    $scroll.scrollTop($scroll[0].scrollHeight);
+    document.OPT_OUT_OF_FIRST_BOTTOM_TO_TOP_TRANSITION = false;
+    return Promise.resolve();
+  }
+
   let tl = null;
   const navBar = Ember.$('.GLOBAL--nav-bar');
   const mobileNavBar = Ember.$('.GLOBAL--mobile-nav-bar');
@@ -16,12 +26,6 @@ export default function(opts = {}) {
   routeWrapper.children().each(function() {
     routeWrapperChildrenHeight = routeWrapperChildrenHeight + Ember.$(this).outerHeight();
   });
-  let scrollTop = routeWrapperChildrenHeight - routeWrapper.height();
-  routeWrapper.stop().animate(
-    { scrollTop },
-    vars.pageTransitionDuration,
-    'swing'
-  );
 
   navBar.css({
     'border-top-color': `${c.black.color}`,
@@ -36,8 +40,20 @@ export default function(opts = {}) {
   const ease = easing.Expo.easeOut;
   const duration = opts.duration * 0.001 || 2;
 
+  let scrollTop = routeWrapperChildrenHeight - routeWrapper.height();
+  routeWrapper.stop().animate(
+    { scrollTop },
+    duration,
+    'swing'
+  );
+
   return new Promise((resolve) => {
-    tl = new TimelineLite({ onComplete: resolve });
+    tl = new TimelineLite({
+      onComplete: () => {
+        this.newElement.find('.show-after-animation').removeClass('hidden');
+        resolve();
+      }
+    })
     tl.fromTo([navBar, mobileNavBar], duration,
       { y: 0, ease },
       { y: distance, ease },

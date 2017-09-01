@@ -12,14 +12,16 @@ const {
 
 const styles = v({
   workWrapper: {
-    '@composes': [c.mxAuto, c.col12, c.pb6]
+    '@composes': [c.mxAuto, c.col12],
+    minHeight: '100vh',
+    marginBottom: '50px'
   },
 });
 
 export default Route.extend({
   sanctu: service(),
   model() {
-    return this.modelFor('work').sortBy('variant')
+    return this.modelFor('work');
   },
 
   setupController(controller, model) {
@@ -30,7 +32,13 @@ export default Route.extend({
     set(controller, 'styles', styles);
     set(controller, 'v', v(c));
     set(controller, 'sanctu', get(this, 'sanctu'));
+  },
 
+  renderTemplate(controller) {
+    setTimeout(() => {
+      set(controller, 'sanctu.activeProject', null);
+    }, 1000);
+    return this._super(...arguments);
   },
 
   actions: {
@@ -62,5 +70,10 @@ export default Route.extend({
 
       return set(this, 'controller.model', get(this, 'controller.allProjects'));
     },
+    didClickProject(project) {
+      /* Tell liquid-fire which element to pick, see transitions.js for more info */
+      set(this, 'sanctu.activeProject', project);
+      this.transitionTo('work.show', project);
+    }
   }
 });

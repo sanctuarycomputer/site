@@ -1,32 +1,34 @@
 <div class={{styles.workWrapper}}>
-  {{#scroll-route contentLoaded=true}}
+
   <div class={{vudu 'flex wrap'}}>
-    {{#if sanctu.animationComplete}}
-      {{#each model as |pj|}}
-        {{#link-to 'work.show' pj.slug class=(vudu 'col12 mdCol6 px4')}}
-          {{project-block project=pj}}
-        {{/link-to}}
-      {{else}}
-        <div class={{vudu 'fullHeightSubNav fullWidth flex alignCenter justifyCenter'}}>
-          {{#if (eq typeFilter 'product')}}
-            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We haven't made any <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' techFilter)}}>{{typeFilter}}s</span> with <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' typeFilter)}}>{{techFilter}}</span> (yet!)</h1>
-            {{else}}
-            <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We haven't worked on any <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' techFilter)}}>{{typeFilter}}</span> projects made with <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' typeFilter)}}>{{techFilter}}</span> (yet!)</h1>
-          {{/if}}
-        </div>
-      {{/each}}
-    {{/if}}
+    {{#each model as |project|}}
+      <div class="{{vudu 'col12 mdCol6 px4'}}" {{action (route-action 'didClickProject' project)}}>
+        {{project-block-two project=project}}
+      </div>
+    {{else}}
+      <div class={{vudu 'fullHeightSubNav fullWidth flex alignCenter justifyCenter'}}>
+        {{#if (eq typeFilter 'product')}}
+          <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We haven't made any <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' techFilter)}}>{{typeFilter}}s</span> with <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' typeFilter)}}>{{techFilter}}</span> (yet!)</h1>
+          {{else}}
+          <h1 class={{vudu 'pLarge col10 mdCol12 center'}}>We haven't worked on any <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' techFilter)}}>{{typeFilter}}</span> projects made with <span class={{vudu 'electricBlue pointer'}} {{action (route-action 'toggleFilter' typeFilter)}}>{{techFilter}}</span> (yet!)</h1>
+        {{/if}}
+      </div>
+    {{/each}}
   </div>
-  {{/scroll-route}}
 </div>
+
+{{#ember-wormhole to="wormhole-work-index-filters"}}
   {{work-filter
-      typeFilter=typeFilter
-      techFilter=techFilter
-      clearFilters=(route-action 'clearFilters')
-      toggleFilter=(route-action 'toggleFilter')}}
+    typeFilter=typeFilter
+    techFilter=techFilter
+    clearFilters=(route-action 'clearFilters')
+    toggleFilter=(route-action 'toggleFilter')
+  }}
 
   {{mobile-work-filter
-      typeFilter=typeFilter
-      techFilter=techFilter
-      clearFilters=(route-action 'clearFilters')
-    toggleFilter=(route-action 'toggleFilter')}}
+    typeFilter=typeFilter
+    techFilter=techFilter
+    clearFilters=(route-action 'clearFilters')
+    toggleFilter=(route-action 'toggleFilter')
+  }}
+{{/ember-wormhole}}
