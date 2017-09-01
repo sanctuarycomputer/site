@@ -37,6 +37,7 @@ const styles = v({
     '@composes': [c.black, c.navLink],
     flexGrow: 1,
     flexBasis: 0,
+    backfaceVisibility: 'hidden',
     textAlign: 'center',
     textDecoration: 'none',
     cursor: 'pointer',
