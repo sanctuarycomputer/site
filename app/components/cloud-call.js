@@ -13,9 +13,9 @@ const styles = v({
     position: 'fixed',
     width: '100%',
     height: '100%',
+    zIndex: '0',
     top: 0,
     left: 0,
-    zIndex: 0,
     canvas: {
       backgroundColor: '#173963',
     },
