@@ -31,6 +31,7 @@ const styles = v({
     flexDirection: 'row',
     width: '100%',
     margin: 'auto',
+    perspective: '1000px',
   },
   link: {
     '@composes': [c.black, c.navLink],
