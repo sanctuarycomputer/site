@@ -148,9 +148,15 @@ export default Service.extend({
       timeline
       .to(desktopNav, 0, { y: (mainContainer.outerHeight() / 2) - (desktopNav.height() / 2) }, 0)
       .to(mobileNavContent, 0, { y: 0 }, 0)
-      .fromTo(imageAnimation, 2.5, { opacity: 0, z: 400 }, { opacity: 1, z: 0, ease: easing.Expo.easeOut }, 2)
-      .fromTo(desktopNav, 2, { opacity: 0, z: -400 }, { opacity: 1, z: 0, ease: easing.Expo.easeOut }, 2)
-      .fromTo(mobileNavContent, 2, { opacity: 0, z: -400 }, { opacity: 1, z: 0, ease: easing.Expo.easeOut }, 2)
+
+      .fromTo(imageAnimation, 2, { z: 800 }, { z: 0, ease: easing.Power4.easeOut }, 2)
+      .fromTo(imageAnimation, 4, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 2)
+
+      .fromTo(desktopNav, 2, { z: -100 }, { z: 0, ease: easing.Power4.easeOut }, 2.3)
+      .fromTo(desktopNav, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power2.easeOut }, 2.3)
+
+      .fromTo(mobileNavContent, 2, { z: -100 }, { z: 0, ease: easing.Power4.easeOut }, 2.3)
+      .fromTo(mobileNavContent, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power2.easeOut }, 2.3)
     }
 
     if (navStartingFromTop) {
