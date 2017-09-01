@@ -149,14 +149,14 @@ export default Service.extend({
       .to(desktopNav, 0, { y: (mainContainer.outerHeight() / 2) - (desktopNav.height() / 2) }, 0)
       .to(mobileNavContent, 0, { y: 0 }, 0)
 
-      .fromTo(imageAnimation, 2, { z: 800 }, { z: 0, ease: easing.Power4.easeOut }, 2)
-      .fromTo(imageAnimation, 4, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 2)
+      .fromTo(imageAnimation, 2, { z: 800 }, { z: 0, ease: easing.Power4.easeOut }, 1.25)
+      .fromTo(imageAnimation, 4, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.25)
 
-      .fromTo(desktopNav, 2, { z: -100 }, { z: 0, ease: easing.Power4.easeOut }, 2.75)
-      .fromTo(desktopNav, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power2.easeOut }, 2.75)
+      .fromTo(desktopNav, 2, { z: -100 }, { z: 0, ease: easing.Power4.easeOut }, 2)
+      .fromTo(desktopNav, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power2.easeOut }, 2)
 
-      .fromTo(mobileNavContent, 2, { z: -100 }, { z: 0, ease: easing.Power4.easeOut }, 2.75)
-      .fromTo(mobileNavContent, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power2.easeOut }, 2.75)
+      .fromTo(mobileNavContent, 2, { z: -100 }, { z: 0, ease: easing.Power4.easeOut }, 2)
+      .fromTo(mobileNavContent, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power2.easeOut }, 2)
     }
 
     if (navStartingFromTop) {
