@@ -8,6 +8,12 @@ html, body {
   font-size: 100%;
 }
 
+body {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
 body > .ember-view {
   height: 100%;
 }

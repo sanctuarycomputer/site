@@ -146,13 +146,17 @@ export default Service.extend({
     if (isRoot) {
       mobileNavContent.css({ 'height': '100%' });
       timeline
-        .to(desktopNav, 0, { y: mainContainer.outerHeight()/2 - desktopNav.height()/2 })
-        .to(mobileNavContent, 0, { y: 0 })
-        .from(imageAnimation, 1.5, { opacity: 0, transform: "translateY(-20px)" })
+      .to(desktopNav, 0, { y: (mainContainer.outerHeight() / 2) - (desktopNav.height() / 2) }, 0)
+      .to(mobileNavContent, 0, { y: 0 }, 0)
 
-      timeline.add('stagger', '-=1');
-      timeline.staggerFrom(desktopNav.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
-      timeline.staggerFrom(mobileNavContent.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
+      .fromTo(imageAnimation, 2, { z: 800 }, { z: 0, ease: easing.Power4.easeOut }, 1)
+      .fromTo(imageAnimation, 4, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1)
+
+      .fromTo(desktopNav, 2, { scale: .8 }, { scale: 1, ease: easing.Power4.easeOut }, 1.75)
+      .fromTo(desktopNav, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.75)
+
+      .fromTo(mobileNavContent, 2, { scale: .8 }, { scale: 1, ease: easing.Power4.easeOut }, 1.75)
+      .fromTo(mobileNavContent, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.75)
     }
 
     if (navStartingFromTop) {

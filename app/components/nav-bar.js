@@ -30,7 +30,7 @@ const styles = v({
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
-    margin: 'auto'
+    margin: 'auto',
   },
   link: {
     '@composes': [c.black, c.navLink],

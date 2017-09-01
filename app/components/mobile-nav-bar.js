@@ -25,7 +25,7 @@ const styles = v({
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: 'transparent',
-    transition: `border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`
+    transition: `border-top-color ${vars.pageTransitionDuration}ms, border-bottom-color ${vars.pageTransitionDuration}ms`,
   },
   navLabel: {
     '@composes': [c.navLink],
