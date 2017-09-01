@@ -150,7 +150,7 @@ export default Service.extend({
       .to(mobileNavContent, 0, { y: 0 }, 0)
 
       .fromTo(imageAnimation, 2, { z: 800 }, { z: 0, ease: easing.Power4.easeOut }, 1)
-      .fromTo(imageAnimation, 4, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1)
+      .fromTo(imageAnimation, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power4.easeOut }, 1.1)
 
       // .fromTo(desktopNav, 2, { scale: .8 }, { scale: 1, ease: easing.Power4.easeOut }, 1.75)
       // .fromTo(desktopNav, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.75)
@@ -159,10 +159,10 @@ export default Service.extend({
       .fromTo([desktopNav.find('a')[2], desktopNav.find('a')[3]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.7)
 
       .fromTo([desktopNav.find('a')[1], desktopNav.find('a')[4]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([desktopNav.find('a')[1], desktopNav.find('a')[4]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.8)
+      .fromTo([desktopNav.find('a')[1], desktopNav.find('a')[4]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.9)
 
       .fromTo([desktopNav.find('a')[0], desktopNav.find('a')[5]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([desktopNav.find('a')[0], desktopNav.find('a')[5]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.9)
+      .fromTo([desktopNav.find('a')[0], desktopNav.find('a')[5]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 2.2)
 
       .fromTo(mobileNavContent, 2, { scale: .8 }, { scale: 1, ease: easing.Power4.easeOut }, 1.75)
       .fromTo(mobileNavContent, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.75)
