@@ -146,13 +146,11 @@ export default Service.extend({
     if (isRoot) {
       mobileNavContent.css({ 'height': '100%' });
       timeline
-        .to(desktopNav, 0, { y: mainContainer.outerHeight()/2 - desktopNav.height()/2 })
-        .to(mobileNavContent, 0, { y: 0 })
-        .from(imageAnimation, 1.5, { opacity: 0, transform: "translateY(-20px)" })
-
-      timeline.add('stagger', '-=1');
-      timeline.staggerFrom(desktopNav.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
-      timeline.staggerFrom(mobileNavContent.find('a'), 2, { y: -10, autoAlpha: 0, ease: easing.Expo.easeOut }, 0.125, 'stagger');
+      .to(desktopNav, 0, { y: (mainContainer.outerHeight() / 2) - (desktopNav.height() / 2) }, 0)
+      .to(mobileNavContent, 0, { y: 0 }, 0)
+      .fromTo(imageAnimation, 2, { opacity: 0, z: 400 }, { opacity: 1, z: 0, ease: easing.Expo.easeOut }, 2)
+      .fromTo(desktopNav, 1.5, { opacity: 0, z: -400 }, { opacity: 1, z: 0, ease: easing.Expo.easeOut }, 2)
+      .fromTo(mobileNavContent, 1.5, { opacity: 0, z: -400 }, { opacity: 1, z: 0, ease: easing.Expo.easeOut }, 2)
     }
 
     if (navStartingFromTop) {
