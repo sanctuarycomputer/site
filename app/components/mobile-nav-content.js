@@ -23,10 +23,12 @@ const styles = v({
     alignItems: 'center',
     justifyContent: 'space-around',
     '.pre-interaction-spacer': { display: 'none' },
+    perspective: '1000px',
   },
   link: {
     '@composes': [c.black, c.navLink, c.pointer],
     textDecoration: 'none',
+    backfaceVisibility: 'hidden',
   },
   preInteraction: {
     backgroundColor: 'transparent',

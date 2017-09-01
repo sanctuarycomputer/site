@@ -31,11 +31,13 @@ const styles = v({
     flexDirection: 'row',
     width: '100%',
     margin: 'auto',
+    perspective: '1000px',
   },
   link: {
     '@composes': [c.black, c.navLink],
     flexGrow: 1,
     flexBasis: 0,
+    backfaceVisibility: 'hidden',
     textAlign: 'center',
     textDecoration: 'none',
     cursor: 'pointer',
