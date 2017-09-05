@@ -145,6 +145,8 @@ export default Service.extend({
     mainContainer.find('.initially-hidden').removeClass('initially-hidden');
     if (isRoot) {
       mobileNavContent.css({ 'height': '100%' });
+      const dLinks = desktopNav.find('a');
+      const aLinks = mobileNavContent.find('a');
       timeline
       .to(desktopNav, 0, { y: (mainContainer.outerHeight() / 2) - (desktopNav.height() / 2) }, 0)
       .to(mobileNavContent, 0, { y: 0 }, 0)
@@ -152,23 +154,15 @@ export default Service.extend({
       .fromTo(imageAnimation, 2, { z: 800 }, { z: 0, ease: easing.Power4.easeOut }, 1)
       .fromTo(imageAnimation, 6, { opacity: 0 }, { opacity: 1, ease: easing.Power4.easeOut }, 1.1)
 
-      .fromTo([desktopNav.find('a')[2], desktopNav.find('a')[3]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([desktopNav.find('a')[2], desktopNav.find('a')[3]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.7)
 
-      .fromTo([desktopNav.find('a')[1], desktopNav.find('a')[4]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([desktopNav.find('a')[1], desktopNav.find('a')[4]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.9)
+      .fromTo([dLinks[2], dLinks[3], aLinks[2], aLinks[3]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
+      .fromTo([dLinks[2], dLinks[3], aLinks[2], aLinks[3]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.7)
 
-      .fromTo([desktopNav.find('a')[0], desktopNav.find('a')[5]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([desktopNav.find('a')[0], desktopNav.find('a')[5]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 2.2)
+      .fromTo([dLinks[1], dLinks[4], aLinks[1], aLinks[4]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
+      .fromTo([dLinks[1], dLinks[4], aLinks[1], aLinks[4]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.9)
 
-      .fromTo([mobileNavContent.find('a')[2], mobileNavContent.find('a')[3]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([mobileNavContent.find('a')[2], mobileNavContent.find('a')[3]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.7)
-
-      .fromTo([mobileNavContent.find('a')[1], mobileNavContent.find('a')[4]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([mobileNavContent.find('a')[1], mobileNavContent.find('a')[4]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 1.9)
-
-      .fromTo([mobileNavContent.find('a')[0], mobileNavContent.find('a')[5]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
-      .fromTo([mobileNavContent.find('a')[0], mobileNavContent.find('a')[5]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 2.2)
+      .fromTo([dLinks[0], dLinks[5], aLinks[0], aLinks[5]], 2, { z: -200 }, { z: 0, ease: easing.Power4.easeOut }, 1.7)
+      .fromTo([dLinks[0], dLinks[5], aLinks[0], aLinks[5]], 6, { opacity: 0 }, { opacity: 1, ease: easing.Power3.easeOut }, 2.1)
     }
 
     if (navStartingFromTop) {
